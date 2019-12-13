@@ -1,0 +1,805 @@
+<template lang="pug">
+#app
+    .PathText 你的位置 : 首頁 > {{pageTitle}}
+    router-view(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder')
+    newsList(v-if="this.$route.path=='/newsPage'" :article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type='type')
+    newsListinArticle(v-if="this.$route.path!='/newsPage'" :article-list='articleList' :page-title='pageTitle')
+</template>
+
+<script>
+import newsList from '@/components/ListView'
+import newsListinArticle from '@/components/ListViewinArticle'
+export default {
+    components: {
+        newsList,
+        newsListinArticle
+    },
+    data() {
+        return {
+            pageTitle: "最新消息",
+            type: ["最新消息"],
+            searchPlaceholder: "關鍵字",
+            articleList: [{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/338/content_IMG_0711.JPG",
+                        type: ['最新消息','跨域薈萃'],
+
+                    title: '【跨域薈萃‧美感揚帆—108年種子學校誓師大會暨增能研習】高雄場圓滿落幕', 
+                    link: '/newsPage/news1',
+                    content: {
+                        video:["https://www.youtube.com/embed/QaT2BsznW3M"],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/338/content_IMG_0711.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/339/content_IMG_0675.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/340/content_IMG_0684.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/341/content_IMG_0762.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/342/content_IMG_0765.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/343/content_IMG_0801.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/344/content_IMG_0805.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/345/content_IMG_0827.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/346/content_IMG_0877.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/347/content_IMG_0946.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/348/content_IMG_0918.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/349/content_IMG_0995.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/350/content_IMG_0960.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/351/content_IMG_1030.JPG",],text: ['108年種子學校誓師大會暨增能研習最後一場於9月27日在高雄師範大學舉辦，上午開場邀請到國立屏東大學音樂系雙小提琴表演，演出過程中雖然遇到斷絃的插曲，演出者仍展現出最專業的一面從容應對，獲得全場熱烈的掌聲。緊接著計畫主持人國立臺灣師範大學藝術學院趙惠玲院長致歡迎詞，並頒發給每個參與學校合作證書和進行贈書儀式，給予參與學校教師鼓勵和期許。','此外，由計畫主持人趙惠玲院長、共同主持人黃純敏教授以及協同主持人陳淳迪教授，逐一介紹「跨領域美感教育卓越領航計畫」之理念與內容、課程模組之內涵與應用、以及執行經費和期程說明，讓種子學校夥伴們對計畫有更深入的瞭解。','下午首先是教師增能研習工作坊，第一場課程設計與實務，國小階段和中等階段皆邀請到長期參與本計畫發展出特色課程的兩間學校：高雄市旗山國小鍾千昭和黃慧慈老師，分享將音樂、表演和健體結合的課程案例，讓學生更有自信地展現自我；小港高中方姿文、洪慧霖和團隊老師一同身著印有「好好生活」字樣的服裝登場，介紹透過文案教學，帶學生由觀察、探索到企劃，找到個人與世界的連結。','第二場增能工作坊國小階段，國立屏東大學音樂系伍鴻沂教授特別以音樂結合魔術開場，帶領全場進入跨領域美感教育中的音樂體驗；中等階段邀請臺灣師範大學數位遊戲學習實驗室的主持人洪榮昭教授，以教育性數位遊戲為主題，透過APP和VR體驗，整合學習理論及遊戲設計應用。','活動的尾聲綜合座談時間，種子學校踴躍地發言提問，與計畫主持人互動熱絡，最後在主持人的帶動下凝聚共識並互相期許道別，接下來期待全國各地每間學校的課程發展，讓美感揚帆！',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/327/content_71522156_2517088045186860_4404841230970650624_o.jpg",
+                        type: ['最新消息','跨域薈萃'],
+                        
+                    title: '【跨域薈萃•美感揚帆—108年種子學校誓師大會暨增能研習】臺中場圓滿達成', 
+                    link: '/newsPage/news2',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/327/content_71522156_2517088045186860_4404841230970650624_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/328/content_71559404_2517088445186820_7523928163013885952_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/329/content_71567442_2517088401853491_1290738754503311360_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/330/content_71804165_2517088791853452_7256660882283823104_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/331/content_72236172_2517088811853450_5138526541113720832_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/332/content_71807927_2517088915186773_3582082229003616256_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/333/content_72630234_2517089005186764_1947726969625903104_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/334/content_71641044_2517089248520073_92951463176699904_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/335/content_71595662_2517089521853379_5334959060829601792_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/336/content_71729776_2517089265186738_3269928811998740480_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/337/content_71868326_2517089508520047_237159207797784576_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/352/content_71567444_2517089601853371_2112848542098784256_o.jpg",],text: ['108年種子學校誓師大會暨增能研習第二場在臺中大墩文化中心登場！一早由本期種子學校之一臺中市西區忠孝國小弦樂團帶來精彩優美的演出，由計畫協同主持人、國立臺中教育大學人文學院莊敏仁院長致歡迎詞，並邀請南投縣政府教育處牛素杏輔導員頒發給每校合作證書，以及由臺北市立大學人文藝術學院林小玉院長頒贈專書給中區種子學校代表南投縣竹山鎮秀林國民小學楊清豐校長，給予參與學校教師鼓勵和期許。','接著由計協同主持人林小玉院長、高震峰教授及陳韻文副教授，逐一介紹有關「跨領域美感教育卓越領航計畫」之理念與內容、課程模組之內涵與應用、以及執行經費和期程說明，讓種子學校夥伴們對計畫有更深入的瞭解。','下午首先是教師增能研習工作坊，第一場課程設計與實務，國小階段邀請臺中市福陽國小黃哲偉校長，分享推動跨領域課程的豐富經驗與感動；中等階段由國立竹東高中張澤平美術老師，介紹如何透過五感體驗傳達生命教育課題。','第二場增能工作坊國小階段，由國立清華大學幼兒教育學系劉淑英副教授以充滿活力的肢體帶動，延伸出美感經驗的多元想像與創造；中等階段邀請到臺北市私立靜心高中國中部蘇峰立教務主任，分享學校已堅持11年的畢業歌曲創作課程以及及加入數位科技的助益。','在本次活動中，很開心看到種子學校與師培大學開啟連結與交流，期待在雙方合作之下激盪出跨領域美感教育的豐富樣貌！',' ',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/313/content_A1.JPG",
+                        type: ['最新消息','跨域薈萃'],
+                        
+                    title: '【跨域薈萃•美感揚帆—108年種子學校誓師大會暨增能研習】臺北場圓滿落幕', 
+                    link: '/newsPage/news3',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/313/content_A1.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/314/content_A2.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/315/content_A3.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/317/content_A6.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/318/content_B1.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/319/content_B2.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/320/content_B3.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/321/content_C1-2.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/322/content_C1-4.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/323/content_C2-2.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/324/content_C2-3.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/325/content_D2.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/326/content_D4.JPG",],text: ['108年種子學校誓師大會暨增能研習第一棒臺北場，在上週五(9/6)於臺北市立大學正式展開！一早由本期種子學校之一的臺北市仁愛國小直笛隊表演揭開序幕，以及邀請到教育部師資培育及藝術教育司李毓娟副司長、計畫主持人國立臺灣師範大學藝術學院趙惠玲院長致歡迎詞，並頒發給每個參與學校合作證書和進行贈書儀式，給予參與學校教師鼓勵和期許。','緊接著由計畫主持人趙惠玲院長、共同主持人黃純敏教授以及協同主持人李其昌副教授，逐一介紹有關「跨領域美感教育卓越領航計畫」之理念與內容、課程模組之內涵與應用、以及執行經費和期程說明，讓種子學校夥伴們對計畫有更深入的瞭解。','活動下午首先是教師增能研習工作坊，第一場課程設計與實務，國小階段邀請國立科學工業園區實驗高中國小部饒詠婷老師分享如何統整語文、自然、表演藝術、音樂、視覺藝術等課程，帶領學生認識海洋、感受海洋；中等階段由長期參與本計畫的臺北市立五常國中陳瀅如教務主任示範藉由製作一把琴，整合生活科技、音樂和理化課程。','第二場增能工作坊國小階段，由臺灣師範大學電機系賴以威助理教授，從數學的角度解析世界名畫中蘊藏的數字、幾何概念，展示數學與藝術的課程連結；中等階段邀請臺灣師範大學數位遊戲學習實驗室的主持人洪榮昭教授，以教育性數位遊戲為主題，透過APP和VR體驗，整合學習理論及遊戲設計應用。','在活動的尾聲，安排種子學校代表與師資培育大學委員互相認識、交流，以及並由計畫主持人和與會來賓進行綜合座談，在經驗分享、共識凝聚中，為活動畫下完美的句點。','接下來9月20日、27日，在臺中市大墩文化中心、國立高雄師範大學還有兩場誓師大會暨增能研習，期待串聯串聯全國各地種子學校和師資培育大學的力量，將跨領域美感教育穩健扎根，在各個學科領域中發芽茁壯，共創臺灣教育的新樣貌！',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '教育部「108年度美感教育工作教師國外進修參訪」獲選名單出爐', 
+                    link: '/newsPage/news4',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['此次教育部「108年度美感教育工作教師國外進修參訪」自跨領域美感教育卓越領航計畫團隊辦理公告以來，接獲超過100件美感教育工作教師之報名表。','經由中小學各學習階段代表、藝術類、學科類、以及教育課程等學者專家組成之遴選委員進行書面審查，再經決選會議審慎考量教育階段、城鄉區域、藝術與非藝術學科、教學與行政經驗等面向，選拔出 60位正取以及19位備取之優秀教師，分別出訪荷蘭、日本、泰國三個國家。','期許中小學參與美感教育相關計畫的教育人員，透過國際交流參訪活動得以提升臺灣教師的國際視野，進而引導學生多元開展各種美感經驗與文化知能，發揮自發主動學習之動機與熱情，厚植核心素養，進而落實全民美育。教師返國後，依其專長將參訪經驗透過課程開發、講座、工作坊等活動，在課堂、校園進行分享，甚至跟社區、社會進一步對話交流，以宣揚、擴大國際參訪之效益。','在此恭喜各位獲選的老師，請各位老師們詳讀注意事項，並於時限前繳交相關文件',' ','錄取名單｜正取名單　備取名單','注意事項｜參訪教師注意事項',' ','有關108年度美感教育工作教師國外進修參訪相關事宜，請聯繫','黃宥嘉助理｜02-7734-6992　yjhuanginarts@gmail.com','林芸安助理｜02-7734-3058　ntnu7777@gmail.com',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/310/content____.jpg",
+                        type: '最新消息',
+                        
+                    title: '【跨域薈萃•美感揚帆—108年種子學校誓師大會暨增能研習】活動公告', 
+                    link: '/newsPage/news5',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/310/content____.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/311/content______.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/312/content_123.jpg",],text: ['本計畫於108年招募全國153所國小至高中階段學校，擔任跨領域美感教育種子學校，進行研發與推廣各學科（領域、群科）之跨領域美感課程。「跨域薈萃•美感揚帆—108年種子學校誓師大會暨增能研習」擬分北、中、南三區辦理，安排種子學校與師資培育大學委員齊聚一堂，同時邀請各縣市政府教育局處長官蒞臨指導，共同瞭解本期跨領域美感教育計畫內容與執行重點，並進行教師增能研習，以期讓跨領域美感教育遍地開花！',' ','全國跨領域美感教育種子學校代表（每校1~2人）、師資培育大學委員、各直轄市政府教育局及縣（市）政府美感教育計畫承辦單位。',' ','●請最遲於各場次活動兩週前上網填寫google表單報名參與，網址：https://tinyurl.com/y2slxe2m','●全程參與者可核發5小時全國教師在職進修網研習時數（課程代碼：2679618），請於報到時正確填寫身分證字號及確實簽到。','●請各校惠予出席師長公差假及課務排代，學校人員交通費由本計畫依「國內出差旅費報支要點」核給，兼代課鐘點費由各校「種子學校補助款」支應。各縣市政府人員交通費由原單位支付。','●交通、住宿(補助上限1600/日)開銷單據請於正面簽名，買受人：國立臺灣師範大學，統一編號：03735202','●各場次備有午餐及茶水，響應環保歡迎自行攜帶環保餐具。','●活動議程、交通資訊、學校名單等請參閱活動計畫書',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/309/content__________________-03.jpg",
+                        type: '最新消息',
+                        
+                    title: '師資培育/合作大學名單公告', 
+                    link: '/newsPage/news6',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/309/content__________________-03.jpg",],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '全國種子學校正式名單公告', 
+                    link: '/newsPage/news7',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['期待與您的「美」一次相遇 ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '種子學校繳交計畫書與經費表事宜', 
+                    link: '/newsPage/news8',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['敬請通過遴選之種子學校師長，辦理工作計畫書、經費編列及函送事宜。','請依不同轄屬單位進行作業流程，謝謝您！','**6/17格式更新，請依照下列連結，或貴校收到之公文附件/email附件為準','（點擊檔名可下載格式）',' ','【共通資料】',' ','種子學校遴選通過名單(縣市轄屬) 07/01更新*','種子學校遴選通過名單(國教署轄屬)',' ','種子學校工作項目',' ','【縣市轄屬學校】',' ','【國教署轄屬學校】',' ','【聯絡資訊】','相關事宜敬請參考本網站FAQ','或洽本計畫專任助理黃楚雯小姐','電話：02-77346991 / 02-77343039','Email：musichcw@gmail.com',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '跨領域美感教育卓越領航計畫 全國種子學校名單公告', 
+                    link: '/newsPage/news10',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['十分感謝來自全國各縣市政府局處長官的協助，以及學校行政主管與師長們的熱情投件，','在短短的招募時間裡，本計畫收到將近300所學校的申請書。','經由計畫團隊召開遴選會議，選出全國153所「跨領域美感教育卓越領航計畫」的種子學校！','未來計畫團隊將透過講習、培訓、協作等方式，陪伴所有的合作學校，','讓我們一同共創精彩豐富的跨領域美感課程！',' ','備註：各縣市備取學校之遞補事宜將於7月中旬另行個別通知。',' ','相關檔案下載','種子學校遴選通過名單(縣市轄屬) 07/01更新*','種子學校遴選通過名單(國教署轄屬)','種子學校【備取】名單',' ',' ',' ',' ',' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '相關資料｜', 
+                    link: '/newsPage/news11',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['為達成十二年國民基本教育倡導全人教育之課程精神，下半年度辦理美感教育工作教師國外進修參訪，提供教師在藝術美感方面增能進修的機會。希望透過國外進修參訪加強多樣化美感體驗，拓展教師國際視野與人文素養；經由國際美感教育的觀課交流，與當地教育人員進行專業對話，使教師得以接軌國際教育趨勢；藉由國外教學媒材蒐集，增能教師，強化教師教學力，並進而激發學生學習動機。',' ',' ','獲選教師各學習階段名額：泰國、荷蘭、日本三團，共60名。',' ','符合資格教師皆可投件參加，詳見計畫書',' ','108年6月28日前接受推薦報名截止','108年7月31日前完成遴選審核',' ','計畫書與行程簡介','報名表件',' ','教師國外進修參訪得以吸收各國教育經驗優勢與多元文化，藉以融會十二年國民基本教育之課程發展精神，促進本國教育多元面貌。教師回國後公開分享參訪經驗或開放觀課，以擴散國際交流效益，提升教師國際視野，進而引導學生多元開展各種互動能力，發揮自發主動學習之動機與熱情，厚植核心素養。',' ','有關108年美感教育工作教師國外進修參訪相關事宜，請聯繫','黃宥嘉助理｜02-7734-6992　yjhuanginarts@gmail.com','林芸安助理｜02-7734-3058　ntnu7777@gmail.com',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '歡迎報名臺博館【博物館與戲劇的相遇】專題座談！', 
+                    link: '/newsPage/news12',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['今年起臺博館將發起「發現臺灣-很有戲」戲劇導覽種籽計畫，你是否對導覽與戲劇的相遇充滿好奇呢？展場導覽、戲劇與參觀民眾的邂逅，可以交集出什麼可能？','本講座邀請此次戲劇導覽計畫顧問，同時是教育部跨領域美感教育卓越領航計畫協同主持人陳韻文教授，分享她與楊逵文學紀念館規劃與執行「戲劇教育x導覽種子」的合作經驗。她將回溯這段以戲劇導覽培訓為起點，跨越劇場、博物館與社區邊界的共學歷程，為我們提示如何以戲劇為媒介，博物館為平台，在跨領域及多層次的美感經驗中，促成文化交換與知識公共化。','報名網址：https://reurl.cc/oAaaM',' ','＊全程參與講座之教師，可核發教師研習時數',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '東區成果巡迴展與種子學校遴選說明會 相關活動回顧', 
+                    link: '/newsPage/news13',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['▲成果巡迴展於a-zone花蓮文化創意產業園區 第23棟展出',' ','東區成果巡迴展於5月16日在a-zone花蓮文化創意產業園區開跑，並於5月18日舉辦跨領域美感課程體驗工作坊、5月21日上下午舉辦國小階段及中等階段的種子學校遴選說明會。',' ','▲國立臺東專科學校教師參與中等階段種子學校遴選說明會',' ','種子學校遴選說明會，在5月21日上下午緊鑼密鼓地舉行。由計畫協同主持人 國立臺灣藝術大學 藝術與人文教學研究所 李其昌所長、國立臺北教育大學 藝術與造型設計學系 陳淳迪教授 分享計畫概要及說明經費運用，並邀請 國立臺東大學 音樂學系 郭美女教授、花蓮縣立國風國中 湯香櫻老師作師資培育大學的實務經驗分享。','　　當天也有許多來自各方的貴賓蒞臨。計畫端邀請 國立東華大學 藝術創意產業學系 的羅美蘭教授，分享花蓮地區執行經驗，臺東縣教育處 李治國科員、花蓮縣教育處 郭思妤小姐 到場關心。更有 臺南市立土城國小 張世昌校長、花蓮縣立觀音國小 陳慈芳校長、花蓮縣立景美國小 郭玲瑩校長、花蓮縣立和平國小 艾石生校長、臺東縣立大坡國小 林素慧校長 及多位學校主任親自前往說明會，瞭解計畫內容。',' ','▲透過不同裁切的方式，探索紙材造型的可能性',' ','▲工作坊學員利用電鑽製作雨聲棒',' ','5月18日的工作坊活動，由 臺東縣立新生國小 張釋月老師 及 連江縣立東莒國小鄭慧琴主任 帶領，進行了充滿在地風情的體驗課程。張釋月老師從探究的角度出發，讓現場老師探索紙材的各種變化，感受造型的無限可能，創作充滿個人特色的服飾作品。鄭惠琴主任由環境議題出發，從生態關懷的角度，利用當地廢棄素材，製作了富含島嶼與自然能量的雨聲棒。兩場工作坊不僅帶回了別具特色的作品，也感受了跨領域美感課程所蘊含的豐沛生命力。',' ','▲學校老師互相交流課程開發經驗',' ','花蓮的展覽雖伴隨著陣陣大雨，但仍舊有許多師長、民眾不畏風雨地遠道而來，圓滿了成果巡迴展的最終場展出。歷時兩個月、巡迴全臺三地的成果巡迴展在此畫下完美的句號，感謝各位老師們對跨領域美感教育計畫的關心！也希望「『這堂甚麼課？』跨領域美感教育計畫成果巡迴展」能夠成為未來教師教學的養分，開創臺灣教育的無限可能。',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '種子學校遴選相關問題解答', 
+                    link: '/newsPage/news14',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['更多與課程、經費相關問題，請至 FAQ專區',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '中區成果巡迴展與種子學校遴選說明會 相關活動回顧', 
+                    link: '/newsPage/news34',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['▲國立臺中資訊圖書館 2F藝文走廊教案牆',' ','南區展覽一結束，隨即來到臺中的國立公共資訊圖書館，開始為期兩週的展出，並於期間舉辦說明會及工作坊的活動。',' ','▲莊敏仁教授為到場老師解說計畫經費',' ','4/9及4/12的種子學校遴選說明會於國際會議廳中舉行，許多中區教授均蒞臨現場關心。由計畫共同主持人莊敏仁教授、林小玉教授以及高震峰教授分享計畫概要及說明經費運用，並邀請臺中市立上石國小的張雅萍組長及台臺中市私立大明高中的許鳳翎組長分享現場的執行經驗，讓與會者能對計畫有個完整的認識。當天的Q&A，各縣市業務承辦人親臨現場，為各個學校及時解答經費上的疑惑，讓學校教師能對經費運用有更完整的理解。',' ','▲學員於繡框上親手繡下自己對臺中地方的情感記憶',' ','▲於戶外採集喜歡的植物花草，製作藍曬圖樣',' ','巡迴展的週日由臺中市立文華高中及雲林縣私立正心中學帶來了兩場精彩的跨領域美感增能課程。文華高中的繡框創作，從了解自己與他人的特質出發，延伸到臺中的在地情感，並創作美麗的刺繡作品。正心中學則帶領教師走出室外，結合自然知識、採集植物花草，並將之排列成美麗的明信片圖樣。',' ','▲老師於展場體驗VR教案，開啟未來教育新視野',' ','臺中的展場小而精美，將跨領域美感教育執行期間的精華濃縮在狹長的藝文走廊間。許多老師們在說明會期間，透過展覽作品而對跨領域美感教育有更多的了解，並將收穫帶回課堂與更多老師與學生們分享。','連續兩週的成果巡迴展在臺中告一段落，敬請期待花蓮場次的開幕！',' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '南區成果巡迴展與種子學校遴選說明會 相關活動回顧', 
+                    link: '/newsPage/news35',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['▲「這堂什麼課？」於高雄駁二園區盛大展出',' ','跨領域美感教育計畫成果巡迴展與種子學校遴選說明會，第一站來到了高雄駁二藝術園區。',' ','▲與會嘉賓與計畫共同主持人於開幕式上合影留念',' ','3/29早上於展場內舉行開幕儀式，為全台灣南區、中區、東區三場的成果巡迴展揭開序幕。高雄教育局社會教育科李靖葦科長、國立臺東大學音樂學系郭美女教授、國立屏東大學音樂學系伍鴻沂教授、國立高雄師範大學跨領域藝術研究所蔡佩桂助理教授圴蒞臨現場關心。計畫共同主持人黃純敏教授回顧計畫執行五年多來，從篳路藍縷到令人驚奇的執行歷程。她指出，從一開始10所實驗學校，至今全臺將近200所合作學校，跨領域美感教育的推動成果有目共睹。李靖葦科長也分享高雄近年來在美感、文化推動上的發展與成果，從各種美感計畫的展出，到美感論壇的舉辦，展現出高雄在文化建設上的成效。',' ','▲黃純敏教授於說明會中和與會來賓概覽跨領域美感教育計畫',' ','3/28及3/29的種子學校遴選說明會，由黃純敏教授介紹計畫、陳淳迪老師解說經費，讓參與的老師了解計畫的執行方式。另外也邀請到高雄市立莒光國小、國立屏東女中的執行團隊分享課程開發與執行的實戰經驗，使參與老師能了解在實務層面上的執行狀況，感受跨領域美感教育在教學現場帶來的改變與感動，減少教師的焦慮與不安。',' ','▲參與老師專心地進行詩句創作',' ','說明會的下午舉辦了兩場跨領域美感教育課程體驗工作坊，提供教師增能的機會。小港高中將環保議題的公民實踐結合皮革手作，提供老師課程結合的方向與實際執行的建議，並和參與老師們一同製作出了精美又實用的飲料提袋。屏東女中引導老師將生命的感受，用詩句、乾燥花草及彩繪，凝縮記憶成手製季節盒子。透過結合文字、自然與彩繪的創作，將無形的感受化為有形的紀錄。',' ','▲老師於教案牆前翻閱各學校跨領域美感課程',' ','五天的展期吸引了許多民眾、教師參與。除了提供教師自我進修的機會外，也讓更多民眾了解跨領域美感教育，賦予大眾未來教育的想像藍圖。感謝各界的熱情參與，讓南區的成果巡迴展與種子學校遴選說明會圓滿落幕。',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/305/content_______.png",
+                        type: '最新消息',
+                        
+                    title: '「跨領域美感教育卓越領航計畫」種子學校遴選說明會', 
+                    link: '/newsPage/news40',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/305/content_______.png","https://www.inarts.edu.tw/uploads/ckeditor/pictures/302/content____1.png",],text: ['「跨領域美感教育卓越領航計畫」於本年度邁入全新的一期。在新期程中，將連結十二年國民基本教育精神，並以過去五年計畫的成果為基礎，持續深耕推廣。為說明新一期計畫的推行方向，並且招募合作執行的學校，計畫將在3月至5月間，於全台各地辦理種子學校遴選說明會。誠摯地邀請您一同來參與了解！','欲參與計畫之教師，請務必至少參加一場說明會。各縣市參與說明會建議分區如下，請師長們參考所屬縣市選擇參與場次：','報名網址：https://forms.gle/T7CFrFLDNkjAGoXM7','注意事項',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/304/content____.png",
+                        type: '最新消息',
+                        
+                    title: '跨領域美感課程體驗工作坊', 
+                    link: '/newsPage/news41',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/304/content____.png",],text: ['跨領域美感教育計畫於過去五年間，累積了將近400組的優良教案。在成果巡迴展期間，精選了六所合作學校的精彩教案，濃縮為三小時的工作坊，提供現場教師觀摩、增能的管道。內容包括藍晒圖明信片手作、皮革飲料提袋、季節盒子、心中的夢田刺繡地圖等等，展現各學科與藝術之科際整合，讓所有參與者親身體驗跨領域美感教育課程的感動！每場限額20名，額滿為止，千萬別錯過免費體驗跨領域美感課程的難得機會。','注意事項','報名網址：https://lihi.cc/mvsLb','更多活動即時資訊請上跨領域美感計畫粉絲專頁',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/303/content____.jpg",
+                        type: '最新消息',
+                        
+                    title: '「這堂什麼課？」跨領域美感教育計畫成果巡迴展　展覽資訊', 
+                    link: '/newsPage/news42',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/303/content____.jpg",],text: ['「跨領域美感教育卓越領航計畫」將開展計畫成果巡迴展，於3月到5月間至高雄、臺中、花蓮三地，展出前兩期計畫的成果精華，並舉辦說明會與跨領域美感課程體驗工作坊。現場有超過100組的跨領域課程方案、32組學生作品、5組亮點作品、52組教學現場影片，供各界參觀鑑賞。展覽期間也邀請計畫合作學校教師辦理共六場的體驗工作坊，教師與民眾皆可免費報名參加。誠摯地邀請各界參與盛會。','更多活動即時資訊請上跨領域美感計畫粉絲專頁',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/299/content_______.JPG",
+                        type: '最新消息',
+                        
+                    title: '「跨領域美感教育卓越領航計畫」近期活動預告', 
+                    link: '/newsPage/news43',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/299/content_______.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/300/content______.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/301/content______.JPG",],text: ['為回應教學現場教師們的熱忱，及呼應十二年國民基本教育推動，跨領域美感計畫將更名為「跨領域美感教育卓越領航計畫」再次啟航！於3-5月間，將舉辦計畫種子學校遴選說明會，種子學校即為未來有機會參與新一期計畫的合作學校，希望能透過遴選說明會，傳達計畫累積的經驗及新的推行方向。','同時，感謝師長們熱情參與10月份研討會暨成果展活動，計畫將於說明會時同步辦理成果巡迴展活動，延續「這堂什麼課？」為題，預計於高雄、臺中、花蓮三地盛大開展！','活動詳情請參見下表資訊，成果巡迴展為免費入場，說明會請於各場說明會一周前至以下網址報名，以利計畫團隊彙整相關資料。','說明會報名網址：https://goo.gl/forms/5ilEWkvqjpjTD4oN2',' ',' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '跨領域美感教育卓越領航計畫，新期程準開跑!!', 
+                    link: '/newsPage/news45',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['第二期「中等學校暨國小階段跨領域美感教育實驗課程開發計畫」至107年12月底進入尾聲，合作學校師長們共同熱血地發展跨領域美感課程，點點過程歷歷在目。','因為師長們的熱情參與，計畫將於108年1月開始邁入第三期，並正式更名為「跨領域美感教育卓越領航計畫」，期能在前兩期的基礎上，將跨領域美感教育的影響力更加拓展，以符應十二年國民基本教育中，核心素養導向教學的精神。','於3月份將陸續辦理第二期成果巡迴展、招募說明會等活動，官網與粉絲專頁將同步更新，請師長踴躍關注計畫訊息！',' ','計畫粉絲專頁：https://www.facebook.com/multiaes2015/',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/298/content_45838397_2290793881149612_8448326719932203008_n.jpg",
+                        type: '最新消息',
+                        
+                    title: '馬祖走讀不要結束最終場part2~~~浪聲陣陣的馬祖場次，在舒適宜人的天氣裡開始了！！！', 
+                    link: '/newsPage/news47',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/298/content_45838397_2290793881149612_8448326719932203008_n.jpg"],text: ['2018年全臺走讀，這次，馬祖居民用他們的熱情，為本期的活動畫上完美的句點！！！','跨領域美感計畫走讀活動~感動落幕！！！',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/297/content_45865675_2290455544516779_730552586767171584_n.jpg",
+                        type: '最新消息',
+                        
+                    title: '走讀感動最終場！！！濃厚小島風情的馬祖場次，在陣陣海聲的 南萌咖啡館 Café Nanmon開始囉~', 
+                    link: '/newsPage/news49',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/297/content_45865675_2290455544516779_730552586767171584_n.jpg",],text: ['　','這次我們邀請到馬祖跨領域美感課程的代表-鄭惠琴老師，為我們帶來精彩的漂流木美感課程介紹作為開場，讓大家看見美感教育串聯各學科的精彩實例，理解計畫主軸精神。緊接著蔡沛原專案經理帶來一連串北緯26度島嶼顏色，以各種研究羅列屬於馬祖動人色彩的介紹~','馬祖每個地點都有屬於自己性格的顏色，東引的色彩沉穩安定，南竿則是鮮豔活潑，這也對應到今天感動大家的一句話 “跨領域美感是種人與人之間的連結，同時也是種動人的顏色”。','我們都需要看見身邊的色彩，去觸摸，去感受，那正是生活中最美好的一部份。☄☄☄',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/296/content___.jpg",
+                        type: '最新消息',
+                        
+                    title: '美感跨域‧走讀工作坊 !!2018巡台最終場!!', 
+                    link: '/newsPage/news80',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/296/content___.jpg",],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '自發共好，改變持續！跨領域美感教育深耕臺灣', 
+                    link: '/newsPage/news81',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '幕後推手集結！跨領域，從老師開始跨起', 
+                    link: '/newsPage/news82',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [' ','更多關於計畫新訓，請見：FB粉絲團',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/295/content_001.jpg",
+                        type: '最新消息',
+                        
+                    title: '【十月 走讀回顧】', 
+                    link: '/newsPage/news83',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/295/content_001.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/292/content_45015749_2283955028500164_3156268841881829376_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/293/content_45140208_2283955015166832_2374175887353446400_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/294/content_45100775_2283955091833491_7864881393027776512_o.jpg",],text: [' ',' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '【課程精華】澎湖縣將軍國小-廢紙箱堆疊童趣! 國小共創外島首座夜市', 
+                    link: '/newsPage/news84',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['更多精彩課程，請見：http://www.inarts.edu.tw/videos',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '自發共好，改變持續！跨領域美感教育深耕臺灣', 
+                    link: '/newsPage/news85',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['#這堂課筆記｜持續累積　永續前行','未來，孩子的學習將更臻完整與全面，在增長知識的同時，也能提升美感。我們相信，跨領域美感教育持續深耕，臺灣教育體系的樣貌將會更多元且美好！',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/290/content_44821315_2282237498671917_4315872542507139072_n.jpg",
+                        type: '最新消息',
+                        
+                    title: '《美感跨域．在地走讀》 澎湖場次，在熱情的太陽☀和大風下開跑囉☀☀', 
+                    link: '/newsPage/news87',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/290/content_44821315_2282237498671917_4315872542507139072_n.jpg",],text: ['由計畫專任助理林芸安小姐及O2 Lab海漂實驗室許思婕小姐開場，希望透過一場場在地的走讀活動，引發大家的美感經驗，並且和在地連結，從平常生活開始，踏實的體驗平凡，確是屬於自己的獨一無二的經驗！','今天的活動還有一個重點，海漂實驗室的唐唐老師，帶領著大家無畏大風，一起到海邊淨灘！不看不知道，一看嚇一跳，原來海邊的海漂物，也就是所謂的垃圾，是如此的多！原來還隱藏著這樣的危機在我們生活的週遭需要被關注， 淨灘活動進行中，大家透過團隊合作，共同為大自然盡一份心力！','接下來由老牛綠皮的金剛老師，帶領大家將下午淨灘所撿的海漂物化腐朽為神奇，成為一個獨一無二的紀念品！','每一個紀念品都是獨一無二的，其背後都有自己的故事，每個故事隱藏著溫暖的能量，並透過作品擴散，使環保和美感經驗融合在一起，謝謝大家今天的參與，今天的回憶也是最令人難忘的❀❀❀',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '跟著黑啤，兩分鐘速懂「跨領域美感教育」', 
+                    link: '/newsPage/news88',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['跨領域美感教育 x 臺灣吧 - Taiwan Bar',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '【課程精華】國立竹東高級中學「生命樹」', 
+                    link: '/newsPage/news90',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/289/content_44345715_2277697889125878_8534402155216371712_n.jpg",
+                        type: '最新消息',
+                        
+                    title: '十月《美感跨域·在地走讀工作坊》臺東場-「轉角遇到美，看見美感的力量-走讀砂城-藝起看見台東的文化綠廊！」 圓滿成功', 
+                    link: '/newsPage/news91',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/289/content_44345715_2277697889125878_8534402155216371712_n.jpg",],text: ['十月《美感跨域·在地走讀工作坊》臺東場-「轉角遇到美，看見美感的力量-走讀砂城-藝起看見台東的文化綠廊！」 圓滿成功','由計劃的師培台東大學音樂學系郭美女教授和新生國小張瑞群校長熱烈開場！接著由公東高工導覽老師黃建超主任，帶領大家在台東的方舟-公東高工-聖堂，經世界遺產基金會「現代特色建築」票選第一的清水模教堂。','對於聖堂與神父慈愛的精神娓娓道來、感人肺腑，教堂盡頭的耶穌，融入在地原住民的南島人文風格','尤其「坐在彩色玻璃投射的石階上，聽著導覽老師說著高工的故事、這座教堂的點滴，以及當年神父對待每一位學生是全心的付出，不時微微見到老師述說時眼角泛著淚水⋯⋯」文化綠廊會讓參與的您，看到美麗場景背後深刻感人的故事！」',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '【課程精華】 高雄市立小港高級中學「發現你的文案力」', 
+                    link: '/newsPage/news93',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '最新消息',
+                        
+                    title: '【課程精華】虎井高中─「 ㄩㄢˊ」聚虎井嶼-嶼「 ㄩㄢˊ」共舞', 
+                    link: '/newsPage/news94',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [' ',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/286/content_43879134_2274489786113355_2001228191821201408_n.jpg",
+                        type: '最新消息',
+                        
+                    title: '【九月◎走讀回顧】', 
+                    link: '/newsPage/news98',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/286/content_43879134_2274489786113355_2001228191821201408_n.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/287/content_43950680_2274338139461853_6075054424978358272_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/284/content_43788646_2274338122795188_8396735379499122688_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/288/content_43952540_2274338149461852_1234571276740198400_o.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/285/content_43828313_2274338039461863_4402247040659095552_o.jpg",],text: [' ',' ',' ','【南投】',' ',' ','【基隆】',' ',' ',' ',] }
+                },{
+                        src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/283/content_43950871_2274770822751918_9138534677433286656_n.jpg",
+                        type: '最新消息',
+                        
+                    title: '十月《美感跨域．在地走讀》金門場次 發現馬約利卡之美，外島走讀之旅首度開跑囉 ', 
+                    link: '/newsPage/news100',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/283/content_43950871_2274770822751918_9138534677433286656_n.jpg",],text: ['《美感跨域．在地走讀》金門場次 發現馬約利卡之美，外島走讀之旅首度開跑囉 ！　','感謝金門上岐國小趙雅玉老師的精心安排，由金門大學建築系曾逸仁副教授、金門社教科長許能麗女士、上岐國小退休主任洪崇禧老師、馬約利卡創辦人石怡蔚老師，接連帶著學員們走讀，分享知識與故事，透過觀察建築的大結構到小小的馬約利卡花磚裝飾，加上在地特有的精彩故事，讓走讀除了傳遞知識外，也更加接近生活！','就像逸仁老師說的，美感跨域的精神，應該要從小做起，並且融入在生活中，從上岐國小的牆面就可以看見在生活中落實美感體驗的例子！　','希望透過這次的走讀，可以使大家對於生活美感更加的敏銳！謝謝今天參與的每一位學員！一早就感受到金門的熱情！','陽光灑落在每位學員身上，每一個人都閃耀著獨特的光芒☆',] }
+                },
+                {
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【八月◎走讀回顧】', 
+                    link: '/resultPage/result1',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【課程精華】跨領域美感教育─國立屏東高級中學-饒舌舞英韻', 
+                    link: '/resultPage/result2',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '◍ ◍ 【招募國際研討會接待大使30名】◍ ◍ ', 
+                    link: '/resultPage/result3',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '由教育部指導之【藝結金蘭･育成美感—2018跨領域美感教育國際研討會暨成果展】將於10月4-9日舉行，即日起開放線上報名，歡迎踴躍參與！', 
+                    link: '/resultPage/result4',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['一、課程開發成果展','日期：2018年10月4-9日（共計6天）','地點：國立臺灣師範大學 進修推廣部一樓','　　以美感為核心，連結不同的學科領域，使知識的學習不僅關乎豐富程度，也在於是否能夠培養美感，應用生活，是「中等學校暨國小階段跨領域美感教育實驗課程開發計畫」致力的目標。透過跨領域美感的課程設計，讓教與學擁有多元的可能，每個創新的課程方案，都是現行課表上無法被框限的一堂課。因此，以「這堂什麼課？ 藝術課+「？」課：擁有無限可能」為題，規畫課程開發成果展，期待以多元並創新的樣貌，展出計畫合作學校3年以來所開發的豐碩成果。','　　除了可以看到計畫的發展歷程、跨領域美感課程方案、學生實體作品之外，也包含影音專區及VR互動體驗區，激發參與者對創新教育的好奇心，用不一樣的角度感受跨領域美感如何有效地融入學科領域之中。在開放互動的展覽空間中，邀請您一同來參與教學現場的美感革命，體會教師用熱情與美感豐富學生的學習觸角，藝結知識領域與生活，育成未來人才。',' ','二、國際研討會','日期：2018年10月5-6日（共計2天）','地點：國立臺灣師範大學 校本部禮堂','　　本次研討會邀請到臺灣、美國、英國及澳洲之專家學者，集結跨領域美感教育的趨勢與經驗，除了各國學者分別從視覺藝術、音樂、課程與表演藝術的角度，進行跨領域課程之專題演講外，還有國小、國中、高中及師資培育之大學等不同階段之合作學校教師輪番上陣，發表精采的跨領域美感課程案例，帶領與會貴賓探尋跨領域美感教育現場的開發歷程與感動。','　　計畫團隊也與亞太地區美感教育研究室合作，辦理論壇、工作坊與走讀活動。論壇部分，邀請到不同身分的代表，一同來探討美感教育在臺灣的推動和發展。工作坊部分，有以「慢」為主題藉以感受空間與身體聲音之美的工作坊；也藉由走讀活動漫遊臺北城老街巷弄與建築遺跡，挖掘隱藏於城市角落的歷史故事與美感文化。工作坊與走讀活動歡迎擇一報名，邀請您跨入不一樣的美感生活體驗，千萬不要錯過！',' ','【藝結金蘭‧育成美感—2018跨領域美感教育國際研討會暨成果展】，誠摯邀請您的參與。','●報名請上：https://goo.gl/4ezBtc','●歡迎加入跨領域美感計畫專屬FB粉絲頁：https://www.facebook.com/multiaes2015/，隨時追蹤最新消息！','●研討會網站：https://www.inarts.world/',' ','※議程資訊如下：',' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '八月《美感跨域·在地走讀工作坊》台南場-社區是所好學校，出發！！', 
+                    link: '/resultPage/result7',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '八月《美感跨域·在地走讀工作坊》宜蘭場次-解讀蘭城Running Yilen，整裝出發', 
+                    link: '/resultPage/result9',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['「美感的微觀世界就在你眼前，你瞧見了嗎！」',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '《美感跨域·在地走讀工作坊》苗栗場次-龍貓公車的總站：貓裏平原！', 
+                    link: '/resultPage/result11',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['八月《美感跨域·在地走讀工作坊》苗栗場次-龍貓公車的總站：貓裏平原，無畏風雨的出發了','「是的，穿雨衣淋雨看雨中的世界也是一種美的五感饗宴」','由在地嚮導陳鵬文老師與兩位活潑助教熱情的帶領，在苗栗南苗地區和參與的民眾一起走入民宅，欣賞住宅中生活美學的展現，藉由小小的尋寶活動，靜下心來仔細觀察、聆聽生活中較不常去注意到的小風景，發現其實美其實就存在在身邊。',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【美感跨域‧在地走讀工作坊】查看九月份所有場次看這裡！！', 
+                    link: '/resultPage/result12',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['中等學校暨國小階段跨領域美感教育實驗課程開發計畫即將進入尾聲，已在本年承載了滿滿的育成收穫與成果，為將跨域的足跡拓展落實至社區，計劃走入城鄉中豐富的文化環境，以體現跨域美感教育的理念。',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【8月走讀｜地圖懶人包來囉！】', 
+                    link: '/resultPage/result13',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '全台《美感跨域·在地走讀工作坊》新北猴硐場次-蜂蠟布自造班第二梯次開跑囉！', 
+                    link: '/resultPage/result15',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '全台《美感跨域·在地走讀工作坊》彰化場次-聽郡守說南郭', 
+                    link: '/resultPage/result17',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '全台《美感跨域·在地走讀工作坊》臺北場次-城南之美 工藝之窗熱烈開講！', 
+                    link: '/resultPage/result21',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '福陽國小乘著樂音之翼 譜出偏鄉的愛與希望', 
+                    link: '/resultPage/result22',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['報導時間：2018年07月25日','報導地點及報導記者：台中 / 廖珮翎','報導來源：https://goo.gl/h6FSNm','相關報導：https://goo.gl/nCHFDF','小朋友感受音符律動及音樂節奏。（福陽國小提供）','　【記者廖珮翎／台中報導】在都會區，學音樂的機會和環境相當普遍；然而，非都會區學校的音樂師資相當難尋。來自台中教育大學音樂學系47名大學生志工，在暑假時間，用音樂專長為福陽國小學童，帶來一個不一樣的暑期成長營隊，展現出青年志工的熱情與活力。','　高溫炙熱的盛夏，中教大音樂學系的大學生們以「走入偏鄉，永續經營」的精神，籌劃「2018第三屆偏鄉兒童音樂成長夏令營－星夏弦鳴」，日前在豐原區福陽國小舉辦為期四天的兒童音樂成長夏令營。','　福陽國小位居豐原區東側市郊，緊鄰新社河階的山坡地，一天僅三班小型公車連結市區。豐原大道開通後，學區因旱溪與豐原大道阻隔，交通及經濟因素更使福陽國小儼然成為豐原區的邊陲地帶。','　營隊以「看見社會需要、同儕間互助合作、為偏鄉學生種下希望種子」為發想，每位大學生發揮所學所長，在營隊中策劃多元的音樂性教學活動。讓小朋友藉由身體律動感受音符律動及音樂節奏，用繪畫表現音樂情緒，用音樂環遊世界；從營隊豐富的課程中，可看見一群未來即將投身教育工作的生力軍，正用熱忱與服務精神，推動著另一波教學創新能力。','　校方表示，這次夏令營非常感謝台中教育大學人文學院、台中教育大學音樂學系、台聚教育基金會等各單位，以及默默支持福陽多年的文具贊助廠商、民意代表，持續給予支持與鼓勵，讓營隊活動順利進行。',' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '全台《美感跨域·在地走讀工作坊》臺南場次-無米樂社區 奔跑吧！農夫開跑囉！', 
+                    link: '/resultPage/result26',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['全台《美感跨域·在地走讀工作坊》臺南場次-無米樂社區 奔跑吧！農夫開跑囉！','與芒果遊戲團隊共同策劃，在菁寮無米樂社區帶領參與民眾進行街區文化走讀後，參加者化身兼具勇氣與智慧的大小偵探，靠著線索指示破解重重難關，親身體驗實境遊戲，遊戲融入歷史、菁寮無米樂社區的百年文化、建築美感等領域，帶領參加者從遊戲中經驗與學習。芒果遊戲團隊更熱情的與民眾分享以歷史文化設計的遊戲故事、洋蔥染DIY，共同度過週末的美好午後時光。','感謝協同主持人李其昌副教授、合作學校臺南大學音樂學系鄭方靖教授蒞臨參與，支持並活潑地分享計畫想法，帶領我們從在地文化經驗，真正落實生活中的美感教育。',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '全台《美感跨域·在地走讀工作坊》台中場次-西川淑敏日本舞踊文化饗宴開跑囉！', 
+                    link: '/resultPage/result27',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['全台《美感跨域·在地走讀工作坊》台中場次-西川淑敏日本舞踊文化饗宴開跑囉！','由西川淑敏日本舞踊知家於台中草悟道進行日本舞文化走讀，由舞蹈家淑敏老師、談吐模範的林倍正歷史講師，引導參加者穿著夏日浴衣，手拿小扇、優雅紙傘，耳聽講師講述台中草悟道沿途風景與歷史，在市民廣場表現運動科學NOSS肢體美學，學習優雅走路與美的儀態','感謝計畫協作主持人國立台中教育大學音樂學系莊敏仁教授蒞臨參與，支持並分享計畫跨域美學精神。',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '全台《美感跨域·在地走讀工作坊》高雄場次-鋼鐵巨兵的傳說開跑囉！', 
+                    link: '/resultPage/result35',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['全台《美感跨域·在地走讀工作坊》高雄場次-鋼鐵巨兵的傳說開跑囉！','由芒果遊戲團隊在橋頭糖廠帶領參與民眾進行文化走讀，參加者化身兼具勇氣與智慧的探險家，靠著線索指示破解重重難關，親身體驗實境遊戲，遊戲融入英語、橋頭糖廠歷史文化、裝置藝術美感等領域，帶領參加者從遊戲中經驗與學習。芒果團隊更熱情的與民眾分享以歷史文化，設計遊戲故事、道具製作等的實際經驗，共同激盪許多寓教於樂的想法。','感謝合作學校屏東大學音樂學系伍鴻沂教授蒞臨參與，支持並分享計畫想法，帶領我們從在地文化經驗美感教育',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '全台《美感跨域·在地走讀工作坊》新北猴硐場次-蜂蠟布自造班開跑囉！', 
+                    link: '/resultPage/result36',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '全台《美感跨域·在地走讀工作坊》新竹場次-關西走讀·詩密關係開跑囉！', 
+                    link: '/resultPage/result37',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '全台首場《美感跨域·在地走讀工作坊》-偶趣社區踏青', 
+                    link: '/resultPage/result38',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '七月【跨領域美感計畫－美感跨域‧在地走讀工作坊】開放報名囉！', 
+                    link: '/resultPage/result43',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['第二期中等學校暨國小階段跨領域美感計畫，已為許多校園帶來了豐碩的成果並持續種下藝術與美的種子。為了延續計畫的能量和精神，持續開拓跨領域的視野，使美感教育走出學校深入至社區，希望藉由走讀行程，邀請大家一起走進城鄉和社區，領略生活中俯拾皆是的美！','走在熟悉的社區和充滿歷史感的街道上，你是否有曾經駐足老街廟口前的野台表演、思考在地產業和環境議題、沉浸於百年糖廠的滄桑和匠人的驚嘆手藝的經驗呢？生活中的美來自文化和歷史刻下的痕跡，計畫團隊這次將走出校園，帶領大家深入社區探訪與你我生活息息相關的藝術，結合美感教育與在地文化！','在地走讀工作坊將延續跨領域美感計畫理念：','讓美感在校園生根，更與社會教育接軌，呼應STEAM國際教育趨勢，透過做中學的方式體驗跨領域美感。落實十二年國教自發、互動、共好，及終身學習的願景。','自7月7日至7月29日，將為大家帶來七場免費活動，從北到南，走進猴硐、台北城南、新竹關西、台中、雲林、台南、高雄等地，體驗在地文化與藝術的結合，機會難得的跨領域行動不容錯過！','★７月份工作坊場次★','7/7 （六）【雲林北港】偶趣社區踏青','7/14（六）【新北猴硐】蜂蠟布自造班','7/13（五）【新竹關西】關西走讀。詩密關係','7/15（日）【高雄橋頭糖廠】鋼鐵巨兵的傳說','7/21（六）【台中】西川流日本舞踊文化饗宴','7/22（日）【台南無米樂】奔跑吧農夫','7/29（日）【台北】城南之美工藝之窗','活動詳情與報名訊息：http://t.cn/RBf9YdH','名額有限，欲報從速！歡迎各位共襄盛舉！','已額滿場次，不定期開放遞補名額，盡請關注。',' ','活動報名請洽：','02-7734-3039 林鈴珍小姐','leojanoooo@gmail.com',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【媒體報導】富邦文教基金會 美感跨域•文化體驗•社區觀影體驗', 
+                    link: '/resultPage/result47',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['報導網址：https://goo.gl/EKaGbD','報導報社：台灣英文新聞','報導日期：2018/06/28 17:22','臺北市仁愛國小、富邦文教基金會與湳山戲院將攜手合作，開啟6至12歲學童的社區觀影體驗計劃，以一個電影院為基地，連結週邊學校，研發觀影課程，帶領學童進入電影院體驗電影的魔力，開啟多元的視野。','臺北市仁愛國小今年以教育部跨領域美感教育課程做為出發點，為12年國教素養導向課程進行準備，透過一系列跨領域課程的開發與實驗、引進基金會資源與教師一同進行共同備課，再由教師專業開發課程，並以產學合作模式串連社區資源連結，一同實踐兒童美感教育。本次臺北市仁愛國小美感跨域文化體驗課程將是全臺首度由學校、產業與戲院的三方合作，將觀影體驗納入學校課程，同時也希望透過學校課程帶入文化體驗，培育未來公民的素養。未來期許藉由基金會力量將此一試行的模式，推展到全臺灣更多地區，建立長期的社區駐點的影像教育方案。','自2014年起，富邦文教基金會以培養獨立思考能力為目標，開啟青少年影像教育方案「全國巡迴電影學校」，巡迴至全臺灣各地，將多元的電影帶給青少年。過去影像教育在臺灣未受到重視，大多是個別教師、個別單位的零星努力，反映在青少年影像教育現場的經驗，展現出來的是青少年的觀影經驗較缺乏多樣性。因此，自2018年起，富邦文教基金會將影像教育的年齡向下延伸，目標為在學童階段即累積多元的觀影經驗，在戲院良好的觀影環境中體驗電影的影、音力量，並且透過多元的片單內容，接觸到來自世界各地的文化，引發其對各種不同的影像產生興趣，培養多元觀影習慣，使兒童與青少年得以反覆對照與整理自己的經驗與觀點，進而了解、參與文化。','此次合作，由臺北市仁愛國小與富邦文教基金會連結了湳山戲院，位於通化街的湳山戲院，在大型戲院環伺的東區，展現不同的電影魅力。湳山戲院在既有放映場次之外開出教育場次，為台灣影像教育開啟新的一頁，成為文化體驗亮點基地。本合作之首波放映以挪威紀錄片《北海漁村的寒假日記》(Solveig Melkeraaen，2017)試行，容納了臺北市仁愛國小五年級的十四個班級一同來觀看。','《北海漁村的寒假日記》是關於來自奧斯陸的九歲女孩伊娃，趁寒假回到媽媽的故鄉去打工切鱈魚舌，與十歲的男孩托比亞斯一起工作；在北部挪威，孩童們自六歲起可到工廠切鱈魚舌，「這是一項傳統」，而兩位孩童都對自己即將賺取的零用錢有所規劃。參與放映的同學們看到銀幕上一顆顆泡在血水中的鱈魚頭的特寫鏡頭，以及工廠裡的孩子們抄起短刀切鱈魚舌的影像，發出了驚嘆；放映結束後，各廳的教師帶領了簡短的映後討論，問起對影片中最印象深刻的場景，以及猜測為何導演要放入這些畫面時，每個學童著眼的觀點都不太一樣：有人印象深刻的畫面是片末托比亞斯駕船，載著伊娃在海上兜風的畫面，因為「導演想要展現他們兩個付出努力得到的成果。」看完電影後，有同學表示暑假要去加拿大，想去楓糖工廠打工，也有人表示自己得每天在書法教室待上八小時；孩童們除了觀察到電影中的安排之外，影片也與自己產生了連結。','放映後的「美感跨域•文化體驗•社區觀影體驗記者會」當中邀請到仁愛國小楊柳淳校長、富邦文教基金會總幹事冷彬以及國家電影中心副執行長陳德齡、教育局國教輔導團專任輔導員田芷綾等嘉賓出席。富邦文教基金會冷彬總幹事表示，此次合作是台灣很重要的一步，是教育與文化體驗、社區與校園連動的開始，想以此經驗推動至全台灣，並且向教育部與文化部倡議。陳德齡副執行長則特別表示，文化部於今年發佈了文化體驗方案，與教育部有平台方面的連結；陳副執行長亦表示，電影是很好的跨領域學習的媒材，能啟發孩子對藝術、視覺、多媒體新體驗的概念與觀影習慣，未來對健全產業亦有相當的助益，國家電影中心在這中間扮演窗口的角色，希望能號召、帶動更多在地即將凋零的戲院與國家電影中心合作，一同看見更多的可能性，一同向政府與公眾傳達電影所能帶來的良好啟發。',' ','※更多精彩報導請至：媒體報導中查看。',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【媒體報導】臺北市仁愛國小美感教育跨域課程-文化體驗亮點基地結盟計畫', 
+                    link: '/resultPage/result48',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['報導網址：https://goo.gl/e3LGHS',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【全國教師聯合會議】議程表', 
+                    link: '/resultPage/result60',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['106-2學期的全國教師聯合會議於下周陸續辦理，時間地點如下：','※詳細議程表內容可至檔案下載區中下載：全國教師聯合會議議程表及合作學校名單',' ',' ',' ',' ',' ',' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【跨領域美感課程主打星 視覺藝術∩生物】臺北市立東湖國民中學-探險東中城堡', 
+                    link: '/resultPage/result62',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['新生剛入學時，總會對校園充滿各種好奇，不管是裡面的老師、同學或是一草一木，都想對其一探究竟。而你想知道東中城堡裡有什麼驚奇嗎？快跟我們一起探險吧!','【跨領域美感課程主打星 視覺藝術∩生物】','課程名稱：探險東中城堡','執行學校：臺北市立東湖國民中學','教師團隊： 柯淑惠校長、黃崇誠主任、林秀穗組長、王思樺老師、楊雅清老師、謝青芬老師、周萍幹事','課程介紹：','  為了讓學生更快速的熟悉校園環境，並與學校產生深入的連結，這次視覺藝術科與生物科合作，規劃校園探險地圖，設定校內特色生物，並帶領學生走訪校園的角落。','  課程一開始，生物課為大家介紹10種校園特色生物，並進行實地走察，進而認識校園環境與辨別學校植物。美術課則是以校園內的景緻，介紹美的形式原理原則、觀察法與記錄法，讓學生了解美其實無處不在。接續的課程來到了戶外，學生運用前所學，進行觀察、攝影、寫生、採集等方法，在校園內尋找秋天的痕跡。最後實作的部分，則是運用剪紙創作，將讓學生將自己對大自然的感受呈現出來。','影片傳送門',' ','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【跨領域美感課程主打星 視覺藝術∩社會】高雄市立小港高級中學-發現你的文案力', 
+                    link: '/resultPage/result63',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['  叮叮叮！有趣的想法靈光一現，文案下筆如文思泉湧，想跟我們一樣嗎？那就一起來看看這次小港高中的教案，看老師們如何帶領學生學習文案的創作，並表達自己的創意吧！','【跨領域美感課程主打星 視覺藝術∩社會】','課程名稱：發現你的文案力','執行學校：高雄市立小港高級中學','教師團隊： 方姿文老師、洪慧霖老師、張哲倫老師、李健宏老師、郭靜宜老師','課程介紹：','  在這個重視想法的時代，如何將自己的想法，更清楚地傳達給大家，變成是件重要的事，因此撰寫文案，在生活中就扮演著重要角色。本課程將透過文案創作，讓學生學習如何讓自己的理念被看見、理解與認同。','  課程一開始用許多有趣的方式，讓學生對文案的概念有基本的理解，像是讓學生為自己下個有趣的「tag」，將其兩兩交換後，看多少人可以記住那些「tag」，或是讓學生進圖書館找自己喜歡的書籍封面，當作生活中文案的蒐集。接下來則是讓學生凝聚對文案共識，以及釐清文案的特質後，讓他們做行銷、文章縮寫或是文案拆解的練習，最後是讓學生分組，並創作出屬於自己的文案。','影片傳送門',' ','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【跨領域美感課程主打星 視覺藝術∩歷史】臺中市立臺中第一高級中等學校-希臘文明與希臘化文明', 
+                    link: '/resultPage/result64',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [' ','當我們在欣賞關於希臘眾神的音樂或是電影時，不曉得大家有沒有想過，這些神祇的故事，與希臘藝術的發展，有什麼樣的關係嗎？本次的課程將帶大家一窺裡面的秘密。','【跨領域美感課程主打星 視覺藝術∩歷史】','課程名稱：希臘文明與希臘化文明','執行學校：臺中市立臺中第一高級中等學校','教師團隊： 陳一隆老師、朱忠勇老師','課程介紹：','  這次的課程著重於歷史思維與美感之間的連結，讓學生走出生硬的課本專有概念及名詞，並透過美術課十二主神創作的歷程，進而理解古典人文主義之前的思維世界。','  課程一開始，由美術科帶領學生研討希臘藝術的發展與神話故事之間的關係，並針對希臘十二主神的個性特質進行創作。歷史科的部分，則是延續希臘十二主神，介紹希臘神話故事對文化的影響，和希臘城邦政治與神殿神諭的交互關係，最後則是為學生介紹城邦文化與生活。相信這次美術科與歷史科的合作，對學生來說，是統整知識的相當好的經驗。',' ','影片傳送門','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【器材租借】跨領域美感教育計畫外借器材申請表單', 
+                    link: '/resultPage/result68',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['歡迎有租借需求的計畫內師長填寫表單','※表單連結：https://goo.gl/A55FKY',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【工作坊】彰化縣立和群國民中學106學年度第二學期第二次工作坊時間表', 
+                    link: '/resultPage/result71',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [' ','一、舉辦日期／時間：107年6月12日(二) 13:30-17:00','二、舉辦研習地點：彰化縣立和群國民中學','                (彰化縣和美鎮美寮路一段390號)','三、聯絡方式：','四、議程表',' ','日期','107年6月12日（二）','地點','彰化縣立和群國民中學三樓校史室',' ','時間','下午1點30分~5點','13:30',' ','13:50','報到、領取資料',' ','13:50',' ','14:00','開幕式／致歡迎詞','主持人：袁淑貞校長','14:00',' ','14:50','新課綱跨領域美感課程設計與規劃(一)','講者：黃瑞菘副教授','(國立臺南大學動畫媒體設計研究所副教授兼動畫所所長 )','15:00',' ','16:30','新課綱跨領域美感課程設計與規劃(二)','16:30',' ','17:00','綜合座談','填寫問卷╱心得分享','主持人：袁淑貞校長','16:30賦歸',' ',' ',' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【跨領域美感課程主打星 化學∩視覺藝術 】國立中央大學附屬中壢高級中學-化語呢喃-幾何水泥盆器與多肉植物', 
+                    link: '/resultPage/result74',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['放在書桌前或是窗邊的可愛水泥盆栽，總是讓人在疲憊的時候，獲得滿滿的力量。想知道這次課程，除了動手做之外，還可以如何深入了解水泥的材質與環境議題呢？讓我們一起來看看吧~','【跨領域美感課程主打星 化學∩視覺藝術 】','課程名稱：化語呢喃-幾何水泥盆器與多肉植物','執行學校： 國立中央大學附屬中壢高級中學','教師團隊：葉治明老師、涂裕佳老師','課程介紹：','  水泥、鋼鐵以及玻璃，並稱為建築的三大要素，此次選擇「水泥」做為課程的主題，希望展現水泥不單單只是運用於建築產業，而是對設計界也有很大的影響。除此之外，更與生活時事結合，讓學生對水泥有更全面的學習。','  課程首先以化學課學習到水泥的水化反應為基礎，再由美術課介紹世界知名建築師安藤忠雄與清水模工法，接著介紹幾何的空間概念，為製做水泥盆栽打基礎，接著開始實際動手製作。此外，課程的水泥延伸議題部份，則是介紹「亞泥事件」，讓學生一併思考環境保護的重要性。',' ','影片傳送門',' ',' ','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【跨領域美感課程主打星英文∩音樂】臺中市私立大明高級中學-就是愛音樂~與世界接軌', 
+                    link: '/resultPage/result76',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['每當走在路上，路邊不經意播放的歌曲，或是哼唱起的故事，都裝載著不同的情感及回憶。這次課程將帶領大家了解各國的音樂，讓這些故事搭配歌詞，將記憶持續傳唱。','【跨領域美感課程主打星英文∩音樂】','課程名稱：就是愛音樂~與世界接軌','執行學校：臺中市私立大明高級中學','教師團隊：宋一芬校長、林佩俞主任、徐鳳翎組長、林宜萱老師、鄭宜芳老師、張澄俐老師','課程介紹：','  音樂雖然是一種超越語言的溝通，但是再加上對英文歌詞的理解，會讓人們對歌曲情感有更深刻的體會，並將歌曲的旋律以及歌詞深深烙印在腦海。','  此次課程是音樂科與英文科的合作教學，希望藉此課程，讓學生用音樂陶冶性情，並了解各國的文化內涵。課程一開始先教授比較級與最高級的句型，接著播放各國特色之音樂與電影主題曲，讓學生感受世界各國的音樂魅力，再來讓學生分組，使用先前在英文課學習到的句型，報告各洲的差異，希望在報告及聆聽的過程中，學到尊重與包容。最後各組上台簡介電影劇情和主題曲內容，再以歌唱、舞蹈或是音樂劇的方式呈現給所有人。',' ','影片傳送門',' ',' ','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【跨領域美感課程主打星-基礎化學∩普通化學∩機械基礎實習∩視覺藝術∩藝術與生活 】國立花蓮高級工業職業學校-圖像東遊記', 
+                    link: '/resultPage/result78',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['嘿~當你走在街道上，曾經注意過街道上的顏色、建築及各式各樣的招牌嗎？一條平凡的街道，其實裡面還大有學問，這次的課程將帶大家探索裡面的奧妙。','【跨領域美感課程主打星：基礎化學∩普通化學∩機械基礎實習∩視覺藝術∩藝術與生活 】','課程名稱：圖像東遊記','執行學校： 國立花蓮高級工業職業學校','教師團隊：黃鴻穎校長、巫春富秘書、郭德潤主任、謝金威主任、黃玄智主任、白雅心組長、黃兆伸老師、閻國中老師、高忠福老師','課程介紹：','  如果說，平時我們使用google map 尋找想抵達的地方，那麼這次的課程，為goole map 找到另一樣功能，那就是讓大家藉由街道地圖照片，探討生活中的美感，以及各式各樣材質的運用。','  課程的開始，先利用google map的街道地圖照片，與學生討論照片上的色彩、構圖、美感的個人經驗，接著進行街道的招牌分析，說明店家故事和招牌顏色的搭配。再來與化學科合作的部份，則是討論色彩及液體之間的關係，和分析街道建物的材質變化，並利用熱塑水晶塑造想要的材質及顏色。接續的課程則是從建物的材質中，探討結構穩定性，最後則是在物與物的關係中，探討構造組裝及拆解。',' ','影片傳送門',' ','精選文章介紹',' ','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【跨領域美感課程主打星國文∩視覺藝術∩音樂】國立北門高中-歲月．流光．記憶', 
+                    link: '/resultPage/result83',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['大家或許曾經對學習歷史這件事感到疑惑，本次課程藉由訪談長輩，除了可以讓自己了解歷史是過去的痕跡，而我們都存在於這個時間的洪流之中，同時也增進了家人之間的溫度。','【跨領域美感課程主打星國文∩視覺藝術∩音樂】','課程名稱：歲月．流光．記憶','執行學校：國立北門高中','教師團隊：張力中老師、蔡佩容老師、馮華君老師、秦蓓老師、莊雅智老師、游淑媚老師、許玉珍老師、黃偉筠老師','課程介紹：','  此次課程圍繞著「長輩」，以此為出發點，進行一系列結合視覺藝術、音樂以及國文的課程。','  首先透過觀賞紀錄片「青春啦啦隊」，引起學生對長輩們的好奇，接著訪談家中的長輩，並用國文課引導學生撰寫出長輩的生命故事，用故事啟動與長輩之間深層的情感。','  視覺藝術的部份，則是教導學生肖像畫的意義與起源，以及使用不同的媒材和線條進行創作。在細看長輩臉上的紋路與頭上的髮絲，並將肖像畫出的同時，除了訓練學生觀察力，也將長輩的樣貌更加深刻的印在心裡。最後則是展示作品，並讓大家分享家中長輩的故事。','  與音樂的融和，則是與長輩合唱老歌並錄影，用音樂進行時光的交流。',' ','影片傳送門',' ','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【課程觀摩】106學年第二學期跨領域特色課程觀摩將於6月6號於國立東石高級中學辦理，敬請各界踴躍報名參加！', 
+                    link: '/resultPage/result85',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['報名相關事項請洽：',' ','一、 舉辦日期 / 時間 ：107年 6月 6日（三） 14：30-16：30','二、舉辦地點： 國立東石高級中學 （嘉義縣朴子市大鄉里 253號）','三、 議程表',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【課程觀摩】106學年第二學期跨領域特色課程觀摩將於5月29號於高雄市立光華國民中學辦理，敬請各界踴躍報名參加！', 
+                    link: '/resultPage/result87',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [' ','報名相關事項請洽：',' ','一、舉辦日期 / 時間：107年5月29日（二）10：00-12：00','二、舉辦地點：高雄市立光華國民中學（高雄市前鎮區和平二路170號）','三、議程表','時程','流程','主持人 / 主講人','地點','10:00–10:10','報到',' ','高雄市立光華國民中學信義樓二樓會議室','10:10–10:20','長官致詞','林建志校長','高震峰教授','（臺北市立大學視覺藝術學系）','10:20–11:40','特色課程成果分享','課程一：記憶的滋味','課程二：舞動我名–字舞行間皆流水','國文科：宋維哲教師','表演藝術科：楊梅秀教師','11:40–12:00','綜合座談','林建志校長','高震峰教授','林晉士教授','（高雄師範大學國文學系）','羅雅柔副教授','（國立臺灣體育運動大學','舞蹈學系）','12:00','賦歸',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【課程觀摩】106學年第二學期跨領域特色課程觀摩將於5月28號於國立屏東女子高級中學辦理，敬請各界踴躍報名參加！', 
+                    link: '/resultPage/result89',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [' ',' ',' ','報名相關事宜請洽：','一、舉辦日期／時間：107年5月28日上午8:50-13:00','二、舉辦研習地點：國立屏東女子高級中學(人文藝術大樓三樓藝術生活教室)','三、議程表','時程','流程','主持人/主講人','地點/備註','8:30 ~8:50','報到領取資料','屏東女中跨域團隊','人文藝術大樓三樓藝術生活教室','8:50 ~9:00','長官致詞','林勳棟 校長','姚政男 教務主任','高震峰 教授','余昭玟 教授','9:00~9:50','跨領域美感課程','執行成果分享','郭珏絹老師、游淑如老師','9:50-10:00','  移至校園戶外三主題展展區','10:00~10:50','特色課程觀摩',' (國文領域、視覺藝術)','郭珏絹老師、游淑如老師','戶外三主題展區','10:50 ~11:00','休息','人文藝術大樓三樓藝術生活教室','11:00~12:00','課程觀摩之建議與回饋','林勳棟 校長','姚政男教 務主任','高震峰 教授','余昭玟 教授','12:00: ~ 13:00','餐敘','13:00','賦歸',' ',' ',' ',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【跨領域美感課程主打星體育∩視覺藝術∩音樂】新竹市私立曙光女子高中-大自然之美', 
+                    link: '/resultPage/result91',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['還記得健康操嗎？相信這是多數人從前青春的回憶，讓我們一起看看，這次的課程，如何用藝術搭配肢體的律動，巧妙的融和一動一靜，為青春活潑的健康操增添美感吧！',' ','【跨領域美感課程主打星體育∩視覺藝術∩音樂】','課程名稱：大自然之美','執行學校：新竹市私立曙光女子高中','教師團隊：徐芝玲老師、林欣儒老師、陳錦慧老師','課程介紹：','  一首歌曲「大自然之美」，將體育、音樂與視覺藝術，進行巧妙的融合，進而達到學生身體律動、心靈成長、團隊合作與展現自我等能力的成長。','  課程首先教導學生「大自然之美」歌曲的意涵，以及如何唱這首歌，接著於體育課學習體操的分解動作，並練習與團隊隊形轉換的默契，最後配合高中女生喜愛接觸流行文化的動機，進行服裝設計。而服裝設計所學習到的能力主要分成兩部份，一是對服裝的形式、顏色、構成等外在物質層，另一則是服裝帶給人的心情、情緒、地位等內在感知，不管是從內到外，或是從外到內，都同時將課程發揮得淋漓盡致。',' ','影片傳送門',' ',' ','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【課程觀摩】106學年第二學期跨領域特色課程觀摩將於5月22號於嘉義市立玉山國民中學辦理，敬請各界踴躍報名參加！', 
+                    link: '/resultPage/result93',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['舉辦日期：107年5月22日(二)13:00~16:00','舉辦地點：嘉義市立玉山國民中學（嘉義市西區友忠路1號）',' ','報名相關事宜請洽：','南區專任助理劉彥宜小姐，電話：(02)7734-3066','嘉義市立玉山國民中學教學組長陳淑娟，電話：(05)-2357980#216',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【跨領域美感課程主打星國文∩視覺藝術】生活微旅行-為你我的生活舉杯', 
+                    link: '/resultPage/result94',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['基隆縣立安樂高級中學-生活微旅行-為你我的生活舉杯','回憶存在於每個人的心裡，但有時時間流轉的過於迅速，所以讓我們暫時忘記某個生命中的片段。本次課程將帶領學生重新回憶那些時光，並將其具像化，使美好永久留存。',' ','【跨領域美感課程主打星國文∩視覺藝術】','課程名稱：生活微旅行-為你我的生活舉杯','執行學校：基隆縣立安樂高級中學','教師團隊：','林怡君老師、曾鈺雯老師、陳丹玲老師','課程介紹：','  這次跨領域美感課程，將國文與視覺藝術結合，先從文學的角度切入，藉由沙加汗和蒙泰姬的愛情故事，讓學生對生命中的缺憾進行反思，並以此做為引導，進而觀察和反思自己生活環境的細節，學習去感受生命的片刻。','  有了國文科的引導，視覺藝術的部份，則是先利用google map 探索城市中的街景，觀察生活中的美好景象，用相機記錄下來後，細細反芻那些影像，接著學習使用修圖軟體使照片更加符合美感，再經由構圖及色彩配置的練習，最後以玻璃杯做為載體，將腦海中的影像與現實生活做結合，具現化於生活之中，將無形的回憶轉化為有形。',' ','影片傳送門',' ','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【課程觀摩】106學年第二學期跨領域特色課程觀摩將於5月17號於雲林縣私立正心高級中學辦理，敬請各界踴躍報名參加！', 
+                    link: '/resultPage/result97',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['報名相關事宜請洽：',' ','一、舉辦日期 / 時間：107年5月17日（四）10：00-11：45','二 、舉辦地點：雲林縣私立正心高級中學（雲林縣斗六市正心路1號）','三、議程表','時程','流程','主持人 / 主講人','地點','10:00–10:10','報到領取資料',' ','雲林縣私立正心高級中學聖心大樓B1會議室','10:10–10:20','長官致詞','林佳慧校長','林小玉教授','（臺北市立大學音樂學系）','10:20–10:40','跨領域美感課程執行成果分享','廖定詳教師','10:40–11:10','特色課程觀摩（高一班）','廖定詳教師','11:15–11:45','綜合座談','林佳慧校長','林小玉教授','張永達教授','（國立臺灣師範大學生命科學系）','劉豐榮教授','（國立嘉義大學視覺藝術學系暨','研究所）','11:45','賦歸',] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【課程觀摩暨工作坊】106學年第二學期跨領域特色課程觀摩暨工作坊將於5月16號於臺中市立臺中第一高級中等學校辦理，敬請各界踴躍報名參加！', 
+                    link: '/resultPage/result98',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: [] }
+                },{
+                        src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
+                        type: '成果專區',
+                        
+                    title: '【跨領域美感課程主打星自然領域∩視覺藝術】金門縣立金沙國民中學-聲聲不息', 
+                    link: '/resultPage/result99',
+                    content: {
+                        video:[""],
+                        link:[''],
+                    src:[],text: ['大家有「聽」過聲音嗎？若答案是肯定的，那麼…大家是否可曾「感受」過聲音呢？本次帶來的課程，讓學生們對於聲音，不再侷限以往用「聽」的模式，甚至於不再只是「發出」聲音，而更是要以藝術創作的方式去「展現」聲音。',' ','【跨領域美感課程主打星自然領域∩視覺藝術】','課程名稱： 聲聲不息','執行學校： 金門縣立金沙國民中學','教師團隊','曾逸仁教授、自然科林建義老師、視覺藝術科李婉琪老師、陳西村老師','課程介紹：','　　聲音對學生來說是再熟悉不過的生活經驗，本次課程要打破一般人用「聽」的聲音經驗，透過不同形式的活動，讓學生分別從動手做樂器、音符作畫等，結合視覺感受、科學實作，拓展學生對聲音的美感體驗。','自然科的部分，除了延續課本中波動、聲音的產生，及聲音三要素的認知學習，並動手自製樂器，實際體驗直笛發音原理，感受吹奏音階的變化，察覺音調高低與空氣柱長短的關係，並分享自己吹奏自製樂器的表現。','視覺藝術的部分，則以藝術基本元素點、線、面，結合抽象畫與音感作畫的概念，讓學生將無形的聲音轉化為有形的畫面，以聲音結合繪畫的方式創作作品，察覺聲音變化的可能性，並體驗抽象的表現手法。',' ','影片傳送門',' ','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',' ',] }
+                }]
+        }
+    },
+    methods: {
+    }
+}
+
+</script>
+
+<style lang="sass">
+
+</style>
+
