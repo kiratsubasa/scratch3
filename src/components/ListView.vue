@@ -3,9 +3,9 @@
     .listPageContent 
         SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='theArticleList')
         h1#listPageTitle {{pageTitle}}
-        .my-checkbox
-            input(type='checkbox' id='tab' value='最新消息' v-model='selectedQuery')
-            label(for='tab') 最新消息
+        .my-checkbox(v-for='typ in typeList')
+            input(type='checkbox' id='tab' :value='typ' v-model='selectedQuery')
+            label(for='tab') {{typ}}
                //- .my-tag(@click='selectedTag('跨域薈萃')') 跨域薈萃
         //-     input(type='checkbox' id='tab1' value='跨域薈萃' v-model='')
         //-     label(for='tab1') 
@@ -35,6 +35,7 @@ export default {
     props: ['article-list','page-title','search-placeholder','type'],
     data() {
         return {
+            typeList: ['跨域薈萃',' 視覺藝術'],
             pageDataNum: 8,
             currentPage: 1,
             totalPage: 1,
@@ -51,6 +52,7 @@ export default {
             this.theArticleList = this.articleList.filter((item)=>{
                 var tempAry;
                 for(var q=0 ; q<query.length ;q++){
+                    console.log(query[q]);
                     tempAry = item.type.includes(query[q]);
                 }
                 return tempAry;
@@ -88,6 +90,14 @@ export default {
 </script>
 
 <style lang="sass">
+// input[type="checkbox"]
+//     display: none
+
+#tab
+    &:checked + label
+        background-color: #F2DCE0 
+        margin: 2px
+        padding: 2px
 div
     // border: 1px #000 solid
 #listPageTitle
@@ -104,10 +114,10 @@ div
     padding: 50px
 .searchBar-list
     margin: 0px
-.my-checkbox
-    background-color: #F2DCE0 
-    margin: 10px
-    padding: 20px
+// .my-checkbox
+//     background-color: #F2DCE0 
+//     margin: 10px
+//     padding: 20px
 .List
     text-align: left
     cursor: pointer

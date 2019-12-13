@@ -31,7 +31,7 @@ export default {
                     src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/338/content_IMG_0711.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/339/content_IMG_0675.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/340/content_IMG_0684.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/341/content_IMG_0762.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/342/content_IMG_0765.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/343/content_IMG_0801.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/344/content_IMG_0805.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/345/content_IMG_0827.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/346/content_IMG_0877.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/347/content_IMG_0946.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/348/content_IMG_0918.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/349/content_IMG_0995.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/350/content_IMG_0960.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/351/content_IMG_1030.JPG",],text: ['108年種子學校誓師大會暨增能研習最後一場於9月27日在高雄師範大學舉辦，上午開場邀請到國立屏東大學音樂系雙小提琴表演，演出過程中雖然遇到斷絃的插曲，演出者仍展現出最專業的一面從容應對，獲得全場熱烈的掌聲。緊接著計畫主持人國立臺灣師範大學藝術學院趙惠玲院長致歡迎詞，並頒發給每個參與學校合作證書和進行贈書儀式，給予參與學校教師鼓勵和期許。','此外，由計畫主持人趙惠玲院長、共同主持人黃純敏教授以及協同主持人陳淳迪教授，逐一介紹「跨領域美感教育卓越領航計畫」之理念與內容、課程模組之內涵與應用、以及執行經費和期程說明，讓種子學校夥伴們對計畫有更深入的瞭解。','下午首先是教師增能研習工作坊，第一場課程設計與實務，國小階段和中等階段皆邀請到長期參與本計畫發展出特色課程的兩間學校：高雄市旗山國小鍾千昭和黃慧慈老師，分享將音樂、表演和健體結合的課程案例，讓學生更有自信地展現自我；小港高中方姿文、洪慧霖和團隊老師一同身著印有「好好生活」字樣的服裝登場，介紹透過文案教學，帶學生由觀察、探索到企劃，找到個人與世界的連結。','第二場增能工作坊國小階段，國立屏東大學音樂系伍鴻沂教授特別以音樂結合魔術開場，帶領全場進入跨領域美感教育中的音樂體驗；中等階段邀請臺灣師範大學數位遊戲學習實驗室的主持人洪榮昭教授，以教育性數位遊戲為主題，透過APP和VR體驗，整合學習理論及遊戲設計應用。','活動的尾聲綜合座談時間，種子學校踴躍地發言提問，與計畫主持人互動熱絡，最後在主持人的帶動下凝聚共識並互相期許道別，接下來期待全國各地每間學校的課程發展，讓美感揚帆！',] }
                 },{
                         src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/327/content_71522156_2517088045186860_4404841230970650624_o.jpg",
-                        type: ['最新消息','跨域薈萃'],
+                        type: ['最新消息','跨域薈萃',' 視覺藝術'],
                         
                     title: '【跨域薈萃•美感揚帆—108年種子學校誓師大會暨增能研習】臺中場圓滿達成', 
                     link: '/newsPage/news2',
@@ -51,7 +51,7 @@ export default {
                     src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/313/content_A1.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/314/content_A2.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/315/content_A3.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/317/content_A6.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/318/content_B1.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/319/content_B2.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/320/content_B3.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/321/content_C1-2.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/322/content_C1-4.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/323/content_C2-2.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/324/content_C2-3.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/325/content_D2.JPG","https://www.inarts.edu.tw/uploads/ckeditor/pictures/326/content_D4.JPG",],text: ['108年種子學校誓師大會暨增能研習第一棒臺北場，在上週五(9/6)於臺北市立大學正式展開！一早由本期種子學校之一的臺北市仁愛國小直笛隊表演揭開序幕，以及邀請到教育部師資培育及藝術教育司李毓娟副司長、計畫主持人國立臺灣師範大學藝術學院趙惠玲院長致歡迎詞，並頒發給每個參與學校合作證書和進行贈書儀式，給予參與學校教師鼓勵和期許。','緊接著由計畫主持人趙惠玲院長、共同主持人黃純敏教授以及協同主持人李其昌副教授，逐一介紹有關「跨領域美感教育卓越領航計畫」之理念與內容、課程模組之內涵與應用、以及執行經費和期程說明，讓種子學校夥伴們對計畫有更深入的瞭解。','活動下午首先是教師增能研習工作坊，第一場課程設計與實務，國小階段邀請國立科學工業園區實驗高中國小部饒詠婷老師分享如何統整語文、自然、表演藝術、音樂、視覺藝術等課程，帶領學生認識海洋、感受海洋；中等階段由長期參與本計畫的臺北市立五常國中陳瀅如教務主任示範藉由製作一把琴，整合生活科技、音樂和理化課程。','第二場增能工作坊國小階段，由臺灣師範大學電機系賴以威助理教授，從數學的角度解析世界名畫中蘊藏的數字、幾何概念，展示數學與藝術的課程連結；中等階段邀請臺灣師範大學數位遊戲學習實驗室的主持人洪榮昭教授，以教育性數位遊戲為主題，透過APP和VR體驗，整合學習理論及遊戲設計應用。','在活動的尾聲，安排種子學校代表與師資培育大學委員互相認識、交流，以及並由計畫主持人和與會來賓進行綜合座談，在經驗分享、共識凝聚中，為活動畫下完美的句點。','接下來9月20日、27日，在臺中市大墩文化中心、國立高雄師範大學還有兩場誓師大會暨增能研習，期待串聯串聯全國各地種子學校和師資培育大學的力量，將跨領域美感教育穩健扎根，在各個學科領域中發芽茁壯，共創臺灣教育的新樣貌！',] }
                 },{
                         src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
-                        type: '最新消息',
+                        type: ['最新消息',' 視覺藝術'],
                         
                     title: '教育部「108年度美感教育工作教師國外進修參訪」獲選名單出爐', 
                     link: '/newsPage/news4',
@@ -61,7 +61,7 @@ export default {
                     src:[],text: ['此次教育部「108年度美感教育工作教師國外進修參訪」自跨領域美感教育卓越領航計畫團隊辦理公告以來，接獲超過100件美感教育工作教師之報名表。','經由中小學各學習階段代表、藝術類、學科類、以及教育課程等學者專家組成之遴選委員進行書面審查，再經決選會議審慎考量教育階段、城鄉區域、藝術與非藝術學科、教學與行政經驗等面向，選拔出 60位正取以及19位備取之優秀教師，分別出訪荷蘭、日本、泰國三個國家。','期許中小學參與美感教育相關計畫的教育人員，透過國際交流參訪活動得以提升臺灣教師的國際視野，進而引導學生多元開展各種美感經驗與文化知能，發揮自發主動學習之動機與熱情，厚植核心素養，進而落實全民美育。教師返國後，依其專長將參訪經驗透過課程開發、講座、工作坊等活動，在課堂、校園進行分享，甚至跟社區、社會進一步對話交流，以宣揚、擴大國際參訪之效益。','在此恭喜各位獲選的老師，請各位老師們詳讀注意事項，並於時限前繳交相關文件',' ','錄取名單｜正取名單　備取名單','注意事項｜參訪教師注意事項',' ','有關108年度美感教育工作教師國外進修參訪相關事宜，請聯繫','黃宥嘉助理｜02-7734-6992　yjhuanginarts@gmail.com','林芸安助理｜02-7734-3058　ntnu7777@gmail.com',] }
                 },{
                         src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/310/content____.jpg",
-                        type: '最新消息',
+                        type: ['最新消息',' 視覺藝術'],
                         
                     title: '【跨域薈萃•美感揚帆—108年種子學校誓師大會暨增能研習】活動公告', 
                     link: '/newsPage/news5',
@@ -71,7 +71,7 @@ export default {
                     src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/310/content____.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/311/content______.jpg","https://www.inarts.edu.tw/uploads/ckeditor/pictures/312/content_123.jpg",],text: ['本計畫於108年招募全國153所國小至高中階段學校，擔任跨領域美感教育種子學校，進行研發與推廣各學科（領域、群科）之跨領域美感課程。「跨域薈萃•美感揚帆—108年種子學校誓師大會暨增能研習」擬分北、中、南三區辦理，安排種子學校與師資培育大學委員齊聚一堂，同時邀請各縣市政府教育局處長官蒞臨指導，共同瞭解本期跨領域美感教育計畫內容與執行重點，並進行教師增能研習，以期讓跨領域美感教育遍地開花！',' ','全國跨領域美感教育種子學校代表（每校1~2人）、師資培育大學委員、各直轄市政府教育局及縣（市）政府美感教育計畫承辦單位。',' ','●請最遲於各場次活動兩週前上網填寫google表單報名參與，網址：https://tinyurl.com/y2slxe2m','●全程參與者可核發5小時全國教師在職進修網研習時數（課程代碼：2679618），請於報到時正確填寫身分證字號及確實簽到。','●請各校惠予出席師長公差假及課務排代，學校人員交通費由本計畫依「國內出差旅費報支要點」核給，兼代課鐘點費由各校「種子學校補助款」支應。各縣市政府人員交通費由原單位支付。','●交通、住宿(補助上限1600/日)開銷單據請於正面簽名，買受人：國立臺灣師範大學，統一編號：03735202','●各場次備有午餐及茶水，響應環保歡迎自行攜帶環保餐具。','●活動議程、交通資訊、學校名單等請參閱活動計畫書',] }
                 },{
                         src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/309/content__________________-03.jpg",
-                        type: '最新消息',
+                        type: ['最新消息',' 視覺藝術'],
                         
                     title: '師資培育/合作大學名單公告', 
                     link: '/newsPage/news6',
@@ -81,7 +81,7 @@ export default {
                     src:["https://www.inarts.edu.tw/uploads/ckeditor/pictures/309/content__________________-03.jpg",],text: [] }
                 },{
                         src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
-                        type: '最新消息',
+                        type: ['最新消息',' 視覺藝術'],
                         
                     title: '全國種子學校正式名單公告', 
                     link: '/newsPage/news7',
