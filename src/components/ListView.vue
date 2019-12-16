@@ -3,27 +3,31 @@
     .listPageContent 
         SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='theArticleList')
         h1#listPageTitle {{pageTitle}}
-        .my-checkbox(v-for='typ in typeList')
-            input(type='checkbox' id='tab' :value='typ' v-model='selectedQuery')
-            label(for='tab') {{typ}}
+        .markBlockContainer
+            router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="'/newsPage/'+typ") {{typ}}
+        //- .my-checkbox(v-for='typ in typeList')
+        //-     input(type='checkbox' id='tab' :value='typ' v-model='selectedQuery')
+        //-     label(for='tab') {{typ}}
                //- .my-tag(@click='selectedTag('跨域薈萃')') 跨域薈萃
         //-     input(type='checkbox' id='tab1' value='跨域薈萃' v-model='')
-        //-     label(for='tab1') 
+        //-     label(for='tab1')
         .List(v-for="idx in pageDataNum")
-            .Listbtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]" @click="changePath(idx+(currentPage-1)*pageDataNum-1)" style="color: #333; text-decoration:none;")
+            .Listbtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")
                 .ListContainer
-                    .ListImage(:style="{'background-image': 'url(' + theArticleList[idx+(currentPage-1)*pageDataNum-1].src + ')'}") 
-                    .ListTextBlock
-                        .ListTypeBlock(v-for='type in theArticleList[idx+(currentPage-1)*pageDataNum-1].type') {{type}} 
+                    .Listhead
+                        .ListImage(:style="{'background-image': 'url(' + theArticleList[idx+(currentPage-1)*pageDataNum-1].src + ')'}") 
+                        .listTypeContainer
+                                router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='typ in theArticleList[idx+(currentPage-1)*pageDataNum-1].type' :key='t' :to="'/newsPage/'+typ") {{typ}} 
+                    .ListTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
                         .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
                         .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
     
-        a#myhref.pageBtn(href="#").firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
-        a#myhref.pageBtn(href="#").previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
+        a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
+        a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
         select#pageSel(v-model="currentPage")
             option(v-for="idx in totalPage") {{ idx }}
-        a#myhref.pageBtn(href="#").next(v-if="currentPage!=totalPage" @click="setPage(currentPage + 1)") {{ next }}
-        a#myhref.pageBtn(href="#").finalPage(v-if="currentPage!=totalPage" @click="setPage(totalPage)") {{ finalPage }}
+        a#myhref.pageBtn.next(v-if="currentPage!=totalPage" @click="setPage(currentPage + 1)") {{ next }}
+        a#myhref.pageBtn.finalPage(v-if="currentPage!=totalPage" @click="setPage(totalPage)") {{ finalPage }}
 </template>
 
 <script>
@@ -35,7 +39,7 @@ export default {
     props: ['article-list','page-title','search-placeholder','type'],
     data() {
         return {
-            typeList: ['跨域薈萃',' 視覺藝術'],
+            typeList: ['最新消息','跨域薈萃',' 視覺藝術'],
             pageDataNum: 8,
             currentPage: 1,
             totalPage: 1,
@@ -44,18 +48,17 @@ export default {
             next: '下一頁',
             finalPage: '最末頁',
             theArticleList: '',
-            selectedQuery: []
+            selectedQuery: ''
         }
     },
     watch: {
+        currentPage: function(page){
+            this.$router.push({query: {page: page} });
+            window.scrollTo(0,0);
+        },
         selectedQuery: function(query) {
             this.theArticleList = this.articleList.filter((item)=>{
-                var tempAry;
-                for(var q=0 ; q<query.length ;q++){
-                    console.log(query[q]);
-                    tempAry = item.type.includes(query[q]);
-                }
-                return tempAry;
+                return item.type.includes(query);
             })
         },
         theArticleList: function(){
@@ -64,7 +67,9 @@ export default {
     },
     beforeMount(){
         this.pageInit();
-        this.selectedQuery = this.type;
+        this.selectedQuery = this.$route.params.id;
+        if(this.$route.query.page)
+            this.currentPage = this.$route.query.page;
     },
     methods: {
         pageInit: function(){
@@ -73,31 +78,34 @@ export default {
         setPage: function setPage(page) {
             if (page <= 0 || page > this.totalPage) {
                 return;
-            }else{
+            }
+            else{
                 this.currentPage = page;
-                window.scrollTo(0,0);
             }
         },
         changePath: function(idx){
             this.$router.push({ path: this.theArticleList[idx].link , query: {articleIndex: idx} })
-        },
-        selectedTag: function(tag){
-            this.selectedQuery = tag;
         }
     }
 }
 
 </script>
 
-<style lang="sass">
-// input[type="checkbox"]
-//     display: none
-
-#tab
-    &:checked + label
-        background-color: #F2DCE0 
-        margin: 2px
-        padding: 2px
+<style lang="sass">  
+.markBlockContainer
+    display: inline-flex
+    margin: 10px
+.markBlock
+    margin: 10px
+    padding: 5px
+    border-radius: 5px
+    border: 1px #F2DCE0 solid
+    background-color: #FFF
+.markBlock:hover
+    border-radius: 30px
+    background-color: #F2DCE0
+.router-link-active
+    background-color: #F2DCE0
 div
     // border: 1px #000 solid
 #listPageTitle
@@ -109,44 +117,53 @@ div
     font-weight: normal
 .listPageContent
     max-width: 1280px
-    // min-height: 720px
     margin: auto
     padding: 50px
 .searchBar-list
     margin: 0px
-// .my-checkbox
-//     background-color: #F2DCE0 
-//     margin: 10px
-//     padding: 20px
+
 .List
     text-align: left
     cursor: pointer
 
 .ListContainer
-    display: flex
-    flex-flow: row wrap
     border: 1px #F2DCE0 solid
     margin-bottom: 20px
-
+    border-radius: 3px
+    display: flex
+    flex-wrap: wrap
+    width: 90%
+    
+.Listhead
+    // border: 1px #000 solid
+    background-color: #F2DCE0
+    width: 230px
 .ListImage
     width: 210px
     height: 140px
     margin-top: 30px
     margin: 10px
     background-size: cover
+    border-radius: 5px
 
 .ListTextBlock
     width: 70%
+
+.listTypeContainer
     display: flex
     flex-wrap: wrap
+    justify-content: center
 .ListTypeBlock
     margin: 5px
-    padding: 1px
-    padding-left: 15px
-    padding-right: 15px
-    background-color:  #D1B1B4
-    border-radius: 50px
+    padding: 2px
+    font-size: 0.6em
+    background-color:  #FFF
+    border-radius: 5px
     text-align: center
+.ListTypeBlock:hover
+    border-radius: 3px
+    padding: 4px
+    // background-color: #F2DCE0
     
 .ListTitle
     font-size: 1.5em
