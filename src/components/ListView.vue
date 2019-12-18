@@ -1,6 +1,6 @@
 <template lang="pug">
 #app
-    .listPageContent 
+    .listPageContent
         SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='theArticleList')
         h1#listPageTitle {{pageTitle}}
         .markBlockContainer
@@ -17,7 +17,7 @@
                     .Listhead
                         .ListImage(:style="{'background-image': 'url(' + theArticleList[idx+(currentPage-1)*pageDataNum-1].src + ')'}") 
                         .listTypeContainer
-                                router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='typ in theArticleList[idx+(currentPage-1)*pageDataNum-1].type' :key='t' :to="'/newsPage/'+typ") {{typ}} 
+                                router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='typ in theArticleList[idx+(currentPage-1)*pageDataNum-1].type' :key='typ' :to="'/newsPage/'+typ") {{typ}} 
                     .ListTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
                         .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
                         .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
@@ -48,7 +48,8 @@ export default {
             next: '下一頁',
             finalPage: '最末頁',
             theArticleList: '',
-            selectedQuery: ''
+            selectedQuery: '',
+            searchQuery: ''
         }
     },
     watch: {
@@ -61,8 +62,17 @@ export default {
                 return item.type.includes(query);
             })
         },
+        searchQuery: function(query){
+            this.theArticleList = this.articleList.filter((item)=>{
+                return item.title.includes(query);
+            })
+        },
         theArticleList: function(){
             this.pageInit();
+        },
+        '$route' (){
+            if(this.$route.query.search)
+                this.searchQuery = this.$route.query.search;
         }
     },
     beforeMount(){
@@ -91,94 +101,7 @@ export default {
 
 </script>
 
-<style lang="sass">  
-.markBlockContainer
-    display: inline-flex
-    margin: 10px
-.markBlock
-    margin: 10px
-    padding: 5px
-    border-radius: 5px
-    border: 1px #F2DCE0 solid
-    background-color: #FFF
-.markBlock:hover
-    border-radius: 30px
-    background-color: #F2DCE0
-.router-link-active
-    background-color: #F2DCE0
-div
-    // border: 1px #000 solid
-#listPageTitle
-    text-align: left
-    // margin-left :40px
-    margin-top: 20px
-    margin-bottom: 50px
-    font-size: 30px
-    font-weight: normal
-.listPageContent
-    max-width: 1280px
-    margin: auto
-    padding: 50px
-.searchBar-list
-    margin: 0px
-
-.List
-    text-align: left
-    cursor: pointer
-
-.ListContainer
-    border: 1px #F2DCE0 solid
-    margin-bottom: 20px
-    border-radius: 3px
-    display: flex
-    flex-wrap: wrap
-    width: 90%
-    
-.Listhead
-    // border: 1px #000 solid
-    background-color: #F2DCE0
-    width: 230px
-.ListImage
-    width: 210px
-    height: 140px
-    margin-top: 30px
-    margin: 10px
-    background-size: cover
-    border-radius: 5px
-
-.ListTextBlock
-    width: 70%
-
-.listTypeContainer
-    display: flex
-    flex-wrap: wrap
-    justify-content: center
-.ListTypeBlock
-    margin: 5px
-    padding: 2px
-    font-size: 0.6em
-    background-color:  #FFF
-    border-radius: 5px
-    text-align: center
-.ListTypeBlock:hover
-    border-radius: 3px
-    padding: 4px
-    // background-color: #F2DCE0
-    
-.ListTitle
-    font-size: 1.5em
-    line-height: 1.6em
-    margin: 10px
-.ListContent
-    overflow: hidden
-    white-space: nowrap
-    text-overflow: ellipsis
-    font-size: 1.2em
-    margin: 20px
-    margin-top: 30px
-#pageSel
-    text-align: center
-    width: 50px
-
+<style lang="sass">
+@import "@/style/common.sass"
 </style>
 
