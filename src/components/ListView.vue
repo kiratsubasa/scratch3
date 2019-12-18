@@ -5,22 +5,17 @@
         h1#listPageTitle {{pageTitle}}
         .markBlockContainer
             router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="'/newsPage/'+typ") {{typ}}
-        //- .my-checkbox(v-for='typ in typeList')
-        //-     input(type='checkbox' id='tab' :value='typ' v-model='selectedQuery')
-        //-     label(for='tab') {{typ}}
-               //- .my-tag(@click='selectedTag('跨域薈萃')') 跨域薈萃
-        //-     input(type='checkbox' id='tab1' value='跨域薈萃' v-model='')
-        //-     label(for='tab1')
-        .List(v-for="idx in pageDataNum")
-            .Listbtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")
-                .ListContainer
-                    .Listhead
-                        .ListImage(:style="{'background-image': 'url(' + theArticleList[idx+(currentPage-1)*pageDataNum-1].src + ')'}") 
-                        .listTypeContainer
-                                router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='typ in theArticleList[idx+(currentPage-1)*pageDataNum-1].type' :key='typ' :to="'/newsPage/'+typ") {{typ}} 
-                    .ListTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
-                        .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
-                        .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
+        transition-group(name="staggered-fade" tag="ul" v-bind:css="false" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave")
+            .List(v-for="idx in pageDataNum" v-bind:key="idx" v-bind:data-index="idx")
+                .Listbtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")
+                    .ListContainer
+                        .Listhead
+                            .ListImage(:style="{'background-image': 'url(' + theArticleList[idx+(currentPage-1)*pageDataNum-1].src + ')'}") 
+                            .listTypeContainer
+                                    router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='typ in theArticleList[idx+(currentPage-1)*pageDataNum-1].type' :key='typ' :to="'/newsPage/'+typ") {{typ}} 
+                        .ListTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
+                            .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
+                            .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
     
         a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
         a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
@@ -29,6 +24,8 @@
         a#myhref.pageBtn.next(v-if="currentPage!=totalPage" @click="setPage(currentPage + 1)") {{ next }}
         a#myhref.pageBtn.finalPage(v-if="currentPage!=totalPage" @click="setPage(totalPage)") {{ finalPage }}
 </template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
 
 <script>
 import SearchBar from '@/components/searchBar.vue'
@@ -49,6 +46,7 @@ export default {
             finalPage: '最末頁',
             theArticleList: '',
             selectedQuery: '',
+            searchStatus: false,
             searchQuery: ''
         }
     },
@@ -64,18 +62,21 @@ export default {
         },
         searchQuery: function(query){
             this.theArticleList = this.articleList.filter((item)=>{
-                return item.title.includes(query);
+                if(item.title.includes(query)){
+                    this.searchStatus = true;
+                    return item.title.includes(query);
+                }
             })
         },
         theArticleList: function(){
             this.pageInit();
         },
         '$route' (){
-            if(this.$route.query.search)
-                this.searchQuery = this.$route.query.search;
+            this.searchInit();
         }
     },
     beforeMount(){
+        this.searchInit();
         this.pageInit();
         this.selectedQuery = this.$route.params.id;
         if(this.$route.query.page)
@@ -95,7 +96,37 @@ export default {
         },
         changePath: function(idx){
             this.$router.push({ path: this.theArticleList[idx].link , query: {articleIndex: idx} })
-        }
+        },
+        searchInit: function(){
+            if(this.$route.query.search)
+                this.searchQuery = this.$route.query.search;
+            else
+                this.theArticleList = this.articleList;
+        },
+        beforeEnter: function (el) {
+            el.style.opacity = 0
+            el.style.height = 0
+        },
+        enter: function (el, done) {
+            var delay = el.dataset.index * 150
+        setTimeout(function () {
+            Velocity(
+                el,
+                { opacity: 1, height: '1.6em' },
+                { complete: done }
+                )
+            }, delay)
+        },
+        leave: function (el, done) {
+            var delay = el.dataset.index * 150
+        setTimeout(function () {
+            Velocity(
+            el,
+            { opacity: 0, height: 0 },
+            { complete: done }
+            )
+        }, delay)
+    }
     }
 }
 
