@@ -30,7 +30,7 @@ export default new Router({
           component: mainPage,
           },
           {
-          path: '/newsPage',
+          path: '/newsPage/:id',
           component: newsPage,
           children:[
             {
