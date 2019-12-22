@@ -223,10 +223,11 @@ export default {
 
 <style lang="sass">
 .BookMarkContainer
-    border: 1px #F2DCE0 solid
+    border-radius: 5px
     width: 220px
     margin: 30px
     display: inline-block
+    background-color: #F2DCE0
     
 .BookMarkContentContainer
     float: left

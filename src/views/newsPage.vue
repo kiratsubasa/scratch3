@@ -1,30 +1,31 @@
 <template lang="pug">
 #app
     .PathText 你的位置 : 首頁 > {{pageTitle}}
-    router-view(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder')
-    newsList(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type='type')
+    router-view(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder'  :type-list='typeList')
+    //- newsList(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type='type')
     //- newsListinArticle(v-if="this.$route.path!='/newsPage'" :article-list='articleList' :page-title='pageTitle')
 </template>
 
 <script>
-import newsList from '@/components/ListView'
+// import newsList from '@/components/ListView'
 import newsListinArticle from '@/components/ListViewinArticle'
 export default {
     components: {
-        newsList,
+        // newsList,
         newsListinArticle
     },
     data() {
         return {
             pageTitle: "最新消息",
             type: ["最新消息"],
+            typeList: ['最新消息','跨域薈萃',' 視覺藝術'],
             searchPlaceholder: "關鍵字",
             articleList: [{
                         src:"https://www.inarts.edu.tw/uploads/ckeditor/pictures/338/content_IMG_0711.JPG",
                         type: ['最新消息','跨域薈萃'],
 
                     title: '【跨域薈萃‧美感揚帆—108年種子學校誓師大會暨增能研習】高雄場圓滿落幕', 
-                    link: '/newsPage/news1',
+                    link: '/newsPage/newsjerry',
                     content: {
                         video:["https://www.youtube.com/embed/QaT2BsznW3M"],
                         link:[''],

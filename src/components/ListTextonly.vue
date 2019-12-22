@@ -1,7 +1,7 @@
 <template lang="pug">
 #app
     .BookMarkList(v-for='(item,i) in bookmarkList[articleListIdx].articleList')
-        router-link#BookMarkRouter(v-if="articleShow==false" :to='item.link' append)
+        router-link#BookMarkRouter(v-if="articleShow==false" :to='item.link')
             .BookMarkTitle {{item.title}}
     router-view(:articleList='bookmarkList[articleListIdx].articleList' :page-title='pageTitle' @openArticle="changeStatus")
 </template>

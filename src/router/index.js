@@ -19,7 +19,7 @@ import questionnairePage from '@/views/footer/questionnairePage.vue'
 import recordPage from '@/views/footer/recordPage.vue'
 import webTreePage from '@/views/footer/webTreePage.vue'
 import staffListView from '@/components/staffListView.vue'
-// import ListView from '@/components/ListView.vue'
+import ListView from '@/components/ListView.vue'
 import cardView from '@/components/cardView.vue'
 
 Vue.use(Router)
@@ -30,11 +30,14 @@ export default new Router({
           component: mainPage,
           },
           {
-          path: '/newsPage/:id',
+          path: '/newsPage',
           component: newsPage,
           children:[
             {
               path: 'news:id',component: article
+            },
+            {
+              path: ':id',component: ListView
             }
           ]
           },
@@ -44,6 +47,9 @@ export default new Router({
             children: [
               {
                 path: 'result:id',component: article
+              },
+              {
+                path: ':id',component: ListView
               }
             ]
           },
@@ -51,12 +57,8 @@ export default new Router({
             path: '/lawPage',
             component: lawPage,
             children: [
-                {path: 'mark:mark',component: ListTextonly,
-                  children: [
-                    {
-                      name: 'law',path: 'law:id',component: article
-                    }
-                ]}
+                {path: 'mark:mark',component: ListTextonly},
+                {name: 'law',path: 'law:id',component: article}
             ]
           },
           {
@@ -76,7 +78,7 @@ export default new Router({
             component: activityPage,
             children: [
                 {path: 'activity:id',component: article},
-                {path: 'mark:id',component: cardView}
+                {path: ':id',component: cardView}
             ]
           },
           {

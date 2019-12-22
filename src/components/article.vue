@@ -24,14 +24,13 @@ export default {
     },
     methods: {
     },
-    mounted:function(){
-        this.$emit('openArticle',true)
-        var path = this.$route.params.id;
-        console.log(path)
+    mounted(){
+        var temp = this.$route.params.id;
         var pathIdx = this.articleList.findIndex(function(item){
-            return item.link.includes(path);         
+            return item.link.includes(temp);         
             });
         this.articleIndex = pathIdx;
+        
     }
 }
 

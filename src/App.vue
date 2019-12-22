@@ -28,13 +28,13 @@ export default {
                 {title: '電話:(03)5715131',link:''}
             ],
             menuList: [
-                {title: '最新消息',link: '/newsPage'},
+                {title: '最新消息',link: '/newsPage/最新消息'},
                 {title: '法規與政策',link: '/lawPage/mark1'},
                 {title: '計畫簡介',link: '/planIntro'},
                 // {title: '教學資源',link: '/tutorialPage/mark1'},
-                {title: '成果專區',link: '/resultPage'},
+                {title: '成果專區',link: '/resultPage/成果專區'},
                 {title: '美感人才',link: '/staffPage/mark1?markIndex=0'},
-                {title: '活動報名',link: '/activityPage/mark1markIndex=0'},
+                {title: '活動報名',link: '/activityPage/活動報名'},
                 {title: '網網相連',link: '/otherWeb'}
             ],
             footMenuList: [
@@ -42,8 +42,8 @@ export default {
                 {title: '常見問題',link: '/QA'},
                 {title: '網站地圖',link: '/webTreePage'},
                 // {title: '問卷調查',link: '/questionnairePage/card'},
-                {title: '出版刊物',link: '/publishPage/card'},
-                {title: '會議記錄',link: '/recordPage'} 
+                // {title: '出版刊物',link: '/publishPage/card'},
+                // {title: '會議記錄',link: '/recordPage'} 
             ],
         } 
     },

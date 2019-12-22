@@ -2,21 +2,22 @@
 #app
     .PathText 你的位置 : 首頁 > {{pageTitle}}
     .activityPageRouterCountainer
-        bookmarkSelector#bookmarkSelector(:bookmarkList='bookmarkList' :mark-index='markIndex')
-        router-view(:mark-index='markIndex' :path-index='pathIndex' @changePath="changePath" :bookmark-list='bookmarkList[markIndex]' :article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder')
+        //- bookmarkSelector#bookmarkSelector(:bookmarkList='bookmarkList' :mark-index='markIndex')
+        router-view(:mark-index='markIndex' :path-index='pathIndex' :article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type-list='typeList')
 </template>
 
 <script>
-import bookmarkSelector from '@/components/bookmarkSelector'
+// import bookmarkSelector from '@/components/bookmarkSelector'
 export default {
     components: {
-        bookmarkSelector
+        // bookmarkSelector
     },
     data() {
         return {
             markIndex: 0,
             pathIndex: 0,
             pageTitle: "活動報名",
+            typeList: ['活動報名','成果專區'],
             searchPlaceholder: "關鍵字",
             articleList: [{
                         src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
@@ -130,7 +131,7 @@ export default {
                     src:[],text: ['辦理時間：','107年03月21日（三），09:30~16:00',' ','辦理地點：','臺北市立永春高級中學(英華樓三樓E化教室)','臺北市信義區松山路654號',' ','報名相關事宜請洽：','臺北市立永春高級中學聯絡人曾慶良組長 ，電話：(02)2727-2983#205，E-mail：iddmail@ycsh.tp.edu.tw','北區專任助理喻薈融小姐，電話 (02)7734 -6991，E-mail ：crossdisciplinary@gmail.com',' ',' ',] }
                 },{
                         src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
-                        type: '活動報名',
+                        type: '成果專區',
                         
                     title: '【工作訪暨訪視會議】106學年第二學期種子學校工作坊暨訪視會議將於3月22號於國立北門高級中學辦理，敬請各界踴躍報名參加！', 
                     link: '/resultPage/result75',
@@ -140,7 +141,7 @@ export default {
                     src:[],text: [' ','辦理時間：','107年03月22日（四），13:20~17:10',' ','辦理地點：','國立北門高級中學(行政大樓4樓會議室)','臺南市佳里區六安街269號',' ','報名相關事宜請洽：','國立北門高級中學聯絡人張力中老師 ，電話：(06)722-2150#225','南區專任助理劉彥宜小姐，電話 (02)7734 -3066，E-mail ：inarts.ntnu@gmail.com',' ',] }
                 },{
                         src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
-                        type: '活動報名',
+                        type: '成果專區',
                         
                     title: '【工作訪暨訪視會議】106學年第二學期種子學校工作坊暨訪視會議將於3月23號於新北市立竹圍高級中學辦理，敬請各界踴躍報名參加！', 
                     link: '/resultPage/result76',
@@ -150,7 +151,7 @@ export default {
                     src:[],text: ['辦理時間：','107年03月23日（五），09:30~16:00',' ','辦理地點：','新北市立竹圍高級中學（第一會議室）','新北市淡水區竹林路35號',' ','報名相關事宜請洽：','新北市立竹圍高級中學聯絡人何翊嘉組長 ，電話：(02)2809-1557#113，E-mail：tea645@zwhs.ntpc.edu.tw','北區專任助理喻薈融小姐，電話 (02)7734 -6991，E-mail ：crossdisciplinary@gmail.com',' ',] }
                 },{
                         src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
-                        type: '活動報名',
+                        type: '成果專區',
                         
                     title: '【工作訪暨訪視會議】106學年第二學期種子學校工作坊暨訪視會議將於3月23號於臺中市立臺中第一高級中等學校辦理，敬請各界踴躍報名參加！', 
                     link: '/resultPage/result77',
@@ -240,7 +241,7 @@ export default {
                     src:[],text: ['國小階段的師長可依照甘特圖來計畫工作排程，並注意表訂的計畫期程喔！','期程表資料下載：關於計畫→檔案下載',] }
                 },{
                         src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
-                        type: '活動報名',
+                        type: '成果專區',
                         
                     title: '跨領域美感課程教學方案-虛擬人生', 
                     link: '/resultPage/result96',
@@ -250,7 +251,7 @@ export default {
                     src:[],text: ['https://youtu.be/k3ugzpubzLE','未來規劃好困難，該如何了解自我人格特質與未來期許？','與其茫然地盯著冷冰冰的規畫表格，不如來看個動畫學習認識自我特質吧！快來欣賞跨領域美感課程教學方案-虛擬人生帶給我們的全新思考體驗！',' ','更多精彩的課程分享影片請至：影音資源區觀看！',' ',] }
                 },{
                         src:"https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png",
-                        type: '活動報名',
+                        type: '成果專區',
                         
                     title: '跨領域美感計畫特色課程- 桃園市立武陵高級中學【明信片石碑秀】', 
                     link: '/resultPage/result97',
@@ -512,14 +513,7 @@ export default {
                 }
             ]
         }
-    },
-    mounted:function(){
-        var path = this.$route.params.mark;
-        var pathIdx = this.bookmarkList.findIndex(function(item){
-            return item.link.includes(path);         
-            });
-        this.markIndex = pathIdx;
-    },
+    }
 }
 
 </script>

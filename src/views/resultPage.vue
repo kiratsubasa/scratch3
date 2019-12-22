@@ -1,22 +1,23 @@
 <template lang="pug">
 #app
     .PathText 你的位置 : 首頁 > 成果專區 
-    router-view(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder')
-    newsList(v-if="this.$route.path=='/resultPage'" :article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder')
-    newsListinArticle(v-if="this.$route.path!='/resultPage'" :article-list='articleList' :page-title='pageTitle')
+    router-view(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type-list='typeList')
+    //- newsList(v-if="this.$route.path=='/resultPage'" :article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type-list='typeList')
+    //- newsListinArticle(v-if="this.$route.path!='/resultPage'" :article-list='articleList' :page-title='pageTitle')
 </template>
 
 <script>
-import newsList from '@/components/ListView'
-import newsListinArticle from '@/components/ListViewinArticle'
+// import newsList from '@/components/ListView'
+// import newsListinArticle from '@/components/ListViewinArticle'
 export default {
     components: {
-        newsList,
-        newsListinArticle
+        // newsList,
+        // newsListinArticle
     },
     data() {
         return {
             pageTitle: "成果專區",
+            typeList: ['成果專區','跨域薈萃',' 視覺藝術'],
             searchPlaceholder: "關鍵字",
             articleList: [
                 {

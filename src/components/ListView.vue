@@ -4,7 +4,7 @@
         SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='theArticleList')
         h1#listPageTitle {{pageTitle}}
         .markBlockContainer
-            router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="'/newsPage/'+typ") {{typ}}
+            router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="typ") {{typ}}
         transition-group(name="staggered-fade" tag="ul" v-bind:css="false" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave")
             .List(v-for="idx in pageDataNum" v-bind:key="idx" v-bind:data-index="idx")
                 .Listbtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")
@@ -33,10 +33,9 @@ export default {
     components: {
         SearchBar
     },
-    props: ['article-list','page-title','search-placeholder','type'],
+    props: ['article-list','page-title','search-placeholder','typeList'],
     data() {
         return {
-            typeList: ['最新消息','跨域薈萃',' 視覺藝術'],
             pageDataNum: 8,
             currentPage: 1,
             totalPage: 1,
@@ -86,7 +85,7 @@ export default {
         pageInit: function(){
             this.totalPage = Math.ceil(this.theArticleList.length/this.pageDataNum);
         },
-        setPage: function setPage(page) {
+        setPage: function(page) {
             if (page <= 0 || page > this.totalPage) {
                 return;
             }
@@ -95,7 +94,7 @@ export default {
             }
         },
         changePath: function(idx){
-            this.$router.push({ path: this.theArticleList[idx].link , query: {articleIndex: idx} })
+            this.$router.push({ path: this.theArticleList[idx].link})
         },
         searchInit: function(){
             if(this.$route.query.search)

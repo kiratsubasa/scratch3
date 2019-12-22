@@ -1,31 +1,34 @@
 <template lang="pug">
 #app
     .listPageContent 
-        SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder'  :search-lists='articleList')
+        SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='theArticleList')
         h1#listPageTitle {{pageTitle}}
-        .cardContainer            
-            #Card(v-for="idx in pageDataNum" v-if="bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1]" @click="changePath(idx+(currentPage-1)*pageDataNum-1)")
+        .markBlockContainer
+            router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="typ") {{typ}}
+        .cardContainer      
+            #Card(v-for="idx in pageDataNum" v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")  
                 .cardcontentContainer
-                    .ListImage(:style="{'background-image': 'url(' + bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].src + ')'}") 
-                    .CardTextBlock 
-                        .ListTypeBlock {{bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].type}}
-                        .ListTitle {{bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].title}}
-                        .ListContent {{bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
-        a#myhref.pageBtn(href="#").firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
-        a#myhref.pageBtn(href="#").previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
+                    .ListImage(:style="{'background-image': 'url(' + theArticleList[idx+(currentPage-1)*pageDataNum-1].src + ')'}") 
+                    .CardTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
+                        .ListTypeBlock {{theArticleList[idx+(currentPage-1)*pageDataNum-1].type}}
+                        .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
+                        .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
+
+        a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
+        a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
         select.pageSel(v-model="currentPage")
             option(v-for="idx in totalPage") {{ idx }}
-        a#myhref.pageBtn(href="#").next(v-if="currentPage!=totalPage" @click="setPage(currentPage + 1)") {{ next }}
-        a#myhref.pageBtn(href="#").finalPage(v-if="currentPage!=totalPage" @click="setPage(totalPage)") {{ finalPage }}
+        a#myhref.pageBtn.next(v-if="currentPage!=totalPage" @click="setPage(currentPage + 1)") {{ next }}
+        a#myhref.pageBtn.finalPage(v-if="currentPage!=totalPage" @click="setPage(totalPage)") {{ finalPage }}
 </template>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
 <script>
 import SearchBar from '@/components/searchBar.vue'
 export default {
     components: {
         SearchBar
     },
-    props: ['bookmarkList','page-title','search-placeholder','article-list'],
+    props: ['page-title','search-placeholder','article-list','typeList'],
     data() {
         return {
             pageDataNum: 8,
@@ -34,32 +37,90 @@ export default {
             firstPage: '第一頁',
             prev: '上一頁',
             next: '下一頁',
-            finalPage: '最末頁'
+            finalPage: '最末頁',
+            theArticleList: '',
+            selectedQuery: '',
+            searchStatus: false,
+            searchQuery: ''
+        }
+    },
+    watch: {
+        currentPage: function(page){
+            this.$router.push({query: {page: page} });
+            window.scrollTo(0,0);
+        },
+        selectedQuery: function(query) {
+            this.theArticleList = this.articleList.filter((item)=>{
+                return item.type.includes(query);
+            })
+        },
+        searchQuery: function(query){
+            this.theArticleList = this.articleList.filter((item)=>{
+                if(item.title.includes(query)){
+                    this.searchStatus = true;
+                    return item.title.includes(query);
+                }
+            })
+        },
+        theArticleList: function(){
+            this.pageInit();
+        },
+        '$route' (){
+            this.searchInit();
         }
     },
     beforeMount(){
+        this.searchInit();
         this.pageInit();
-    },
-    computed: {
-        // showList: function() {
-        //     // return this.bookmarkList.articleList.filter(function ())
-        // }
+        this.selectedQuery = this.$route.params.id;
+        if(this.$route.query.page)
+            this.currentPage = this.$route.query.page;
     },
     methods: {
         pageInit: function(){
-            this.totalPage = Math.ceil(this.bookmarkList.articleList.length/this.pageDataNum);
+            this.totalPage = Math.ceil(this.theArticleList.length/this.pageDataNum);
         },
-        setPage: function setPage(page) {
+        setPage: function(page) {
             if (page <= 0 || page > this.totalPage) {
                 return;
-            }else{
+            }
+            else{
                 this.currentPage = page;
-                window.scrollTo(0,0);
             }
         },
         changePath: function(idx){
-            this.$router.push({ path: this.bookmarkList.articleList[idx].link , query: {articleIndex: idx} })
-        }
+            this.$route.push({ path: this.theArticleList[idx].link})
+        },
+        searchInit: function(){
+            if(this.$route.query.search)
+                this.searchQuery = this.$route.query.search;
+            else
+                this.theArticleList = this.articleList;
+        },
+        beforeEnter: function (el) {
+            el.style.opacity = 0
+            el.style.height = 0
+        },
+        enter: function (el, done) {
+            var delay = el.dataset.index * 150
+        setTimeout(function () {
+            Velocity(
+                el,
+                { opacity: 1, height: '1.6em' },
+                { complete: done }
+                )
+            }, delay)
+        },
+        leave: function (el, done) {
+            var delay = el.dataset.index * 150
+        setTimeout(function () {
+            Velocity(
+            el,
+            { opacity: 0, height: 0 },
+            { complete: done }
+            )
+        }, delay)
+    }
     }
 }
 
