@@ -1,5 +1,5 @@
 <template lang="pug">
-#app(@click='searchStatus=false')
+#searchBox(@click='searchStatus=false')
     .input-group
         input.search(type='text' :placeholder='searchPlaceholder' v-model='searchQuery' @keyup.enter="search")
         button.searchButton(v-on:click="isHidden=false" @click="search")

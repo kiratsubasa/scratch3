@@ -222,24 +222,25 @@ export default {
 </script>
 
 <style lang="sass">
+@import "@/style/common.sass"
 .BookMarkContainer
     border-radius: 5px
     width: 220px
     margin: 30px
     display: inline-block
-    background-color: #F2DCE0
+    // background-color: $c-primary
     
 .BookMarkContentContainer
     float: left
     margin: 30px
     display: inline-block
     max-width: 720px
-    // height: auto
+    height: auto
     
 .BookMarkPageContainer
-    border: 1px #F2DCE0 solid
+    border: 1px $c-primary solid
     margin: auto
-    margin-bottom: 10px
+    // margin-bottom: 10px
     max-width: 1080px
     min-height: 1080px
 @media all and (min-width: 375px)
@@ -249,6 +250,5 @@ export default {
 @media all and (max-width: 375px)
     .BookMarkContainer
         float: center
-    
 </style>
 

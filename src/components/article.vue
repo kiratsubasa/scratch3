@@ -5,7 +5,7 @@
     //- .articlePageContent(v-for="text in articleList[articleIndex].content.text") {{text}}
     .articlePageContent {{articleList[articleIndex].content.text}}
     h1.articlePageTitle(v-if='articleList[articleIndex].content.video') 精彩影音
-    diolog.articlePageVideoPlayer(:article-list='articleList[articleIndex]')
+    diolog.articlePageVideoPlayer(v-if='articleList[articleIndex].content.video' :article-list='articleList[articleIndex]')
 </iframe>
 
 </template>
@@ -39,7 +39,7 @@ export default {
 <style lang="sass">
 #newsApp
     max-width: 1280px
-    min-height: 720px
+    // min-height: 720px
     margin: auto
 
 .articlePageVideoPlayer
@@ -61,8 +61,8 @@ export default {
     font-size: 15px
     line-height: 30px
     color: #444
-    padding-top: 50px
-    padding: 50px
+    // padding-top: 50px
+    margin: 50px
     // margin: 100px
     border-bottom: 1px #aaa solid
 h1

@@ -30,7 +30,7 @@ export default {
 .webContainer
     max-width: 1280px
     min-height: 1500px
-    border: 1px #ccc solid
+    // border: 1px #ccc solid
     margin: auto
     padding: 100px
 

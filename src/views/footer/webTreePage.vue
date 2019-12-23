@@ -26,6 +26,7 @@ export default {
 }
 </script>
 <style lang="sass">
+@import "@/style/common.sass"
 .webMapContainer
     max-width: 1280px
     min-height: 720px
@@ -62,11 +63,11 @@ export default {
     color: #555
 
 #webMapFlex:hover
-    color: #D1B1B4
+    color: $c-secondary
     text-decoration: none
     
 #webMapSubtitle:hover
-    color: #D1B1B4
+    color: $c-secondary
     text-decoration: none
 
 </style>

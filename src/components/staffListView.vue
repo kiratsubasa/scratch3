@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style lang="sass">
-$colorLighterPink: #FBE2E5
+@import "@/style/common.sass"
 .staffShortIro
     
 .staffListContent
@@ -94,19 +94,11 @@ $colorLighterPink: #FBE2E5
     margin: 5px
     font-size: 15px
     font-weight: bold
-    background-color: $colorLighterPink
+    background-color: $c-primary
     width: 50%
     padding: 2px
     padding-left: 5px
-.pageBtn
-    background-color: $colorLighterPink
-    margin: 10px
-    padding: 3px
-    -webkit-box-shadow: 0px 0px 4px -1px rgba(0,0,0,0.3)
-    box-shadow: 0px 0px 4px -1px rgba(0,0,0,0.3)
-.pageSel
-    border: 1px $colorLighterPink solid
-    width: 50px
-    text-align: center
+
+
 </style>
 

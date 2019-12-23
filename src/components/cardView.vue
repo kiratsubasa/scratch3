@@ -127,10 +127,11 @@ export default {
 </script>
 
 <style lang="sass">
-$colorLighterPink: #FBE2E5
+@import "@/style/common.sass"
 #Card
     width: 240px
-    border: 1px $colorLighterPink solid
+    border: 1px $c-primary solid
+    border-radius: 3px
     margin: 10px
     -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3)
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3)

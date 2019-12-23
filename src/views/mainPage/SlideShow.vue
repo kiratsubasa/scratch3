@@ -1,12 +1,12 @@
 <template lang="pug">
 div#slideshow-container
-        .mySlides.mySlides1.fade
+        .mySlides.mySlides1
             a(:href="jumpBar[0].link")
                 img#slideImg(:src="jumpBar[0].src")
-        .mySlides.mySlides2.fade(v-for='(jumpImage,index) in jumpBar' v-if="index!=0 &&index!= jumpBar.length-1")
+        .mySlides.mySlides2(v-for='(jumpImage,index) in jumpBar' v-if="index!=0 &&index!= jumpBar.length-1")
             a(:href="jumpImage.link")
                 img#slideImg(:src="jumpImage.src")
-        .mySlides.mySlides3.fade
+        .mySlides.mySlides3
             a(:href="jumpBar[jumpBar.length-1].link")
                 img#slideImg(:src="jumpBar[jumpBar.length-1].src")
         .slideTextBlock
@@ -85,15 +85,16 @@ export default {
 </script>
 
 <style lang="sass">
-
+@import "@/style/common.sass"
 #slideshow-container
+    background-color: $c-bg
     max-width: 1280px
     max-height: 960px
     position: relative
     margin: auto
     -webkit-box-shadow: -1px 3px 10px -1px rgba(0,0,0,0.20)
     box-shadow: -1px 3px 8px -1px rgba(0,0,0,0.20)
-    margin-top: 1px
+    // margin-top: 1px
 
 .mySlides
     cursor: pointer
@@ -107,16 +108,27 @@ export default {
 .mySlides1
     -webkit-clip-path: polygon(0 0, 70% 0, 75% 100%, 0 100%)
     position: absolute
+    animation-name: fade
+    animation-duration: 2s
+    animation-timing: ease-in-out
+    animation-delay: 0.2s
     
 
 .mySlides2
     -webkit-clip-path: polygon(70% 0, 86% 0, 83% 100%, 75% 100%)
     position: absolute
+    animation-name: fade
+    animation-duration: 2s
+    animation-timing: ease-in-out
+    animation-delay: 0.3s
     
 
 .mySlides3
     -webkit-clip-path: polygon(86% 0, 100% 0, 100% 100%, 83% 100%)
-
+    animation-name: fade
+    animation-duration: 2s
+    animation-timing: ease-in-out
+    animation-delay: 0.4s
 
 .prevBut
     cursor: pointer
@@ -153,7 +165,7 @@ export default {
 
 
 .prevBut:hover, .nextBut:hover
-    border: 1px #FFC53D solid
+    border: 1px $c-secondary solid
 
 
 .dot
@@ -162,19 +174,14 @@ export default {
     width: 10px
     margin: 0 2px
     margin-top:10px
-    background-color: #D1B1B4
+    background-color: $c-primary
     border-radius: 50%
     display: inline-block
     transition: background-color 0.6s ease
 
 .active, .dot:hover
-    background-color: #FBE2E5
+    background-color: $c-secondary
 
-.fade
-    -webkit-animation-name: fade
-    -webkit-animation-duration: .5s
-    animation-name: fade
-    animation-duration: .5s
 
 .slideTextBlock
     position: absolute
@@ -182,7 +189,7 @@ export default {
     text-align: left
     width: 60%
     margin-left: 1%
-    background-color: #FFF
+    background-color: $c-bg
     opacity: 1
     padding: 10px
     cursor: pointer
@@ -197,18 +204,9 @@ export default {
     opacity: 0.4
 
 
-@-webkit-keyframes fade
-    from
-        -webkit-clip-path: polygon(0,0,0,0,0,0,0,0)
-
-    to
-        -webkit-clip-path: polygon(0 0, 81% 0, 71% 100%, 0 100%)
-
-
 @keyframes fade
     from
         opacity: 0
-
     to
         opacity: 1
 

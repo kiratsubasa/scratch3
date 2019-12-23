@@ -1,6 +1,6 @@
 <template lang="pug">
 .v-app
-    Header(:menu-list="menuList")
+    Header(:menu-list="menuList" :icon-src="iconSrc")
     transition(name="page" mode="out-in")
         router-view(:key='$route.path')
     Footer(:foot-list="footList" :footMenuList="footMenuList")
@@ -27,6 +27,7 @@ export default {
                 {title: '地址:30013新竹市光復路二段101號',link:''},
                 {title: '電話:(03)5715131',link:''}
             ],
+            iconSrc: 'https://www.aade.org.tw/website/wp-content/themes/twentyseventeen/img/logo.svg?v=1',
             menuList: [
                 {title: '最新消息',link: '/newsPage/最新消息'},
                 {title: '法規與政策',link: '/lawPage/mark1'},
@@ -94,6 +95,6 @@ body
     color: #333
 .PathText
     text-align: left
-    margin: 20px
-    color: #555
+    padding: 20px
+    // color: #555
 </style>

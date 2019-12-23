@@ -1,9 +1,7 @@
 <template lang="pug">
 .planContainer
     h1#listPageTitle.planTitle {{title}}
-    video(loop autoplay muted)
-            source(src="@/assets/123.mp4" type="video/mp4")
-    diolog.articlePageVideoPlayer(:article-list='photoList')
+    iframe#iframeResize(width="960" height="540" :src="video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
     .plan(v-for='item in planContent')
         h3 {{item.title}}
         p.planContent(v-for="text in item.content") {{text}}
@@ -19,7 +17,8 @@ export default {
     data() {
         return {
             title: "計畫簡介",
-            photoList:{
+            video: 'https://www.youtube.com/embed/xFJeE_OQdW8',
+            photoList: {
                 src: [ 'https://drive.google.com/uc?export=view&id=1WSdyKzEnoVK9q-xH8_X2RhjwU6qwTOs1','https://drive.google.com/uc?export=view&id=1lzuckv5l7ZWpMpAgfkCkGg7TlWG8AFkp','https://drive.google.com/uc?export=view&id=1ZIi4vEcSk2MGEyUuI7tA8XJ5jq8Mf8dY','https://drive.google.com/uc?export=view&id=1FbqmAjUqI4tKPe1xJuhcvKX4GDzYeADN']
             },
             bigPhoto: {
@@ -53,9 +52,10 @@ export default {
 </script>
 
 <style lang="sass">
-video
-    width:1180px
-    margin: 50px
+@import "@/style/common.sass"
+#iframeResize
+    height: 540px
+    margin-bottom: 40px
 
 .planContainer
     max-width: 1280px
@@ -84,27 +84,27 @@ video
 
 .bigPlanItem
     // border: 2px solid #549C00
-    height:664px
-    width: 1180px
-    margin-left: 50px
-    margin-right: 50px
+    // height:664px
+    // width: 1180px
+    // margin-left: 50px
+    // margin-right: 50px
     background-size: cover
 .planItem
     // border: 2px solid #549CF8
     width:257px
     height:145px
-    margin: 25px
+    // margin: 25px
     background-size: cover
     
 .plan
-    width: 80%
+    // width: 100%
     padding: 20px
     text-align: left
     margin-left: 50px
     margin-right: 50px
     margin-bottom: 20px
     color: #28292D
-    border: 1px #F2DCE0 solid
+    border: 1px $c-primary solid
 .planContent
     margin-left: 20px
     margin-right: 20px
