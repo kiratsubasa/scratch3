@@ -5,16 +5,16 @@ div#menuWrapper
         router-link#Lego(to='/' :style="{'background-image': 'url(' + iconSrc + ')'}")
         div.menuItem(v-for='item in menuList')
             router-link#menuItemLink(:to='item.link') {{item.title}}
-        .menuIconContainer(@click='drawerStatus = !drawerStatus')
+        div(@click='opentheDrawer()' :class="menuclassList")
             .menuIconBar1
             .menuIconBar2
             .menuIconBar3
         SearchBar.searchBar-Header(:searchPlaceholder='searchPlaceholder' :search-lists='searchLists')
-        
-    div.meunDrawer(v-if='drawerStatus')
-        div.drawerItem(v-for='item in menuList' @click='drawerStatus = !drawerStatus') 
-            #underline
-            router-link(:to='item.link' style="color: black; text-decoration: none;") {{item.title}}
+    transition(name="page" mode="out-in")
+        div#drawer(v-if="drawerStatus")
+            div.drawerItem(v-for='(item,i) in menuList' @click='drawerStatus = !drawerStatus') 
+                #underline
+                a(:href='item.link' style="color: black; text-decoration: none;") {{item.title}}
     
 
 </template>
@@ -22,6 +22,8 @@ div#menuWrapper
 
 <script>
 import SearchBar from './searchBar.vue'
+
+// import { buttonTransform } from '@/style/controller.js'
 export default {
     components: {
         SearchBar
@@ -31,11 +33,17 @@ export default {
         return {
             searchPlaceholder: "Search All",
             drawerStatus: false,
+            menuclassList: {
+                menuIconContainer: true,
+                change: false
+            }
         }
     },
-
     methods: {
-
+        opentheDrawer: function(){
+            this.drawerStatus = !this.drawerStatus;
+            this.menuclassList.change = !this.menuclassList.change;
+        }
     }
 }       
 </script>

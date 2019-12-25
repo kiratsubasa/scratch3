@@ -2,7 +2,7 @@
 // $c-secondary: #D1B1B4
 // $c-bg: #fff
 $c-primary: #FEF6F1
-$c-secondary: #FEDD74
+$c-secondary: #FEF6F1
 $c-bg: #fff
 
 #app
@@ -56,19 +56,39 @@ $c-bg: #fff
     margin-right: 10px
     position: relative
     border-radius: 25px
+.change .menuIconBar1
+    opacity: 0
+    
+.change .menuIconBar2 
+    -webkit-transform: rotate(-405deg) translate(-9px, 6px)
+    transform: rotate(-405deg)
+
+.change .menuIconBar3 
+    -webkit-transform: rotate(225deg) 
+    transform: rotate(225deg) translate(8px, 8px)
+    transition-delay: 0.2s
+
+
 .menuIconContainer
     cursor: pointer
-    
 
+@keyframes drawerOpen
+    from
+        height: 0
+    
+    to
+        height: 450px
+    
+#drawer
+    animation-name: drawerOpen
+    animation-duration: 2s
+    height: 0
+    
 .drawerItem
     padding: 10px
-    position: relative
-    overflow: hidden
     cursor: pointer
-.drawerItem:hover
-    // background: $c-secondary
-    position: relative
-    transition: all .45s ease-Out
+
+
 #underline
     width: 100%
     height: 2.5px
