@@ -3,7 +3,7 @@
     .PathText 你的位置 : 首頁 > {{pageTitle}}
     router-view(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder'  :type-list='typeList')
     //- newsList(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type='type')
-    //- newsListinArticle(v-if="this.$route.path!='/newsPage'" :article-list='articleList' :page-title='pageTitle')
+    newsListinArticle(v-if="this.$route.path!='/newsPage'" :article-list='articleList' :page-title='pageTitle')
 </template>
 <script src="/js/vue.js"></script>
 <script src="/js/vue-resource.js"></script>

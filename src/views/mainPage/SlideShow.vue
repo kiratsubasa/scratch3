@@ -21,6 +21,7 @@ div#slideshow-container
 
 <script>
 var slideIndex = 1;
+var slide;
 export default {
 
     data() {
@@ -79,7 +80,10 @@ export default {
         }
     },
     created() {
-        setInterval(() => this.plusSlides(1), 10000);
+        slide = setInterval(() => this.plusSlides(1), 10000);
+    },
+    beforeDestroy(){
+        clearInterval(slide);
     }
 }       
 </script>
@@ -129,43 +133,6 @@ export default {
     animation-duration: 2s
     animation-timing: ease-in-out
     animation-delay: 0.4s
-
-.prevBut
-    cursor: pointer
-    position: absolute
-    top: 85%
-    left: 0px
-    width: auto
-    padding: 20px
-    color: white
-    font-weight: bold
-    font-size: 50px
-    transition: 0.6s ease
-    border-radius: 50px
-    user-select: none
-    -webkit-filter: drop-shadow(7px 7px 2px rgba(0, 0, 0, 0.3))
-    filter: drop-shadow(7px 7px 2px rgba(0, 0, 0, 0.3))
-
-.nextBut
-    cursor: pointer
-    position: absolute
-    top: 85%
-    left: 65%
-    width: auto
-    padding: 20px
-    color: white
-    font-weight: bold
-    font-size: 50px
-    transition: 0.6s ease
-    border-radius: 50px
-    user-select: none
-    -webkit-filter: drop-shadow(7px 7px 2px rgba(0, 0, 0, 0.3))
-    filter: drop-shadow(7px 7px 2px rgba(0, 0, 0, 0.3))
-
-
-
-.prevBut:hover, .nextBut:hover
-    border: 1px $c-secondary solid
 
 
 .dot
