@@ -4,6 +4,7 @@
     transition(name="page" mode="out-in")
         router-view(:key='$route.path')
     Footer(:foot-list="footList" :footMenuList="footMenuList")
+    
 </template>
 
 <script src="/js/vue.js"></script>
@@ -73,7 +74,8 @@ html, body
     height: 100%
     text-align: center
     cursor: default  
-    
+
+
 div
     // border: 1px #FFAC55 solid
 
