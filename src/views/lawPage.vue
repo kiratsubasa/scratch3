@@ -223,32 +223,6 @@ export default {
 
 <style lang="sass">
 @import "@/style/common.sass"
-.BookMarkContainer
-    border-radius: 5px
-    width: 220px
-    margin: 30px
-    display: inline-block
-    // background-color: $c-primary
-    
-.BookMarkContentContainer
-    float: left
-    margin: 30px
-    display: inline-block
-    max-width: 720px
-    height: auto
-    
-.BookMarkPageContainer
-    border: 1px $c-primary solid
-    margin: auto
-    // margin-bottom: 10px
-    max-width: 1080px
-    min-height: 1080px
-@media all and (min-width: 375px)
-    .BookMarkContainer
-        float: left
 
-@media all and (max-width: 375px)
-    .BookMarkContainer
-        float: center
 </style>
 
