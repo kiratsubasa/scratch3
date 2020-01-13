@@ -89,7 +89,7 @@ export default {
             }
         },
         changePath: function(idx){
-            this.$route.push({ path: this.theArticleList[idx].link})
+            this.$router.push({ path: this.theArticleList[idx].link})
         },
         searchInit: function(){
             if(this.$route.query.search)

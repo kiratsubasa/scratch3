@@ -16,6 +16,8 @@
                         .ListTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
                             .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
                             .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
+                            div#downloadBtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile")
+                                a#myhref(:href='theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
     
         a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
         a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}

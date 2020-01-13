@@ -89,6 +89,7 @@ h1,h2,h3,p,span
     background-color: $c-secondary
     padding: 5px
     margin: 15px
+    text-align: center
     border-radius: 20px
     -webkit-box-shadow: 0px 6px 8px -4px rgba(0,0,0,0.43)
     box-shadow: 0px 6px 8px -4px rgba(0,0,0,0.43)

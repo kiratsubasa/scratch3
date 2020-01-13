@@ -30,9 +30,9 @@ export default {
                         title: '趙惠玲', 
                         staffTitle: ' 臺北市立大學視覺藝術學系專任教授',
                         content: {
-                            video:[""],
+                            phone:"0955845671",
                             link:[''],
-                            src:[''],
+                            email:'jdfjhw@gmail.com',
                         text: ["《學、經歷》","美國賓州州立大學哲學博士","國立臺灣師範大學美術系專任講師","國立臺灣師範大學美術系副教授","臺北市立教育大學兼任教授","國立臺北教育大學兼任教授","國立臺灣師範大學教學發展中心主任","國立臺灣師範大學副教務長","十二年國民教育藝術領域課程綱要副召集人","","《研究專長》","藝術教育理論與實務","視覺文化研究","性別研究","《學、經歷》 ","美國華盛頓大學(西雅圖)哲學博士",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/63/cover_8622623.jpg",
@@ -41,9 +41,9 @@ export default {
                         title: '黃純敏', 
                         staffTitle: ' 國立臺灣師範大學藝術學院院長暨美術學系專任教授',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["國立臺灣師範大學教育學系《教育研究集刊》課程與教學領域責任編輯 ","國立臺灣師範大學教務處企劃組組長","國立臺灣師範大學教育學系課程與教學學群召集人 ","國立臺灣師範大學教育學系課程委員會召集人","《研究專長》 ","多元文化課程與教學研究","教育人類學研究 ","課程比較研究","質性研究","多元文化教育",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/61/cover_20140913213622.jpg",
@@ -52,9 +52,9 @@ export default {
                         title: '林小玉', 
                         staffTitle: ' 國立臺灣師範大學教育學系暨課程與教學研究所教授',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》","美國伊利諾大學香檳分校課程與教學哲學博士","臺北市立大學音樂學系系主任","","《研究專長》","音樂教育理論與實務","聽覺音樂媒體設計與製作","電腦輔助音樂教學","藝術與人文教材教法","音樂基礎訓練","鋼琴教學","《學、經歷》 ","澳大利亞國家大學藝術學院哲學博士","12年國民基本教育藝術領域課綱研修委員","教育部國教署課程與教學輔導群藝術領域北區召集人","技術型高中一般科目暨藝術群科中心委員","教育部國教署教學正常化委員","臺北市立大學音樂學系兼任副教授","中國文化大學戲劇學系兼任助理教授","國立臺東大學兒童文學研究所助理教授 ","國立臺南大學幼兒教育學系、戲劇創作與應用學系兼任講師 ","國立屏東教育大學視覺藝術學系兼任講師 ",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/60/cover_Image_a2c6e33.jpg",
@@ -63,9 +63,9 @@ export default {
                         title: '李其昌', 
                         staffTitle: ' 臺北市立大學人文藝術學院院長暨音樂學系專任教授',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《研究專長》 ","表演藝術教材教法 ","表導演專題研究 ","兒童戲劇 ","創作性戲劇 ","戲劇教育史","《學、經歷》 ","美國賓州州立大學哲學博士","臺北市立大學視覺藝術學系主任暨所長","世界藝術教育學會(InSEA)財務長",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/149/cover_____054___.jpg",
@@ -74,9 +74,9 @@ export default {
                         title: '高震峰', 
                         staffTitle: ' 國立臺灣藝術大學藝術與人文教學研究所專任副教授',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《研究專長》 ","藝術教育、數位視覺文化、數位藝術","《學、經歷》 ","美國賓州州立大學音樂教育博士(Ph.D.)","東海大學聲樂演唱碩士","臺中教育大學精緻師資培育計畫「藝術與人文」學習領域研究室主持人",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/78/cover____.JPG",
@@ -85,9 +85,9 @@ export default {
                         title: '莊敏仁', 
                         staffTitle: ' 臺北市立大學視覺藝術學系專任教授',
                         content: {
-                            video:[""],
+                            phone:[""],
                             link:[''],
-                            src:[''],
+                            email:[''],
                         text: ["《研究專長》","音樂教學、合唱教學、音樂學習評量、音樂課程設計、聲樂教學","師資培育、兒童歌唱教學、音樂思考、檔案評量",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/24/cover____.jpg",
@@ -96,9 +96,9 @@ export default {
                         title: '陳韻文', 
                         staffTitle: ' 計畫專任助理',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》","英國華威大學University of Warwick戲劇教育哲學博士 (PhD.)","國立臺灣大學戲劇研究所碩士 (MA)","國立臺灣大學外國語文學系學士","國立臺灣大學輔系人類學系 (BA)","《研究專長》","教育戲劇、戲劇課程設計與教學、多元智慧與多元感官教學、西洋戲劇與劇場史"] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/124/cover____1.jpg",
@@ -107,9 +107,9 @@ export default {
                         title: '陳淳迪', 
                         staffTitle: ' 國立臺灣藝術大學藝術與人文教學研究所兼任副教授',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》 ","Ph.D. in Visual &amp; Information, Coventry University ","《研究專長》 ","消費性設計，使用性分析、數位與協同設計，設計溝通、數位學習，設計教學",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/5/cover____1.jpg",
@@ -118,9 +118,9 @@ export default {
                         title: '林芸安', 
                         staffTitle: ' 國立臺北教育大學藝術與造型設計學系教授',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》","國立臺北藝術大學美術學院西洋藝術史碩士","《研究專長》","美學理論、19世紀西洋藝術",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/606/cover__.jpg",
@@ -129,9 +129,9 @@ export default {
                         title: '黃宥嘉', 
                         staffTitle: ' 計畫專任助理',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》","臺北市立大學視覺藝術研究所","《研究專長》","文化研究、當代藝術",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/607/cover____.jpg",
@@ -140,9 +140,9 @@ export default {
                         title: '張芝榕', 
                         staffTitle: ' 計畫專任助理',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》","國立彰化師範大學美術學系研究所碩士","《研究專長》","藝術創作、策展實務",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/609/cover____.jpg",
@@ -151,9 +151,9 @@ export default {
                         title: '吳宥徵', 
                         staffTitle: ' 計畫專任助理',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》","國立臺灣師範大學社會教育所碩士","《研究專長》","社會教育、文化研究",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/585/cover____.jpg",
@@ -162,9 +162,9 @@ export default {
                         title: '邱鈴惠', 
                         staffTitle: '',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》 ","國立臺灣師範大學美術學系研究所研究生","《研究專長》 ","美術教育"] }
                     },]
                 },
@@ -178,9 +178,9 @@ export default {
                         title: '潘麗珠', 
                         staffTitle: ' 國立台灣師範大學助理教授',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》","國立臺灣師範大學文學博士","國立臺灣師範大學國文研究所碩士","國立臺灣師範大學國文系學士",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/605/cover____.png",
@@ -200,9 +200,9 @@ export default {
                         title: '潘宇文', 
                         staffTitle: ' 國立台灣師範大學優聘教授',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學術專長》","科技教育、技術創造力、多媒體設計",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/592/cover____.jpg",
@@ -211,9 +211,9 @@ export default {
                         title: '張永達', 
                         staffTitle: ' 國立臺灣師範大學音樂學系暨研究所副教授',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》 ","美國俄亥俄州立大學(The Ohio State University)音樂教育博士","美國俄亥俄州立大學(The Ohio State University)音樂教育碩士","國立台灣師範大學音樂系聲樂組學士",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/602/cover__.jpg",
@@ -233,9 +233,9 @@ export default {
                         title: '賴以威', 
                         staffTitle: ' 台灣師範大學副教授',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》 ","維也納大學奧地利植物學 博士","《研究領域》","生態學、植物生理學、生物教育、生物顯微技術學",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/76/cover____1.jpg",
@@ -244,9 +244,9 @@ export default {
                         title: '張連強', 
                         staffTitle: '',
                         content: {
-                            video:[""],
+                            phone:["0955845671"],
                             link:[''],
-                            src:[''],
+                            email:['jdfjhw@gmail.com'],
                         text: ["《學、經歷》 ","國立中央大學中文系戲曲組博士",] }
                     },{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/591/cover____.jpg",

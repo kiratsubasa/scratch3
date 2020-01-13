@@ -33,19 +33,19 @@ export default {
                 {title: '最新消息',link: '/newsPage/最新消息'},
                 {title: '法規與政策',link: '/lawPage/mark1'},
                 {title: '計畫簡介',link: '/planIntro'},
-                // {title: '教學資源',link: '/tutorialPage/mark1'},
+                {title: '教學資源',link: '/tutorialPage/mark1'},
                 {title: '成果專區',link: '/resultPage/成果專區'},
                 {title: '美感人才',link: '/staffPage/mark1?markIndex=0'},
                 {title: '活動報名',link: '/activityPage/活動報名'},
-                {title: '網網相連',link: '/otherWeb'}
+                {title: '網網相連',link: '/otherWeb/1'}
             ],
             footMenuList: [
                 {title: '聯繫與服務',link: '/contectPage'},
-                {title: '常見問題',link: '/QA'},
+                {title: '常見問題',link: '/QA/j'},
                 {title: '網站地圖',link: '/webTreePage'},
-                // {title: '問卷調查',link: '/questionnairePage/card'},
-                // {title: '出版刊物',link: '/publishPage/card'},
-                // {title: '會議記錄',link: '/recordPage'} 
+                {title: '問卷調查',link: '/questionnairePage/card'},
+                {title: '出版刊物',link: '/publishPage/card'},
+                {title: '會議記錄',link: '/recordPage'} 
             ],
         } 
     },

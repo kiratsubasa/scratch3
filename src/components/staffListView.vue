@@ -9,6 +9,11 @@
                 .staffListContentBlock
                     .staffListTitle {{bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].title}}
                     .staffListTitle {{bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].staffTitle}}
+                    .communicate
+                        img(src="../assets/call_end-24px.svg" v-if="bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].content.phone") 
+                        span {{bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].content.phone}}
+                        img(src="../assets/mail_outline-24px.svg" v-if="bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].content.email") 
+                        span {{bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].content.email}}
                     .staffListContent(v-for="text in bookmarkList.articleList[idx+(currentPage-1)*pageDataNum-1].content.text") {{text}}
 
         a#myhref.pageBtn(href="#").firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
@@ -20,6 +25,7 @@
 </template>
 
 <script>
+
 export default {
     
     props: ['bookmark-list','page-title'],
@@ -98,7 +104,8 @@ export default {
     width: 50%
     padding: 2px
     padding-left: 5px
-
+.communicate
+    margin: 5px
 
 </style>
 

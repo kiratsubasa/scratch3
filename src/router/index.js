@@ -57,8 +57,7 @@ export default new Router({
             path: '/lawPage',
             component: lawPage,
             children: [
-                {path: 'mark:mark',component: ListTextonly},
-                {name: 'law',path: 'law:id',component: article}
+                {path: 'mark:mark',component: ListTextonly}
             ]
           },
           {
@@ -66,11 +65,11 @@ export default new Router({
             component: planIntro,
           },
           {
-            path: '/otherWeb',
-            component: otherWeb,
+            path: '/otherWeb/:id',
+            component: otherWeb
           },
           {
-            path: '/QA',
+            path: '/QA/:id',
             component: QA,
           },
           {
@@ -93,7 +92,7 @@ export default new Router({
             component: tutorialPage,
             children: [
                 {path: 'tutorial:id',component: article},
-                {path: 'mark:id',component: cardView}
+                {path: ':id',component: ListView}
             ]
           },
           {
