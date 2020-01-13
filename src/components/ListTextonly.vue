@@ -23,7 +23,7 @@ export default {
         var pathIdx = this.bookmarkList.findIndex(function(item){
             return item.link.includes(path);         
             });
-        this.articleListIdx =pathIdx;
+        this.articleListIdx = pathIdx;
     },
     methods: {
         changeStatus:function(status){

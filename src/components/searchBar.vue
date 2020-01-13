@@ -4,12 +4,12 @@
         input.search(type='text' :placeholder='searchPlaceholder' v-model='searchQuery' @keyup.enter="search")
         button.searchButton(v-on:click="isHidden=false" @click="search")
             i.mdi.mdi-magnify(aria-hidden='true')
-        .search-previewBlock(v-if='searchStatus')
+        .search-previewBlock
             .search-preview(v-if="searchQuery" v-for='(item,index) in filteredResources' :key="index")
                         md-card(md-with-hover='' )
                             md-ripple
                                 a#myhref(:href='item.link')
-                                    md-card-header()
+                                    md-card-header
                                         .sm-title {{item.title}}
 
 

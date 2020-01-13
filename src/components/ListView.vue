@@ -15,7 +15,7 @@
                                     router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='typ in theArticleList[idx+(currentPage-1)*pageDataNum-1].type' :key='typ' :to="'/newsPage/'+typ") {{typ}} 
                         .ListTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
                             .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
-                            .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
+                            //- .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
                             div#downloadBtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile")
                                 a#myhref(:href='theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
     
