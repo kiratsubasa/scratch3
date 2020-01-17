@@ -1,15 +1,13 @@
 // $c-primary: #F2DCE0
 // $c-secondary: #D1B1B4
 // $c-bg: #fff
-$c-primary: #FEF6F1
-$c-secondary: #f0c0a2
-$c-bg: #fff
+$c-primary: #B5CAA0
+$c-secondary: #646A58
+$textC-secondary: #FFFFFFaa
+$c-bg: #eee
 
 #app
     background-color: $c-bg
-.router-link-active
-    background-color: $c-primary
-    color: #FFF
 
 #menuWrapper
     padding-bottom: 5px
@@ -20,6 +18,17 @@ $c-bg: #fff
     justify-content: flex-end
     padding: 10px
     padding-top: 10px
+
+.router-link-exact-active.router-link-active
+    background-color: $c-primary
+    padding: 5px
+
+#myhref
+    text-decoration: none
+    color: #333
+#sehref
+    color: $textC-secondary
+    text-decoration: none
 
 @media all and (min-width: 1024px)
     .menuItem
@@ -115,25 +124,25 @@ $c-bg: #fff
 .footerContainer
     width: 100%
     background-color: $c-secondary
+    color: $textC-secondary
     
 #footer
     bottom: 0
     // width: 60%
-    color: #333
     text-align: left
     padding: 20px
     display: flex
     flex-wrap: wrap
-    // justify-content: center
     margin: auto
 
 @media all and (min-width: 640px)
     .footContainer
         width: 45%
-        margin-left: 20px
-        border-left: 1px #777 solid
+        margin-left: 20%
+        padding: 10px
+        border-left: 1px $textC-secondary solid
     .footLinkContainer
-        border-left: 1px #777 solid
+        border-left: 1px $textC-secondary solid
         border-bottom: 0
 
 @media all and (max-width: 640px)
@@ -147,12 +156,12 @@ $c-bg: #fff
 .footContainer
     display: flex
     flex-wrap: wrap
-    justify-content: center
     
 .footLinkContainer
-    text-align: center
+    // text-align: center
     margin-bottom: 30px
     padding: 10px
+    background-color: $textC-secondary
     
 .footLink.footerItems
     margin: 10px
@@ -183,10 +192,12 @@ $c-bg: #fff
     // font-size: 30px
     // font-weight: normal
     width: 1000px
-.listPageContent
+.listPageContent,.BookMarkPageContainer
     max-width: 1280px
     margin: auto
     padding: 50px
+
+
 .searchBar-list
     margin: 0px
 
@@ -204,6 +215,7 @@ $c-bg: #fff
 .Listhead
     // border: 1px #000 solid
     background-color: $c-primary
+    border-right: 1px $c-primary solid
     width: 230px
 .ListImage
     width: 210px
@@ -223,14 +235,14 @@ $c-bg: #fff
     justify-content: center
 .ListTypeBlock
     margin: 5px
-    padding: 2px
-    font-size: 0.6em
-    border: 1px $c-bg solid
+    padding: 5px
+    font-size: 10px
+    border: 1px $c-primary solid
     border-radius: 5px
     text-align: center
 .ListTypeBlock:hover
     background-color: $c-bg
-    padding: 5px
+    // padding: 5px
     
 .ListTitle
     font-size: 1.2em
@@ -238,8 +250,11 @@ $c-bg: #fff
     margin: 10px
 .ListContent
     overflow: hidden
-    white-space: nowrap
     text-overflow: ellipsis
+    display: -webkit-box
+    -webkit-box-orient: vertical
+    -webkit-line-clamp: 2
+    line-height: 2em
     font-size: 1em
     margin: 20px
     margin-top: 30px
@@ -253,6 +268,45 @@ $c-bg: #fff
     padding: 3px
     -webkit-box-shadow: 0px 0px 4px -1px rgba(0,0,0,0.3)
     box-shadow: 0px 0px 4px -1px rgba(0,0,0,0.3)
+
+.BookMarkContainer
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex
+    padding: 10px
+    margin: 10px
+    border: 1px #00000033 solid
+#BookMarkRouter
+    text-align: left
+    margin: 10px
+    line-height: 30px
+    color: #444
+    text-decoration: none
+    transition: .01s
+    transition-timing-function: ease
+    padding-left: 10px
+    padding-right: 10px
+    clip-path: polygon(5px 0, 100% 0, 99% 100%, 0% 100%)
+
+#downloadBtn
+    color: $textC-secondary
+    width: 100px
+    border: 1px $c-secondary solid
+    background-color: $c-secondary
+    padding: 5px
+    margin: 15px
+    text-align: center
+    border-radius: 20px
+    -webkit-box-shadow: 0px 6px 8px -4px rgba(0,0,0,0.43)
+    box-shadow: 0px 6px 8px -4px rgba(0,0,0,0.43)
+    &:hover
+        background-color: $c-primary
+        width: 110px
+
+#hashTag
+    margin: 5px
+    color: #ad2f5d
+    font-size: 1em
 
 // search-input
 .search

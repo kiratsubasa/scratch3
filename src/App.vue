@@ -92,9 +92,7 @@ body
     position: absolute
     left: 10px
     top: 10px
-#myhref
-    text-decoration: none
-    color: #333
+
 .PathText
     text-align: left
     padding: 20px

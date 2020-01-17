@@ -15,9 +15,9 @@
                                     router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='typ in theArticleList[idx+(currentPage-1)*pageDataNum-1].type' :key='typ' :to="'/newsPage/'+typ") {{typ}} 
                         .ListTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
                             .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
-                            //- .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
+                            .ListContent {{stripHTML(theArticleList[idx+(currentPage-1)*pageDataNum-1].content.articleContent)}}
                             div#downloadBtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile")
-                                a#myhref(:href='theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
+                                a#sehref(:href='theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
     
         a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
         a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
@@ -84,6 +84,13 @@ export default {
             this.currentPage = this.$route.query.page;
     },
     methods: {
+        stripHTML: function(input) {
+            var output = '';
+            if(typeof(input)=='string'){
+                var output = input.replace(/(<([^>]+)>)/ig,"");
+            }
+            return output;
+        },
         pageInit: function(){
             this.totalPage = Math.ceil(this.theArticleList.length/this.pageDataNum);
         },

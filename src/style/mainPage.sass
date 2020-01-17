@@ -22,7 +22,10 @@
     
 @media all and (min-width: 0px)
     .midImageBlock
-        height: 300px
+        width: 100%
+        
+    .contentBlock-3
+        width: 100%
 
     .contentBlock-1,.contentBlock-4
         justify-content: center
@@ -75,6 +78,7 @@
         animation-delay: 0.6s
     .midImageBlock
         justify-content: center
+        margin: 10px
 
 
 .imageBlock
@@ -90,7 +94,7 @@
 
 .midImageBlock
     margin-top: 10px
-    margin: 10px
+    margin-bottom: 10px
     line-height: 400px
     color: white
     font-size: 0em
@@ -146,10 +150,10 @@
     top: 24px
     height: 15px
     width: 120px
-    // background-color: #D1B1B4
-    border: 1px $c-secondary solid
-    border-radius: 50px
+    background-color: $c-secondary
+    opacity: 0.4
     -webkit-filter: drop-shadow(7px 7px 2px rgba(0, 0, 0, 0.2))
     filter: drop-shadow(7px 7px 2px rgba(0, 0, 0, 0.2))
+    clip-path: polygon(5px 0, 121px 0, 115px 100%, 0% 100%)
     z-index: -1 
     

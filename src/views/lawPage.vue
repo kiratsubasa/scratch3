@@ -3,7 +3,8 @@
     .PathText 你的位置 : 首頁 > {{pageTitle}} 
     
     .BookMarkPageContainer
-        .BookMarkContainer(v-if='bookMarkShow')
+        SearchBar(:search-placeholder="searchPlaceholder" :search-lists="searchLists")
+        .BookMark(v-if='bookMarkShow')
             ListwithBookMark(:mark-index='markIndex' :bookmark-list='bookmarkList' :search-placeholder='searchPlaceholder' :search-lists="searchLists")
         .BookMarkContentContainer
             router-view(:bookmark-list='bookmarkList' :articleList='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder')
@@ -12,9 +13,11 @@
 
 <script>
 import ListwithBookMark from '@/components/ListwithBookMark'
+import SearchBar from '@/components/searchBar.vue'
 export default {
     components: {
-        ListwithBookMark
+        ListwithBookMark,
+        SearchBar
     },
     data() {
         return {

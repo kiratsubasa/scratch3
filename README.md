@@ -30,7 +30,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ### Data Type
-#### mainPage
+#### App.vue
+```
 {
     footList: [
         {title: '',link:''}
@@ -40,25 +41,31 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     ],
     footMenuList: [
         {title: '',link: ''}
-    ]
+    ],
+    iconSrc: ""
 }
+```
 #### newsPage
+```
 {
-    pageTitle: "",
-    searchPlaceholder: "",
-    articleList: [
-        {
-            title: '', 
-            link: '',
-            src:'',
-            type: '',
-            content: {
-                video:[""],
-                link:[''],
-                src:[''],
-                text: [""]
-            }
-        }
-    ]
+    pageTitle: "最新消息",
+            type: ["最新消息"],
+            typeList: ['最新消息','跨域薈萃',' 視覺藝術'],
+            searchPlaceholder: "關鍵字",
+            articleList: [{
+                src:"",
+                type: ['',''],
+                title: '', 
+                link: '',
+                content: {
+                    video:[""],
+                    hashTag: ['',''],
+                    downloadFile: '',
+                    downloadText: '',
+                    src:["'],
+                    articleContent: '' 
+                }
+            }]
 }
+```
 #### 
