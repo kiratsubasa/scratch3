@@ -6,18 +6,19 @@
         .markBlockContainer
             router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="typ") {{typ}}
         transition-group(name="staggered-fade" tag="ul" v-bind:css="false" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave")
-            .List(v-for="idx in pageDataNum" v-bind:key="idx" v-bind:data-index="idx")
+            .List(v-for="idx in pageDataNum" :key="idx" :data-index="idx")
                 .Listbtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")
                     .ListContainer
                         .Listhead
-                            .ListImage(:style="{'background-image': 'url(' + theArticleList[idx+(currentPage-1)*pageDataNum-1].src + ')'}") 
+                            .ListImage(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1].media!=null" :style="{'background-image': 'url(' + theArticleList[idx+(currentPage-1)*pageDataNum-1].media.info.src + ')'}") 
                             .listTypeContainer
-                                    router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='typ in theArticleList[idx+(currentPage-1)*pageDataNum-1].type' :key='typ' :to="'/newsPage/'+typ") {{typ}} 
+                                    router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in theArticleList[idx+(currentPage-1)*pageDataNum-1].categories' :key='t' :to="'/newsPage/'+typ") {{typ.name}} 
                         .ListTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
                             .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
-                            .ListContent {{stripHTML(theArticleList[idx+(currentPage-1)*pageDataNum-1].content.articleContent)}}
-                            div#downloadBtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile")
-                                a#sehref(:href='theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
+                            .ListContent {{stripHTML(theArticleList[idx+(currentPage-1)*pageDataNum-1].body)}}
+                            .dateNote 更新日期 {{theArticleList[idx+(currentPage-1)*pageDataNum-1].updated_at.split("T")[0]}}
+                            //- div#downloadBtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile")
+                            //-     a#sehref(:href='theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
     
         a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
         a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
@@ -31,11 +32,12 @@
 
 <script>
 import SearchBar from '@/components/searchBar.vue'
+import { ListArticles } from '@/api/Articles';
 export default {
     components: {
         SearchBar
     },
-    props: ['article-list','page-title','search-placeholder','typeList'],
+    props: ['page-title','search-placeholder','typeList'],
     data() {
         return {
             pageDataNum: 8,
@@ -56,13 +58,13 @@ export default {
             this.$router.push({query: {page: page} });
             window.scrollTo(0,0);
         },
-        selectedQuery: function(query) {
-            this.theArticleList = this.articleList.filter((item)=>{
-                return item.type.includes(query);
-            })
-        },
+        // selectedQuery: function(query) {
+        //     this.theArticleList = this.articleList;
+        // },
         searchQuery: function(query){
-            this.theArticleList = this.articleList.filter((item)=>{
+            // if(query==null)
+            //     return
+            this.theArticleList = Object.values(this.theArticleList).filter((item)=>{
                 if(item.title.includes(query)){
                     this.searchStatus = true;
                     return item.title.includes(query);
@@ -76,18 +78,31 @@ export default {
             this.searchInit();
         }
     },
-    beforeMount(){
+    created() {
+        this.ApiListArticles(2);
+    },
+    mount(){
         this.searchInit();
         this.pageInit();
-        this.selectedQuery = this.$route.params.id;
-        if(this.$route.query.page)
-            this.currentPage = this.$route.query.page;
+        // this.selectedQuery = this.$route.params.id;
+        // if(this.$route.query.page)
+            // this.currentPage = this.$route.query.page;
     },
     methods: {
+        ApiListArticles(id) {
+            ListArticles(id)
+                .then(response => {
+                    this.theArticleList= response.data;
+                })
+                .catch(err => {
+                console.log(err);
+            });
+        },
         stripHTML: function(input) {
             var output = '';
             if(typeof(input)=='string'){
                 var output = input.replace(/(<([^>]+)>)/ig,"");
+                output = output.replace(/&nbsp;/ig, "");
             }
             return output;
         },
@@ -103,9 +118,11 @@ export default {
             }
         },
         changePath: function(idx){
-            this.$router.push({ path: this.theArticleList[idx].link})
+            console.log(this.theArticleList[idx].id);
+            this.$router.push({ path: '/NA1/'+this.theArticleList[idx].id})
         },
         searchInit: function(){
+            console.log(this.$route.query.search)
             if(this.$route.query.search)
                 this.searchQuery = this.$route.query.search;
             else

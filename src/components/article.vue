@@ -1,15 +1,16 @@
 <template lang="pug">
 #newsApp
-    h1.articlePageTitle {{articleList[articleIndex].title}}
-    .articlePageJumpbar(v-if='articleList[articleIndex].src' :style="{'background-image': 'url(' + articleList[articleIndex].src + ')'}")
-    .HTMLContainer(v-html="articleList[articleIndex].content.articleContent")
-    div#downloadBtn(v-if="articleList[articleIndex].content.downloadFile")
-        a#sehref(:href='articleList[articleIndex].downloadFile' download) {{articleList[articleIndex].content.downloadText}}
-    h1.articlePageTitle(v-if='articleList[articleIndex].content.video') 精彩影音
-    diolog.articlePageVideoPlayer(v-if='articleList[articleIndex].content.video' :article-list='articleList[articleIndex]')
+    h1.articlePageTitle {{data.title}}
+    .articlePageJumpbar(v-if='data.media' :style="{'background-image': 'url(' + data.media.info.src + ')'}")
+    .HTMLContainer(v-html="data.body")
+    //- div#downloadBtn(v-if="articleList[articleIndex].content.downloadFile")
+    //-     a#sehref(:href='articleList[articleIndex].downloadFile' download) {{articleList[articleIndex].content.downloadText}}
+    //- h1.articlePageTitle(v-if='articleList[articleIndex].content.video') 精彩影音
+    //- diolog.articlePageVideoPlayer(v-if='articleList[articleIndex].content.video' :article-list='articleList[articleIndex]')
     div
-        a#hashTag(v-for='tag in articleList[articleIndex].content.hashTag') &#35;{{tag}}
-    
+        a#hashTag(v-for='tag in data.tags') &#35;{{tag.name}}
+    .dateNote 發布日期 {{data.created_at.split("T")[0]}}
+    .dateNote 更新日期 {{data.updated_at.split("T")[0]}}
     
     //- h1.articlePageTitle(v-if='articleList[articleIndex].content.video') 精彩影音
     //- diolog.articlePageVideoPlayer(v-if='articleList[articleIndex].content.video' :article-list='articleList[articleIndex]')
@@ -18,6 +19,7 @@
 
 <script>
 import diolog from '@/components/diolog.vue'
+import { GetArticle } from '@/api/Articles';
 export default {
     props: ['page-title','search-placeholder','articleList'],
     components: {
@@ -25,19 +27,23 @@ export default {
     },
     data() {
         return {
-            articleIndex: 0,
+                data: ''
             }
     },
-    methods: {
+    created() {
+        var id = this.$route.params.id;
+        this.ApiListArticles(id);
     },
-    
-    mounted(){
-        var temp = this.$route.params.id;
-        var pathIdx = this.articleList.findIndex(function(item){
-            return item.link.includes(temp);         
+    methods: {
+        ApiListArticles(id) {
+            GetArticle(id)
+                .then(response => {
+                    this.data= response.data;
+                })
+                .catch(err => {
+                console.log(err);
             });
-        this.articleIndex = pathIdx;
-        
+        },
     }
 }
 
@@ -86,4 +92,6 @@ h1,h2,h3,p,span
 .HTMLContainer
     max-width: 1080px
     margin: auto
+.dateNote
+    text-align: right
 </style>

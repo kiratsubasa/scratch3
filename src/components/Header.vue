@@ -4,17 +4,17 @@ div#menuWrapper
     div#menuBar
         router-link#Lego(to='/' :style="{'background-image': 'url(' + iconSrc + ')'}")
         div.menuItem(v-for='item in menuList')
-            router-link#menuItemLink(:to='item.link') {{item.title}}
+            router-link#menuItemLink(:to='"/NL1/"+item.name') {{item.name}}
         div(@click='opentheDrawer()' :class="menuclassList")
             .menuIconBar1
             .menuIconBar2
             .menuIconBar3
-        SearchBar.searchBar-Header(:searchPlaceholder='searchPlaceholder' :search-lists='searchLists')
+        //- SearchBar.searchBar-Header(:searchPlaceholder='searchPlaceholder' :search-lists='searchLists')
     transition(name="page" mode="out-in")
         div#drawer(v-if="drawerStatus")
             div.drawerItem(v-for='(item,i) in menuList' @click='drawerStatus = !drawerStatus') 
                 #underline
-                a(:href='item.link' style="color: black; text-decoration: none;") {{item.title}}
+                a(:href='"/NL1/"+item.name' style="color: black; text-decoration: none;") {{item.name}}
     
 
 </template>

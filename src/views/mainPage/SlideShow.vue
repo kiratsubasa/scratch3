@@ -2,13 +2,13 @@
 div#slideshow-container
         .mySlides.mySlides1
             a(:href="jumpBar[0].link")
-                img#slideImg(:src="jumpBar[0].src")
+                img#slideImg(:src="jumpBar[0].media.info.src")
         .mySlides.mySlides2(v-for='(jumpImage,index) in jumpBar' v-if="index!=0 &&index!= jumpBar.length-1")
             a(:href="jumpImage.link")
-                img#slideImg(:src="jumpImage.src")
+                img#slideImg(:src="jumpImage.media.info.src")
         .mySlides.mySlides3
             a(:href="jumpBar[jumpBar.length-1].link")
-                img#slideImg(:src="jumpBar[jumpBar.length-1].src")
+                img#slideImg(:src="jumpBar[jumpBar.length-1].media.info.src")
         .slideTextBlock
             h1#slideTextBlockTitle {{jumpBar[slideIndex-1].title}}
             p {{jumpBar[slideIndex-1].subtitle}}
@@ -176,22 +176,12 @@ export default {
         opacity: 0
     to
         opacity: 1
-
-
-@media only screen and (max-width: 480px)
-    .prevBut, .nextBut, .text
-        font-size: 11px
-    #slideImg
-        width: 100%
-        height: 480px
-    .mySlides
-        width: 100%
-        height: auto
         
 @media only screen and (min-width: 480px)
     #slideImg
-        width: auto
-        height: auto
+        height: 100%
+        width: 100%
+        
     .mySlides
         width: 100%
         height: 750px

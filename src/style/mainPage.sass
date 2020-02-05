@@ -11,9 +11,10 @@
 
 .content
     display: flex
-    flex-flow: row wrap
+    flex-flow: wrap
     justify-content: center
-    
+    max-width: 1280px
+    margin: auto
 
 .contentBlock
     animation-name: entryBlock
@@ -27,7 +28,7 @@
     .contentBlock-3
         width: 100%
 
-    .contentBlock-1,.contentBlock-4
+    .contentBlock-1,.contentBlock-4,.contentBlock-2
         justify-content: center
         display: flex
         flex-flow: row wrap
@@ -42,7 +43,7 @@
         height: 430px
         margin: 10px
         justify-content: flex-end
-    .contentBlock-1 ,.contentBlock-3,.contentBlock-4
+    .contentBlock-1 ,.contentBlock-2,.contentBlock-3,.contentBlock-4
         padding: 0
         margin: 0
         list-style: none
@@ -54,6 +55,7 @@
         -webkit-flex-flow: row wrap
         align-content: center
         flex-flow: row wrap
+        
     .contentBlock-1 ,.contentBlock-3,.contentBlock-4,.contentBlock-2
         max-width: 600px
 

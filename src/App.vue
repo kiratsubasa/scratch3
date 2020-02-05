@@ -12,6 +12,7 @@
 <script>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import { ListMenus } from '@/api/Menu';
 export default {
     components: {
         Header,
@@ -29,39 +30,40 @@ export default {
                 {title: '電話:(03)5715131',link:''}
             ],
             iconSrc: 'https://www.aade.org.tw/website/wp-content/themes/twentyseventeen/img/logo.svg?v=1',
-            menuList: [
-                {title: '最新消息',link: '/newsPage/最新消息'},
-                {title: '法規與政策',link: '/lawPage/mark1'},
-                {title: '計畫簡介',link: '/planIntro'},
-                {title: '教學資源',link: '/tutorialPage/mark1'},
-                {title: '成果專區',link: '/resultPage/成果專區'},
-                {title: '美感人才',link: '/staffPage/mark1?markIndex=0'},
-                {title: '活動報名',link: '/activityPage/活動報名'},
-                {title: '網網相連',link: '/otherWeb/1'}
-            ],
+            menuList: '',
+            // menuList: [
+            //     {title: '最新消息',link: '/newsPage/最新消息'},
+            //     {title: '法規與政策',link: '/lawPage/mark1'},
+            //     {title: '計畫簡介',link: '/planIntro'},
+            //     {title: '教學資源',link: '/tutorialPage/mark1'},
+            //     {title: '成果專區',link: '/resultPage/成果專區'},
+            //     {title: '美感人才',link: '/staffPage/mark1?markIndex=0'},
+            //     {title: '活動報名',link: '/activityPage/活動報名'},
+            //     {title: '網網相連',link: '/otherWeb/1'}
+            // ],
             footMenuList: [
-                {title: '聯繫與服務',link: '/contectPage'},
-                {title: '常見問題',link: '/QA/j'},
-                {title: '網站地圖',link: '/webTreePage'},
-                {title: '問卷調查',link: '/questionnairePage/card'},
-                {title: '出版刊物',link: '/publishPage/card'},
-                {title: '會議記錄',link: '/recordPage'} 
+                // {title: '聯繫與服務',link: '/contectPage'},
+                // {title: '常見問題',link: '/QA/j'},
+                // {title: '網站地圖',link: '/webTreePage'},
+                // {title: '問卷調查',link: '/questionnairePage/card'},
+                // {title: '出版刊物',link: '/publishPage/card'},
+                // {title: '會議記錄',link: '/recordPage'} 
             ],
         } 
     },
-    beforeMount() {
-    },    
+    created() {
+        this.ApiListMenus(2);
+    },
     methods: {
-    //     submitForm () {
-    //     this.$ajax({
-    //     method: 'post',
-    //     url: '@/assets/data.json',
-    //     data: {
-    //         state: 'success',
-    //         info: 'result'
-    //     }
-    // })
-    // }
+        ApiListMenus(id) {
+            ListMenus(id)
+                .then(response => {
+                    this.menuList = response.data;
+                })
+                .catch(err => {
+                console.log(err);
+            });
+        }
     }
 }       
 </script>

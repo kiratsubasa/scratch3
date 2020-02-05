@@ -26,8 +26,16 @@ Vue.use(Router)
 export default new Router({
     routes:[
           {
-          path: '/',
-          component: mainPage,
+            path: '/',
+            component: mainPage,
+          },
+          {
+            path: '/NL1/:id',
+            component: newsPage,
+          },
+          {
+            path: '/NA1/:id',
+            component: article,
           },
           {
           path: '/newsPage',
