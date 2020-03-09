@@ -4,7 +4,7 @@
         SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='theArticleList')
         h1#listPageTitle {{pageTitle}}
         .markBlockContainer
-            router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="typ") {{typ}}
+            router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in tabs' :key='t' :to="typ") {{typ}}
         transition-group(name="staggered-fade" tag="ul" v-bind:css="false" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave")
             .List(v-for="idx in pageDataNum" :key="idx" :data-index="idx")
                 .Listbtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")
@@ -37,7 +37,7 @@ export default {
     components: {
         SearchBar
     },
-    props: ['page-title','search-placeholder','typeList'],
+    props: ['page-title','search-placeholder','tabs'],
     data() {
         return {
             pageDataNum: 8,
@@ -47,7 +47,9 @@ export default {
             prev: '上一頁',
             next: '下一頁',
             finalPage: '最末頁',
-            theArticleList: '',
+            theArticleList: [
+                {categories: [{name: ''}],tags: [{name: ''}],author: '',title: ''}
+            ],
             selectedQuery: '',
             searchStatus: false,
             searchQuery: ''
@@ -79,7 +81,7 @@ export default {
         }
     },
     created() {
-        this.ApiListArticles(2);
+        // this.ApiListArticles(2);
     },
     mount(){
         this.searchInit();

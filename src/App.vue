@@ -20,6 +20,17 @@ export default {
     },
     data() {
         return {
+            iconSrc: 'https://www.aade.org.tw/website/wp-content/themes/twentyseventeen/img/logo.svg?v=1',
+            menuList: [
+                {name: '最新消息',url: '/section/最新消息'},
+                {name: '法規與政策',url: ''},
+                {name: '計畫簡介',url: ''},
+                {name: '教學資源',url: ''},
+                {name: '成果專區',url: ''},
+                {name: '美感人才',url: ''},
+                {name: '活動報名',url: ''},
+                {name: '網網相連',url: ''}
+            ],
             footList: [
                 {title: '隱私權及安全政策',link:''},
                 {title: '網站資料開放宣告',link:''},
@@ -29,18 +40,6 @@ export default {
                 {title: '地址:30013新竹市光復路二段101號',link:''},
                 {title: '電話:(03)5715131',link:''}
             ],
-            iconSrc: 'https://www.aade.org.tw/website/wp-content/themes/twentyseventeen/img/logo.svg?v=1',
-            menuList: '',
-            // menuList: [
-            //     {title: '最新消息',link: '/newsPage/最新消息'},
-            //     {title: '法規與政策',link: '/lawPage/mark1'},
-            //     {title: '計畫簡介',link: '/planIntro'},
-            //     {title: '教學資源',link: '/tutorialPage/mark1'},
-            //     {title: '成果專區',link: '/resultPage/成果專區'},
-            //     {title: '美感人才',link: '/staffPage/mark1?markIndex=0'},
-            //     {title: '活動報名',link: '/activityPage/活動報名'},
-            //     {title: '網網相連',link: '/otherWeb/1'}
-            // ],
             footMenuList: [
                 // {title: '聯繫與服務',link: '/contectPage'},
                 // {title: '常見問題',link: '/QA/j'},
@@ -52,7 +51,7 @@ export default {
         } 
     },
     created() {
-        this.ApiListMenus(2);
+        // this.ApiListMenus(2);
     },
     methods: {
         ApiListMenus(id) {

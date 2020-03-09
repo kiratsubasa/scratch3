@@ -38,7 +38,13 @@ export default {
     },
     data() {
         return {
-            jumpBar: '',
+            jumpBar: [
+                {title:'Title1',sub_title:'Subtitle1',media:{info:{src:'//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'}}},
+                {title:'Title2',sub_title:'Subtitle2',media:{info:{src:'https://d2jcw5q7j4vmo4.cloudfront.net/Iqoa6agJVh_B6KXdj4HdrbWfJHEMvhZCeUwvpkDJsanXAcb4Ex2h4mOtirVhiEYxfuY=w1440-h620'}}},
+                {title:'Title3',sub_title:'Subtitle3',media:{info:{src:'https://i1.wp.com/www.playstationbit.com/wp-content/uploads/2020/01/Sky-Children-of-Light.jpg?fit=1200%2C675&ssl=1'}}},
+                {title:'Title4',sub_title:'Subtitle4',media:{info:{src:'https://lightww.com/wp-content/uploads/2018/07/sky-690293_960_720.jpg'}}},
+                {title:'Title5',sub_title:'Subtitle5',media:{info:{src:'https://www.vikingcruises.com/oceans/images/CC_STAR_Flam_Glacial_Cove_1680x716_tcm13-76657.jpg'}}}
+            ],
             
             newList: [
                 {src:'https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png',title: '五種生活美感實踐',link: '/resultPage/result1'},

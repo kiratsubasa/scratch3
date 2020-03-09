@@ -1,8 +1,8 @@
 <template lang="pug">
 #app
     .PathText 你的位置 : 首頁 > {{pageTitle}}
-    router-view(:page-title='pageTitle' :search-placeholder='searchPlaceholder'  :type-list='typeList')
-    //- ListView(:page-title='pageTitle' :search-placeholder='searchPlaceholder'  :type-list='typeList')
+    //- router-view(:page-title='pageTitle' :search-placeholder='searchPlaceholder'  :type-list='typeList')
+    ListView(:page-title='pageTitle' :search-placeholder='searchPlaceholder'  :tabs='tabs')
     //- newsList(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type='type')
     //- newsListinArticle(v-if="this.$route.path!='/newsPage'" :article-list='articleList' :page-title='pageTitle')
 </template>
@@ -20,14 +20,12 @@ export default {
     data() {
         return {
             pageTitle: "最新消息",
-            type: ["最新消息"],
-            typeList: ['最新消息','跨域薈萃',' 視覺藝術'],
-            searchPlaceholder: "關鍵字",
-            articleList: ''
+            tabs: ['最新消息','跨域薈萃',' 視覺藝術'],
+            searchPlaceholder: '關鍵字',
         }
     },
     beforeMount() {
-        this.pageTitle = this.$route.params.section;
+        this.pageTitle = this.$route.params.sectionId;
     }
 }
 </script>
