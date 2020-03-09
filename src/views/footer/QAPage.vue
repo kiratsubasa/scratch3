@@ -30,7 +30,7 @@ export default {
         }
     },
     beforeMount(){
-        this.selectedQuery = this.$route.params.id;
+        this.selectedQuery = this.$route.params.collapseId;
     },
     watch: {
         selectedQuery: function(query) {
