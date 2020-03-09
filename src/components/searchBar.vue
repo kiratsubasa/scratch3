@@ -8,7 +8,7 @@
             .search-preview(v-if="searchQuery" v-for='(item,index) in filteredResources' :key="index")
                         md-card(md-with-hover='' )
                             md-ripple
-                                a#myhref(:href='"/NA1/"+item.id')
+                                a#myhref(:href='"/page/"+item.id')
                                     md-card-header
                                         .sm-title {{item.title}}
 

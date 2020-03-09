@@ -30,11 +30,19 @@ export default new Router({
             component: mainPage,
           },
           {
-            path: '/NL1/:id',
+            path: '/section/:section',
             component: newsPage,
+            children: [
+              {
+                path: '',component: ListView
+              },
+              {
+                path: 'page/:id',component: article
+              }
+            ]
           },
           {
-            path: '/NA1/:id',
+            path: '/page/:id',
             component: article,
           },
           {

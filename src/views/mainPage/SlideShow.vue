@@ -1,20 +1,20 @@
 <template lang="pug">
 div#slideshow-container
-        .mySlides.mySlides1
-            a(:href="jumpBar[0].link")
-                img#slideImg(:src="jumpBar[0].media.info.src")
-        .mySlides.mySlides2(v-for='(jumpImage,index) in jumpBar' v-if="index!=0 &&index!= jumpBar.length-1")
-            a(:href="jumpImage.link")
-                img#slideImg(:src="jumpImage.media.info.src")
-        .mySlides.mySlides3
-            a(:href="jumpBar[jumpBar.length-1].link")
-                img#slideImg(:src="jumpBar[jumpBar.length-1].media.info.src")
-        .slideTextBlock
-            h1#slideTextBlockTitle {{jumpBar[slideIndex-1].title}}
-            p {{jumpBar[slideIndex-1].subtitle}}
-        //- div.prevBut(@click='plusSlides(-1)') <
-        //- div.nextBut(@click='plusSlides(1)') >
-        span.dot(v-for="(dot,index) in jumpBar" @click='currentSlide(index+1)')
+    .mySlides.mySlides1
+        a(:href="jumpBar[0].link")
+            img#slideImg(:src="jumpBar[0].media.info.src")
+    .mySlides.mySlides2(v-for='(jumpImage,index) in jumpBar' v-if="index!=0 &&index!= jumpBar.length-1")
+        a(:href="jumpImage.link")
+            img#slideImg(:src="jumpImage.media.info.src")
+    .mySlides.mySlides3
+        a(:href="jumpBar[jumpBar.length-1].link")
+            img#slideImg(:src="jumpBar[jumpBar.length-1].media.info.src")
+    .slideTextBlock
+        h1#slideTextBlockTitle {{jumpBar[slideIndex-1].title}}
+        p {{jumpBar[slideIndex-1].subtitle}}
+    //- div.prevBut(@click='plusSlides(-1)') <
+    //- div.nextBut(@click='plusSlides(1)') >
+    span.dot(v-for="(dot,index) in jumpBar" @click='currentSlide(index+1)')
 
 </template>
 

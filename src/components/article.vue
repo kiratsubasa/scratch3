@@ -49,12 +49,8 @@ export default {
 
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 @import "@/style/common.sass"
-#newsApp
-    max-width: 1280px
-    min-height: 720px
-    margin: auto
 
 .articlePageVideoPlayer
     margin: 50px
@@ -92,6 +88,7 @@ h1,h2,h3,p,span
 .HTMLContainer
     max-width: 1080px
     margin: auto
-.dateNote
-    text-align: right
+@media all and (max-width: 760px)
+    img
+        width: 100%
 </style>

@@ -4,7 +4,7 @@ div#menuWrapper
     div#menuBar
         router-link#Lego(to='/' :style="{'background-image': 'url(' + iconSrc + ')'}")
         div.menuItem(v-for='item in menuList')
-            router-link#menuItemLink(:to='"/NL1/"+item.name') {{item.name}}
+            router-link#menuItemLink(:to='"/section/"+item.name') {{item.name}}
         div(@click='opentheDrawer()' :class="menuclassList")
             .menuIconBar1
             .menuIconBar2
@@ -14,7 +14,7 @@ div#menuWrapper
         div#drawer(v-if="drawerStatus")
             div.drawerItem(v-for='(item,i) in menuList' @click='drawerStatus = !drawerStatus') 
                 #underline
-                a(:href='"/NL1/"+item.name' style="color: black; text-decoration: none;") {{item.name}}
+                a(:href='"/section/"+item.name' style="color: black; text-decoration: none;") {{item.name}}
     
 
 </template>

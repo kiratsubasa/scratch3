@@ -1,8 +1,8 @@
 <template lang="pug">
 #app
     .PathText 你的位置 : 首頁 > {{pageTitle}}
-    
-    ListView(:page-title='pageTitle' :search-placeholder='searchPlaceholder'  :type-list='typeList')
+    router-view(:page-title='pageTitle' :search-placeholder='searchPlaceholder'  :type-list='typeList')
+    //- ListView(:page-title='pageTitle' :search-placeholder='searchPlaceholder'  :type-list='typeList')
     //- newsList(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type='type')
     //- newsListinArticle(v-if="this.$route.path!='/newsPage'" :article-list='articleList' :page-title='pageTitle')
 </template>
@@ -27,7 +27,7 @@ export default {
         }
     },
     beforeMount() {
-        this.pageTitle = this.$route.params.id;
+        this.pageTitle = this.$route.params.section;
     }
 }
 </script>

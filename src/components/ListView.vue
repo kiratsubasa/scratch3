@@ -119,7 +119,7 @@ export default {
         },
         changePath: function(idx){
             console.log(this.theArticleList[idx].id);
-            this.$router.push({ path: '/NA1/'+this.theArticleList[idx].id})
+            this.$router.push({ path: this.$route.params.section+'/page/'+this.theArticleList[idx].id})
         },
         searchInit: function(){
             console.log(this.$route.query.search)
