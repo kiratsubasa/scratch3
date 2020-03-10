@@ -1,10 +1,6 @@
 <template lang="pug">
 #app
     .listPageContent
-        SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='theArticleList')
-        h1#listPageTitle {{pageTitle}}
-        .markBlockContainer
-            router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in tabs' :key='t' :to="typ") {{typ}}
         transition-group(name="staggered-fade" tag="ul" v-bind:css="false" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave")
             .List(v-for="idx in pageDataNum" :key="idx" :data-index="idx")
                 .Listbtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")
@@ -32,12 +28,12 @@
 
 <script>
 import SearchBar from '@/components/searchBar.vue'
-import { ListArticles } from '@/api/Articles';
+
 export default {
     components: {
         SearchBar
     },
-    props: ['page-title','search-placeholder','tabs'],
+    props: ['page-title','search-placeholder','tabs','theArticleList'],
     data() {
         return {
             pageDataNum: 8,
@@ -46,13 +42,7 @@ export default {
             firstPage: '第一頁',
             prev: '上一頁',
             next: '下一頁',
-            finalPage: '最末頁',
-            theArticleList: [
-                {categories: [{name: ''}],tags: [{name: ''}],author: '',title: ''}
-            ],
-            selectedQuery: '',
-            searchStatus: false,
-            searchQuery: ''
+            finalPage: '最末頁'
         }
     },
     watch: {
@@ -60,46 +50,20 @@ export default {
             this.$router.push({query: {page: page} });
             window.scrollTo(0,0);
         },
-        // selectedQuery: function(query) {
-        //     this.theArticleList = this.articleList;
-        // },
-        searchQuery: function(query){
-            // if(query==null)
-            //     return
-            this.theArticleList = Object.values(this.theArticleList).filter((item)=>{
-                if(item.title.includes(query)){
-                    this.searchStatus = true;
-                    return item.title.includes(query);
-                }
-            })
-        },
         theArticleList: function(){
             this.pageInit();
         },
-        '$route' (){
-            this.searchInit();
-        }
     },
     created() {
         // this.ApiListArticles(2);
     },
     mount(){
-        this.searchInit();
         this.pageInit();
         // this.selectedQuery = this.$route.params.id;
         // if(this.$route.query.page)
             // this.currentPage = this.$route.query.page;
     },
     methods: {
-        ApiListArticles(id) {
-            ListArticles(id)
-                .then(response => {
-                    this.theArticleList= response.data;
-                })
-                .catch(err => {
-                console.log(err);
-            });
-        },
         stripHTML: function(input) {
             var output = '';
             if(typeof(input)=='string'){
@@ -121,15 +85,9 @@ export default {
         },
         changePath: function(idx){
             console.log(this.theArticleList[idx].id);
-            this.$router.push({ path: this.$route.params.section+'/page/'+this.theArticleList[idx].id})
+            this.$router.push({ path: this.$route.params.sectionId+'/page/'+this.theArticleList[idx].id})
         },
-        searchInit: function(){
-            console.log(this.$route.query.search)
-            if(this.$route.query.search)
-                this.searchQuery = this.$route.query.search;
-            else
-                this.theArticleList = this.articleList;
-        },
+
         beforeEnter: function (el) {
             el.style.opacity = 0
             el.style.height = 0
