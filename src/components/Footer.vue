@@ -27,5 +27,48 @@ export default {
 
 <style lang="sass">
 @import "@/style/common.sass"
+.footerContainer
+    width: 100%
+    background-color: $c-secondary
+    color: $textC-secondary
+    
+#footer
+    bottom: 0
+    // width: 60%
+    text-align: left
+    padding: 20px
+    display: flex
+    flex-wrap: wrap
+    margin: auto
 
+@media all and (min-width: 640px)
+    .footContainer
+        width: 45%
+        margin-left: 20%
+        padding: 10px
+        border-left: 1px $textC-secondary solid
+    .footLinkContainer
+        border-left: 1px $textC-secondary solid
+        border-bottom: 0
+
+@media all and (max-width: 640px)
+    .footContainer
+        width: 100%
+    .footLinkContainer
+        width: 100%
+    .footLinkContainer
+        display: none
+    
+.footContainer
+    display: flex
+    flex-wrap: wrap
+    
+.footLinkContainer
+    // text-align: center
+    margin-bottom: 30px
+    padding: 10px
+    background-color: $textC-secondary
+    
+.footLink.footerItems
+    margin: 10px
 </style>

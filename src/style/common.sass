@@ -9,16 +9,6 @@ $c-bg: #eee
 #app
     background-color: $c-bg
 
-#menuWrapper
-    padding-bottom: 5px
-    background-color: $c-primary
-#menuBar
-    display: flex
-    flex-wrap: nowrap
-    justify-content: flex-end
-    padding: 10px
-    padding-top: 10px
-
 .router-link-exact-active.router-link-active
     background-color: $c-primary
     padding: 5px
@@ -30,148 +20,7 @@ $c-bg: #eee
     color: $textC-secondary
     text-decoration: none
 
-@media all and (min-width: 1024px)
-    .menuItem
-        margin-top: 10px
-        margin-right: 5px
-        padding: 3px
-        display: block
-        font-size: 16px
-    .menuIconContainer
-        display: none
-    .drawerItem
-        display: none
-
-@media all and (max-width: 1024px)
-    .menuItem
-        display: none
-    .menuIconContainer
-        display: block
-    .drawerItem
-        display: block
-
-#Lego
-    background-size: contain
-    height: 50px
-    width: 50px
-    position: absolute
-    left: 20px
-    border-radius: 10px
-
-.menuIconBar1, .menuIconBar2, .menuIconBar3
-    width: 35px
-    height: 3px
-    background-color: #777
-    transition: 0.3s
-    margin: 8px
-    margin-right: 10px
-    position: relative
-    border-radius: 25px
-.change .menuIconBar1
-    opacity: 0
-    
-.change .menuIconBar2 
-    -webkit-transform: rotate(-405deg) translate(-9px, 6px)
-    transform: rotate(-405deg)
-
-.change .menuIconBar3 
-    -webkit-transform: rotate(225deg) 
-    transform: rotate(225deg) translate(8px, 8px)
-    transition-delay: 0.2s
-
-
-.menuIconContainer
-    cursor: pointer
-
-@keyframes drawerOpen
-    from
-        height: 0
-    
-    to
-        height: 450px
-    
-#drawer
-    // animation-name: drawerOpen
-    // animation-duration: 2s
-    height: 100%
-
-    
-.drawerItem
-    padding: 10px
-    cursor: pointer
-
-
-#underline
-    width: 100%
-    height: 2.5px
-    margin-top: 15px
-    align-self: flex-end
-    left: -100%
-    background: $c-secondary
-    position: absolute
-    transition: all .3s ease-Out
-    bottom: 0
-.drawerItem:hover #underline
-    left: 0
-
-
-
-#menuItemLink
-    padding: 5px
-    color: #28292D
-    text-decoration: none 
-    font-weight: bold
-
-
-.footerContainer
-    width: 100%
-    background-color: $c-secondary
-    color: $textC-secondary
-    
-#footer
-    bottom: 0
-    // width: 60%
-    text-align: left
-    padding: 20px
-    display: flex
-    flex-wrap: wrap
-    margin: auto
-
-@media all and (min-width: 640px)
-    .footContainer
-        width: 45%
-        margin-left: 20%
-        padding: 10px
-        border-left: 1px $textC-secondary solid
-    .footLinkContainer
-        border-left: 1px $textC-secondary solid
-        border-bottom: 0
-
-@media all and (max-width: 640px)
-    .footContainer
-        width: 100%
-    .footLinkContainer
-        width: 100%
-    .footLinkContainer
-        display: none
-    
-.footContainer
-    display: flex
-    flex-wrap: wrap
-    
-.footLinkContainer
-    // text-align: center
-    margin-bottom: 30px
-    padding: 10px
-    background-color: $textC-secondary
-    
-.footLink.footerItems
-    margin: 10px
-    
-
-
-
-
+//tabs style
 .markBlockContainer
     display: inline-flex
     margin: 10px
@@ -184,6 +33,27 @@ $c-bg: #eee
 .markBlock:hover
     // border-radius: 30px
     background-color: $c-primary
+
+//tabs in rect style. (lawpage)
+.BookMarkContainer
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex
+    padding: 10px
+    margin: 10px
+    border: 1px #00000033 solid
+#BookMarkRouter
+    text-align: left
+    margin: 10px
+    line-height: 30px
+    color: #444
+    text-decoration: none
+    transition: .01s
+    transition-timing-function: ease
+    padding-left: 10px
+    padding-right: 10px
+    clip-path: polygon(5px 0, 100% 0, 99% 100%, 0% 100%)
+
 
 
 #listPageTitle
@@ -198,7 +68,6 @@ $c-bg: #eee
     max-width: 1280px
     margin: auto
     padding: 50px
-
 
 .searchBar-list
     margin: 0px
@@ -264,31 +133,14 @@ $c-bg: #eee
     text-align: center
     width: 50px
 
+
+//all kind of button
 .pageBtn
     background-color: $c-primary
     margin: 10px
     padding: 3px
     -webkit-box-shadow: 0px 0px 4px -1px rgba(0,0,0,0.3)
     box-shadow: 0px 0px 4px -1px rgba(0,0,0,0.3)
-
-.BookMarkContainer
-    display: flex
-    flex-wrap: wrap
-    justify-content: flex
-    padding: 10px
-    margin: 10px
-    border: 1px #00000033 solid
-#BookMarkRouter
-    text-align: left
-    margin: 10px
-    line-height: 30px
-    color: #444
-    text-decoration: none
-    transition: .01s
-    transition-timing-function: ease
-    padding-left: 10px
-    padding-right: 10px
-    clip-path: polygon(5px 0, 100% 0, 99% 100%, 0% 100%)
 
 #downloadBtn
     color: $textC-secondary

@@ -38,7 +38,7 @@ export default {
                 return item.type.includes(query);
             })
         },
-        theArticleList: function(item) {
+        theArticleList: function(item) {    //In case the type include nothing, then return all
             if(item.length==0){
                 this.theArticleList = this.webLists;
             }
