@@ -1,6 +1,6 @@
 <template lang="pug">
 .listPageContent
-    SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='theArticleList')
+    SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='articleList')
     h1#listPageTitle {{pageTitle}}
     .markBlockContainer
         router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in tabs' :key='t' :to="typ") {{typ}}
@@ -15,7 +15,7 @@ export default {
     components: {
         SearchBar
     },
-    props: ['page-title','search-placeholder','tabs','theArticleList'],
+    props: ['page-title','search-placeholder','tabs','articleList'],
     data() {
         return {
         }

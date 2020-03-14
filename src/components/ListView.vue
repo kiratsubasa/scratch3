@@ -3,18 +3,18 @@
     .listPageContent
         transition-group(name="staggered-fade" tag="ul" v-bind:css="false" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave")
             .List(v-for="idx in pageDataNum" :key="idx" :data-index="idx")
-                .Listbtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")
+                .Listbtn(v-if="articleList[idx+(currentPage-1)*pageDataNum-1]")
                     .ListContainer
                         .Listhead
-                            .ListImage(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1].media!=null" :style="{'background-image': 'url(' + theArticleList[idx+(currentPage-1)*pageDataNum-1].media.info.src + ')'}") 
+                            .ListImage(v-if="articleList[idx+(currentPage-1)*pageDataNum-1].media!=null" :style="{'background-image': 'url(' + articleList[idx+(currentPage-1)*pageDataNum-1].media.info.src + ')'}") 
                             .listTypeContainer
-                                    router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in theArticleList[idx+(currentPage-1)*pageDataNum-1].categories' :key='t' :to="'/newsPage/'+typ") {{typ.name}} 
+                                    router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in articleList[idx+(currentPage-1)*pageDataNum-1].categories' :key='t' :to="'/'+typ") {{typ.name}} 
                         .ListTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
-                            .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
-                            .ListContent {{stripHTML(theArticleList[idx+(currentPage-1)*pageDataNum-1].body)}}
-                            .dateNote 更新日期 {{theArticleList[idx+(currentPage-1)*pageDataNum-1].updated_at.split("T")[0]}}
-                            //- div#downloadBtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile")
-                            //-     a#sehref(:href='theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
+                            .ListTitle {{articleList[idx+(currentPage-1)*pageDataNum-1].title}}
+                            .ListContent {{stripHTML(articleList[idx+(currentPage-1)*pageDataNum-1].body)}}
+                            .dateNote 更新日期 {{articleList[idx+(currentPage-1)*pageDataNum-1].updated_at.split("T")[0]}}
+                            //- div#downloadBtn(v-if="articleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile")
+                            //-     a#sehref(:href='articleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{articleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
     
         a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
         a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
@@ -33,7 +33,7 @@ export default {
     components: {
         SearchBar
     },
-    props: ['page-title','search-placeholder','tabs','theArticleList'],
+    props: ['page-title','search-placeholder','tabs','article-list'],
     data() {
         return {
             pageDataNum: 8,
@@ -50,7 +50,7 @@ export default {
             this.$router.push({query: {page: page} });
             window.scrollTo(0,0);
         },
-        theArticleList: function(){
+        articleList: function(){
             this.pageInit();
         },
     },
@@ -73,7 +73,7 @@ export default {
             return output;
         },
         pageInit: function(){
-            this.totalPage = Math.ceil(this.theArticleList.length/this.pageDataNum);
+            this.totalPage = Math.ceil(this.articleList.length/this.pageDataNum);
         },
         setPage: function(page) {
             if (page <= 0 || page > this.totalPage) {
@@ -84,8 +84,8 @@ export default {
             }
         },
         changePath: function(idx){
-            console.log(this.theArticleList[idx].id);
-            this.$router.push({ path: this.$route.params.sectionId+'/page/'+this.theArticleList[idx].id})
+            console.log(this.articleList[idx].id);
+            this.$router.push({ path: '/page/'+this.articleList[idx].id})
         },
 
         beforeEnter: function (el) {

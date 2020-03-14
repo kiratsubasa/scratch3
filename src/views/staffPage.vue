@@ -22,7 +22,7 @@ export default {
             bookmarkList: [
                 {
                     bookMarkTitle: '總計畫團隊',
-                    link: '/staffPage/mark1',
+                    link: '/hr/mark1',
                     articleList: [{
                             src:"https://www.inarts.edu.tw/uploads/member/avatar/62/cover_20140912195714.jpg",
                             type: '美感人才',
@@ -2668,7 +2668,7 @@ export default {
         }
     },
     mounted:function(){
-        var path = this.$route.params.id;
+        var path = this.$route.params.hrId;
         var pathIdx = this.bookmarkList.findIndex(function(item){
             return item.link.includes(path);         
             });
