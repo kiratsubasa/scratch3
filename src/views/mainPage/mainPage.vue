@@ -1,40 +1,46 @@
 <template lang="pug">
 #app
     SlideShow(:jump-bar="jumpBar")
-    div.content
-        div.contentBlock-1.contentBlock
-                div(v-for='article in article')
-                    a#myhref(:href="article.link")
-                        div.imageBlock(:style="{'background-image': 'url(' + article.src + ')'}") 
-                            div.imageMask {{article.title}}
-        div.contentBlock-2.contentBlock
-            div.blockTitle 最新消息
-                div.newsDer
-            table
-                tr.newsList(v-for='item in newList')
-                    a#myhref(:href="item.link")
-                        td
-                            div.newsImage
-                                img(:src='item.src')
-                        td.newsTitle {{item.title}}
-    div.content
-        div.contentBlock-3.contentBlock
-            a#myhref(:href="midArticle.link")
-                div.midImageBlock(:style="{'background-image': 'url(' + midArticle.src + ')'}" )
-                    div.imageMask {{midArticle.title}}
-        div.contentBlock-4.contentBlock
-                div(v-for='article in article')
-                    a#myhref(:href="article.link")
-                        div.imageBlock(:style="{'background-image': 'url(' + article.src + ')'}") 
-                            div.imageMask {{article.title}}
+    // div.content
+    //     div.contentBlock-1.contentBlock
+    //             div(v-for='article in article')
+    //                 a#myhref(:href="article.link")
+    //                     div.imageBlock(:style="{'background-image': 'url(' + article.src + ')'}") 
+    //                         div.imageMask {{article.title}}
+    //     div.contentBlock-2.contentBlock
+    //         div.blockTitle 最新消息
+    //             div.newsDer
+    //         table
+    //             tr.newsList(v-for='item in newList')
+    //                 a#myhref(:href="item.link")
+    //                     td
+    //                         div.newsImage
+    //                             img(:src='item.src')
+    //                     td.newsTitle {{item.title}}
+    // div.content
+    //     div.contentBlock-3.contentBlock
+    //         a#myhref(:href="midArticle.link")
+    //             div.midImageBlock(:style="{'background-image': 'url(' + midArticle.src + ')'}" )
+    //                 div.imageMask {{midArticle.title}}
+    //     div.contentBlock-4.contentBlock
+    //             div(v-for='article in article')
+    //                 a#myhref(:href="article.link")
+    //                     div.imageBlock(:style="{'background-image': 'url(' + article.src + ')'}") 
+    //                         div.imageMask {{article.title}}
+    picAndTextList(:pic-and-text='picAndText')
+    messageAndContact(:message-and-contact='inputTitle') 
 </template>
 
 <script>
 import SlideShow from './SlideShow.vue'
 import { ListSlider } from '@/api/Slider';
+import picAndTextList from '@/components/picAndTextList.vue'
+import messageAndContact from '@/components/messageAndContact.vue'
 export default {
     components: {
-        SlideShow
+        SlideShow,
+        picAndTextList,
+        messageAndContact
     },
     data() {
         return {
@@ -61,7 +67,15 @@ export default {
             midArticle: {
                 src:'https://www.aade.org.tw/website/wp-content/uploads/2018/05/曾老師2.jpg',
                 title: '聽聽他/她眼中的美感教育',link: '/resultPage/result1'
-            }
+            },
+            picAndText:[
+                {title: '五種生活美感實踐',Subtitle: '',Description: '',Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png'},
+                {title: '美感紀錄',Subtitle: '播下美好生活種子',Description: '',Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2018/12/花蓮富北東里國中02.jpg'}
+            ],
+            inputTitle:[
+                {title: '姓名',id: '',getdata: ''},
+                {title: '姓名',id: '',getdata: ''}
+            ]
         }
     },
     created() {
