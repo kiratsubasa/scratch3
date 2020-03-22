@@ -35,6 +35,7 @@ export default {
 .picAndTextContainer
     max-width: 1280px
     margin: auto
+    margin-top: 20px
 .picAndText
     width: 100%
     height: 480px

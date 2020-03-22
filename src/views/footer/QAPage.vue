@@ -77,7 +77,7 @@ export default {
     border: 1px solid #F2DCE0
     max-height: 40px
     overflow: hidden
-    transition: max-height 5s
+    transition: max-height 0.2s
 .questionAndAnswer:focus
     max-height: 500px
     outline: none
