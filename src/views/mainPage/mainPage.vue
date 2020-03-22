@@ -34,7 +34,7 @@
 <script>
 import SlideShow from './SlideShow.vue'
 import { ListSlider } from '@/api/Slider';
-import picAndTextList from '@/components/picAndTextList.vue'
+import picAndTextList from '@/components/picAndTextList.vue';
 import messageAndContact from '@/components/messageAndContact.vue'
 export default {
     components: {
@@ -74,7 +74,9 @@ export default {
             ],
             inputTitle:[
                 {title: '姓名',id: '',getdata: ''},
-                {title: '姓名',id: '',getdata: ''}
+                {title: '信箱',id: '',getdata: ''},
+                {title: '主旨',id: '',getdata: ''},
+                {title: '內容',id: '',getdata: ''}
             ]
         }
     },
