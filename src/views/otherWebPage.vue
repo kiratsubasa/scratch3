@@ -2,8 +2,8 @@
 .PathText 你的位置 : 首頁 > {{pageTitle}}
     .webContainer
         h1#listPageTitle {{pageTitle}}
-        .markBlockContainer
-            router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="typ") {{typ}}
+        //- .markBlockContainer
+        //-     router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="typ") {{typ}}
         .webFlexContainer
             .webFlex(v-for='webs in theArticleList')
                 a.webLink#myhref(:href="webs.href" target="_blank" )
@@ -30,20 +30,21 @@ export default {
         }
     },
     beforeMount(){
-        this.selectedQuery = this.$route.params.id;
+        // this.selectedQuery = this.$route.params.id;
+        this.theArticleList = this.webLists;
     },
     watch: {
-        selectedQuery: function(query) {
-            this.theArticleList = this.webLists.filter((item)=>{
-                return item.type.includes(query);
-            })
-        },
-        theArticleList: function(item) {    //In case the type include nothing, then return all
-            if(item.length==0){
-                this.theArticleList = this.webLists;
-            }
+        // selectedQuery: function(query) {
+        //     this.theArticleList = this.webLists.filter((item)=>{
+        //         return item.type.includes(query);
+        //     })
+        // },
+        // theArticleList: function(item) {    //In case the type include nothing, then return all
+        //     if(item.length==0){
+        //         this.theArticleList = this.webLists;
+        //     }
                 
-        }
+        // }
     }
 }
 </script>
