@@ -21,6 +21,8 @@ import webTreePage from '@/views/footer/webTreePage.vue'
 import staffListView from '@/components/staffListView.vue'
 import ListView from '@/components/ListView.vue'
 import cardView from '@/components/cardView.vue'
+import picAndTextList from '@/components/picAndTextList.vue'
+import messageAndContact from '@/components/messageAndContact.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -28,6 +30,10 @@ export default new Router({
           {
             path: '/',
             component: mainPage,
+            children: [
+              {path: 'main:id',component: picAndTextList},
+              {path: ':id',component: messageAndContact}
+            ]
           },
           {
             path: '/section/:sectionId',
@@ -87,7 +93,7 @@ export default new Router({
           {
             path: '/search',
             component: article
-          }        
+          }
   ],
   mode: 'history'
 })

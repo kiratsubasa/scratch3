@@ -29,7 +29,7 @@ export default {
                 {name: '網網相連',url: '/link'},
                 {name: '教學資源',url: '/module/1'},
                 {name: '美感人才',url: '/hr/1'},
-                {naem: '網站地圖',url: '/map'},
+                {name: '網站地圖',url: '/map'},
                 {name: '常見問題',url: '/collapse/1'},
                 {name: '活動報名',url: '/activity/1'},
             ],

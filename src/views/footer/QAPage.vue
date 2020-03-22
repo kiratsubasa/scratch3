@@ -4,7 +4,7 @@
         h1#listPageTitle {{pageTitle}}
         .markBlockContainer
             router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="typ") {{typ}}
-        .questionAndAnswer(v-for='QAs in theArticleList')
+        .questionAndAnswer(v-for='QAs in theArticleList' @click="extend" tabindex="0")
             .question Q.{{QAs.question}}
             br
             .answer {{QAs.answer}}
@@ -15,7 +15,7 @@ export default {
         return{
             pageTitle: "常見問題",
             typeList: ["120","175","-20"],
-            QAList: [
+            qaArraqy: [
                 {type: '120',question:'本計畫如何做經費變更？', answer:'原始核定預算表之「項目」需要做刪減或增加時，才需做經費調整，其餘已有的項目金額皆可相互流用。情境A：自行剪輯影片之剪輯費無法核銷時，該筆經費項目需被刪除，若需要流用至其他任何一筆項目皆可；倘若不使用也不流用，直接將該筆經費繳回即可。情境B：需要較長途的車程費用，可增列國內差旅費或交通費。'},
                 {type: '120',question:'本計畫之經費如何核銷', answer:'任何一筆經費的核銷標準，請依貴校主計核可。另，任何需要核銷的收據或發票，請使用當校核銷費用之抬頭及統編。情境A：剪輯費、編稿費、主持費、助理費及撰稿費若是由校內學校老師/主任/校長請領的情況，請依核定經費表且合乎該校之請款方式使用。情境B：若教師或行政人員需支領兼代課鐘點費，一周需支付超過四節課之節數，此情況下請以當校主計認定為主。'},
                 {type: '175',question:'本計畫之全民健保補充費是指哪一個項目？', answer:'有關「人事」的部分都需要給付，如：講座鐘點費、講座助理費、主持費、兼代課鐘點費、撰稿費、編稿費等項目。'},
@@ -34,18 +34,31 @@ export default {
     },
     watch: {
         selectedQuery: function(query) {
-            this.theArticleList = this.QAList.filter((item)=>{
+            this.theArticleList = this.qaArraqy.filter((item)=>{
                 return item.type.includes(query);
             })
         },
         theArticleList: function(item) {
             if(item.length==0){
-                this.theArticleList = this.QAList;
+                this.theArticleList = this.qaArraqy;
             }
                 
         }
+    },
+    methods: {
+        extend: function(){
+            // var x=document.getElementsByClassName("answer")
+            // var i
+            // for(i=0;i<x.length;i++){
+            //     x[i].style="background: #ccc";
+            // }
+            //this.style.maxHeight= "500px";
+            this.style="background: #ccc";
+
+        }
     }
 }
+
 </script>
 <style lang="sass">
 .QAContainer
@@ -62,10 +75,22 @@ export default {
     margin: auto
     margin-bottom: 40px
     border: 1px solid #F2DCE0
-
+    max-height: 40px
+    overflow: hidden
+    transition: max-height 5s
+.questionAndAnswer:focus
+    max-height: 500px
+    outline: none
 .question
     font-size: 15px
-
+// .question:focus
+//     max-height: 500px
 .answer
-    margin-left: 30px
+    margin-left: 30px 
+    //display: none
+.answer:focus
+    color: red
+    max-height: 500px
+input:focus
+    background-color: #ccc
 </style>

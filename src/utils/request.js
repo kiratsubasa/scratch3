@@ -1,24 +1,14 @@
 import axios from 'axios';
-import {
-  Message
-} from 'element-ui';
-import {
-  getToken,
-  setToken
-} from '@/utils/auth';
+import { Message } from 'element-ui';
+import { getToken, setToken } from '@/utils/auth';
 
-// Create axios instance
-
-// const service = axios.create({
-//   baseURL: process.env.MIX_BASE_API,
-//   // baseURL: "http://fbilab.cc:8080",
-//   headers: {
-//     'Content-Type': 'application/json'
-//   },
-//   timeout: 10000, // Request timeout
-// });
-
-const service = axios.create();
+// // Create axios instance
+const service = axios.create({
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  timeout: 10000, // Request timeout
+});
 
 // Request intercepter
 service.interceptors.request.use(
@@ -26,13 +16,12 @@ service.interceptors.request.use(
     const token = getToken();
     if (token) {
       config.headers['Authorization'] = 'Bearer ' + getToken(); // Set JWT token
+      // console.log(config.headers['Authorization']); // for debug
     }
-
     return config;
   },
   error => {
     // Do something with request error
-    // eslint-disable-next-line no-console
     console.log(error); // for debug
     Promise.reject(error);
   }
@@ -54,6 +43,8 @@ service.interceptors.response.use(
       message = error.response.data.errors;
     } else if (error.response.data && error.response.data.error) {
       message = error.response.data.error;
+    } else if (error.response.status === 401) {
+      message = '操作逾時，請重新整理頁面 或 重新登入。';
     }
 
     Message({
