@@ -2668,7 +2668,7 @@ export default {
         }
     },
     mounted:function(){
-        var path = this.$route.params.hrId;
+        var path = this.$route.params.categoryid;
         var pathIdx = this.bookmarkList.findIndex(function(item){
             return item.link.includes(path);         
             });
