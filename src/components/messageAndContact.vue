@@ -1,19 +1,37 @@
 <template lang="pug">
-
 .messageAndContactContainer
-    .messageAndContactTitle {{title}}
-    div.titleAndInput(v-for='items in messageAndContact')
-        lable.messageAndContactLable {{items.title}}
+    div.titleAndInput(v-for='items in inputTitle')
+        label.messageAndContactLable {{items.title}}
         input.messageAndContactInput(v-model='items.getdata')
+    button(@click="Comments(2)") 送出
 </template>
+
 <script>   
+import { ContactProject } from "@/api/client/Project";
 export default {
     components: {
     },
-    props: ['message-and-contact'],
+    props: [],
     data(){
         return{
-            title: "留言與聯繫"
+            inputTitle:[
+                {title: '姓名',id: '',getdata: ''},
+                {title: '信箱',id: '',getdata: ''},
+                {title: '主旨',id: '',getdata: ''},
+                {title: '內容',id: '',getdata: ''}
+            ]
+        }
+    },
+    methods: {
+        Comments(pid) {
+            var data = {
+                contact_email: this.inputTitle[1].getdata,
+                contact_name: this.inputTitle[0].getdata,
+                subject: this.inputTitle[2].getdata,
+                body: this.inputTitle[3].getdata
+            };
+            console.log('data :', data);
+            ContactProject(data,pid);
         }
     }
 }

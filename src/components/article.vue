@@ -86,9 +86,6 @@ h1,h2,h3,p,span
     text-align: left
     line-height: 25px
 
-.HTMLContainer
-    max-width: 1080px
-    margin: auto
 @media all and (max-width: 760px)
     img
         width: 100%

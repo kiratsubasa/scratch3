@@ -18,3 +18,10 @@ export function GetProject(project) {
     method: 'get',
   });
 }
+export function ContactProject(data, project) {
+  return request({
+    url: '/api/projects/' + validAlias(project) + '/contact/email',
+    method: 'post',
+    data,
+  });
+}
