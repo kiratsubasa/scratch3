@@ -12,7 +12,7 @@ export default {
     components: {
         
     },
-    props: ['tabs'],
+    props: ['tabs','page-title'],
     data() {
         return {
             pageTitle: '',
@@ -24,7 +24,6 @@ export default {
         
     },
     created() {
-        this.pageTitle = this.$route.params.pageid;
     },
     methods: {
         

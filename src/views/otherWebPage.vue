@@ -2,50 +2,41 @@
 .PathText 你的位置 : 首頁 > {{pageTitle}}
     .webContainer
         h1#listPageTitle {{pageTitle}}
-        //- .markBlockContainer
-        //-     router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="typ") {{typ}}
         .webFlexContainer
-            .webFlex(v-for='webs in theArticleList')
-                a.webLink#myhref(:href="webs.href" target="_blank" )
-                    img.webImg(:src="webs.src")
-                    .webTitle {{webs.title}}
+            .webFlex(v-for='web in webList')
+                a.webLink#myhref(:href="web.url" target="_blank" )
+                    img.webImg(:src="web.media")
+                    .webTitle {{web.title}}
         
 </template>
 
 <script>
+import { GetPage } from '@/api/client/Page';
 export default {
     data(){
         return{
             pageTitle: "網網相連",
-            typeList: ["大好朋友","普通朋友","仇人"],
-            webLists: [
-                {type: "大好朋友",href: 'http://www.aesthetics.moe.edu.tw/ebook/',src: 'https://www.aade.org.tw/website/wp-content/uploads/2018/03/電子書logo.jpg',title: '美感電子書'},
-                {type: "大好朋友",href: 'http://jam.jutfoundation.org.tw/',src: 'https://www.aade.org.tw/website/wp-content/uploads/2018/03/中泰logo.jpg',title: '忠泰建築文化藝術基金會/忠泰美術館'},
-                {type: "普通朋友",href: 'https://www.facebook.com/Mabuville/',src: 'https://www.aade.org.tw/website/wp-content/uploads/2018/03/麻布logo.jpg',title: '麻布山林（友達／明碁)'},
-                {type: "普通朋友",href: 'https://www.facebook.com/vvgteam/',src: 'https://www.aade.org.tw/website/wp-content/uploads/2018/03/好樣logo.jpg',title: '好樣VVG'},
-                {type: "仇人",href: 'http://www.informat-design.com.tw/-about-us-/',src: 'https://www.aade.org.tw/website/wp-content/uploads/2018/03/格式logo.jpg',title: '格式設計策展 Informat Design Curating'}
-            ],
-            theArticleList: '',
-            selectedQuery: '',
+            webList: [],
+            data: ''
         }
     },
-    beforeMount(){
-        // this.selectedQuery = this.$route.params.id;
-        this.theArticleList = this.webLists;
+    created() {
+        this.ApiGetPage(2,this.$route.params.pageid);
     },
-    watch: {
-        // selectedQuery: function(query) {
-        //     this.theArticleList = this.webLists.filter((item)=>{
-        //         return item.type.includes(query);
-        //     })
-        // },
-        // theArticleList: function(item) {    //In case the type include nothing, then return all
-        //     if(item.length==0){
-        //         this.theArticleList = this.webLists;
-        //     }
-                
-        // }
+    methods: {
+        ApiGetPage(project, id) {
+            GetPage(project, id)
+                .then(response => {
+                    this.data = response.data;
+                    this.pageTitle = this.data.title;
+                    this.webList = this.data.type.link;
+                })
+                .catch(err => {
+                console.log(err);
+            });
+        }
     }
+
 }
 </script>
 

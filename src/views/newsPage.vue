@@ -2,7 +2,7 @@
 #app
     .PathText 你的位置 : 首頁 > {{pageTitle}}
     //- router-view(:page-title='pageTitle' :search-placeholder='searchPlaceholder'  :type-list='typeList')
-    tabs(:tabs='tabs')
+    tabs(:tabs='tabs' :page-title='pageTitle')
     ListView(:page-title='pageTitle' :search-placeholder='searchPlaceholder' :article-list='articleList')
     //- newsList(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type='type')
     //- newsListinArticle(v-if="this.$route.path!='/newsPage'" :article-list='articleList' :page-title='pageTitle')
@@ -14,7 +14,7 @@ import ListView from '@/components/ListView.vue'
 import tabs from '@/components/tabs_head.vue'
 import newsListinArticle from '@/components/ListViewinArticle'
 import { ListArticlesOfCategory } from '@/api/client/Articles';
-import { ListPages } from '@/api/client/Page';
+import { GetPage } from '@/api/client/Page';
 export default {
     components: {
         ListView,
@@ -52,9 +52,8 @@ export default {
         
     },
     created() {
-        this.ApiListPageCategories(2);
+        this.ApiGetPage(2,this.$route.params.pageid);
         // this.searchInit();
-        
     },
     beforeMount() {
 
@@ -69,22 +68,16 @@ export default {
                 console.log(err);
             });
         },
-        ApiListPageCategories(id){
-            ListPages(id)
+        ApiGetPage(project, id) {
+            GetPage(project, id)
                 .then(response => {
-                    var pageList = response.data;
-                    this.pageData =  Object.values(pageList).filter((item)=>{
-                        if(item.category){
-                            if(item.category.name==this.$route.params.pageid)
-                                return true
-                        }
-                        return false
-                    })
+                    this.pageData = response.data;
+                    this.pageTitle = this.pageData.title;
                     //give tabs
-                    for(var i=0;i<this.pageData[0].type.tabs.length;i++){
-                        this.tabs.push(this.pageData[0].type.tabs[i].name);
-                        if(this.$route.params.categoryid==this.pageData[0].type.tabs[i].name){
-                            this.selectedQuery =this.pageData[0].type.tabs[i].id;
+                    for(var i=0;i<this.pageData.type.tabs.length;i++){
+                        this.tabs.push(this.pageData.type.tabs[i].name);
+                        if(this.$route.params.categoryid==this.pageData.type.tabs[i].name){
+                            this.selectedQuery =this.pageData.type.tabs[i].id;
                             this.ListArticleByCate(this.selectedQuery,1);
                         }
                     }
