@@ -7,7 +7,7 @@ import { validAlias } from '@/utils/validate';
 
 export function ListArticlesOfCategory(id, page) {
   return request({
-    url: 'api/articleCategories/' + id + '/articles',
+    url: '/api/articleCategories/' + id + '/articles',
     method: 'get',
     params: page,
   });

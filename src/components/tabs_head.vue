@@ -8,17 +8,15 @@
 
 
 <script>
-
 export default {
     components: {
         
     },
-    props: [],
+    props: ['tabs'],
     data() {
         return {
             pageTitle: '',
-            searchPlaceholder: '',
-            tabs: ['最新消息','跨域薈萃','視覺藝術','成果消息'],
+            searchPlaceholder: ''
 
         }
     },
@@ -26,7 +24,6 @@ export default {
         
     },
     created() {
-        
         this.pageTitle = this.$route.params.pageid;
     },
     methods: {

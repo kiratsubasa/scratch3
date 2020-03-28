@@ -25,7 +25,7 @@ export default {
                 {name: '最新消息',url: '/section/最新消息/category/最新消息'},
                 {name: '法規與政策',url: '/category/法規與政策'},
                 {name: '計畫簡介',url: '/page/intro'},
-                {name: '聯繫與服務',url: '/contact/contact'},
+                {name: '聯繫與服務',url: '/contact/12'},
                 {name: '網網相連',url: '/link/link'},
                 {name: '教學資源',url: '/module/教學資源/category/1'},
                 {name: '美感人才',url: '/hr/staff/category/1'},

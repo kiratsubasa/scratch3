@@ -1,21 +1,32 @@
 <template lang="pug">
 .contactContainer
-    h1#listPageTitle 聯繫與服務
-    iframe(src="https://maps.google.com/maps/api/js")
-    .contactFlexContainer
-        .contactFlex(v-for='items in contactLists') {{items.title}}
-            .contactContent {{items.content}}
+    h1#listPageTitle {{pageData.title}}
+    .HTMLContainer(v-html="pageData.body")
+    
 </template>
 <script>
+import { GetPage } from "@/api/client/Page";
+import { ContactProject } from "@/api/client/Project";
+
 export default {
     data(){
         return{
-            contactLists: [
-                {title: '地址：',content: '30013新竹市光復路二段101號',link: ''},
-                {title: '電話：',content: '(03)5715131',link: ''},
-                {title: '電子郵件',content: 'abc123@gmail.com',link: ''}
-            ]
+            pageData: {}
         }
+    },
+    created() {
+        this.ApiGetPages(2, this.$route.params.pageid);
+    },
+    methods: {
+        ApiGetPages(pid, id) {
+            GetPage(pid, id)
+                .then(response => {
+                    this.pageData = response.data;
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            },
     }
 }
 </script>
@@ -43,4 +54,6 @@ export default {
 
 .contactContent
     margin-top: 5px
+
+
 </style>

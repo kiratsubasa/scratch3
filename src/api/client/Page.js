@@ -6,7 +6,7 @@ import { validAlias } from '@/utils/validate';
 
 export function ListPagesOfTags(id, page) {
   return request({
-    url: 'api/tags/' + id + '/pages',
+    url: '/api/tags/' + id + '/pages',
     method: 'get',
     params: page,
   });
@@ -18,7 +18,7 @@ export function ListPagesOfTags(id, page) {
 
 export function ListPages(project, page) {
   return request({
-    url: 'api/projects/' + validAlias(project) + '/pages',
+    url: '/api/projects/' + validAlias(project) + '/pages',
     method: 'get',
     params: page,
   });
@@ -26,7 +26,7 @@ export function ListPages(project, page) {
 
 export function ListPagesOfTagInProject(project, id, page) {
   return request({
-    url: 'api/projects/' + validAlias(project) + '/tags/' + id + '/pages',
+    url: '/api/projects/' + validAlias(project) + '/tags/' + id + '/pages',
     method: 'get',
     params: page,
   });
@@ -34,14 +34,14 @@ export function ListPagesOfTagInProject(project, id, page) {
 
 export function GetPage(project, id) {
   return request({
-    url: 'api/projects/' + validAlias(project) + '/pages/' + id,
+    url: '/api/projects/' + validAlias(project) + '/pages/' + id,
     method: 'get',
   });
 }
 
 export function ListPagesOfCategory(id, page) { //
   return request({
-    url: 'api/pageCategories/' + id + '/pages',
+    url: '/api/pageCategories/' + id + '/pages',
     method: 'get',
     params: page,
   });
