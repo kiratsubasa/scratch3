@@ -3,25 +3,19 @@
     h1.articlePageTitle {{data.title}}
     .articlePageJumpbar(v-if='data.media' :style="{'background-image': 'url(' + data.media.info.src + ')'}")
     .HTMLContainer(v-html="data.body")
-    //- div#downloadBtn(v-if="articleList[articleIndex].content.downloadFile")
-    //-     a#sehref(:href='articleList[articleIndex].downloadFile' download) {{articleList[articleIndex].content.downloadText}}
-    //- h1.articlePageTitle(v-if='articleList[articleIndex].content.video') 精彩影音
-    //- diolog.articlePageVideoPlayer(v-if='articleList[articleIndex].content.video' :article-list='articleList[articleIndex]')
     div
         a#hashTag(v-for='tag in data.tags') &#35;{{tag.name}}
     .dateNote 發布日期 {{data.created_at.split("T")[0]}}
     .dateNote 更新日期 {{data.updated_at.split("T")[0]}}
     
-    //- h1.articlePageTitle(v-if='articleList[articleIndex].content.video') 精彩影音
-    //- diolog.articlePageVideoPlayer(v-if='articleList[articleIndex].content.video' :article-list='articleList[articleIndex]')
 
 </template>
 
 <script>
 import diolog from '@/components/diolog.vue'
-import { GetArticle } from '@/api/Articles';
+import { GetPage } from '@/api/client/Page';
 export default {
-    props: ['page-title','search-placeholder','articleList'],
+    props: [],
     components: {
         diolog
     },
@@ -32,12 +26,12 @@ export default {
             }
     },
     created() {
-        // var id = this.$route.params.id;
-        // this.ApiListArticles(id);
+        var id = this.$route.params.pageid;
+        this.ApiGetPage(2,id);
     },
     methods: {
-        ApiListArticles(id) {
-            GetArticle(id)
+        ApiGetPage(project, id) {
+            GetPage(project, id)
                 .then(response => {
                     this.data= response.data;
                 })
@@ -86,7 +80,5 @@ h1,h2,h3,p,span
     text-align: left
     line-height: 25px
 
-@media all and (max-width: 760px)
-    img
-        width: 100%
+
 </style>
