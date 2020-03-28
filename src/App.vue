@@ -22,15 +22,15 @@ export default {
         return {
             iconSrc: 'https://www.aade.org.tw/website/wp-content/themes/twentyseventeen/img/logo.svg?v=1',
             menuList: [
-                {name: '最新消息',url: '/section/最新消息'},
-                {name: '法規與政策',url: '/categories/1'},
+                {name: '最新消息',url: '/section/最新消息/category/最新消息'},
+                {name: '法規與政策',url: '/category/法規與政策'},
                 {name: '計畫簡介',url: '/page/intro'},
-                {name: '聯繫與服務',url: '/contact'},
-                {name: '網網相連',url: '/link'},
-                {name: '教學資源',url: '/module/1'},
-                {name: '美感人才',url: '/hr/1'},
-                {name: '網站地圖',url: '/map'},
-                {name: '常見問題',url: '/collapse/1'},
+                {name: '聯繫與服務',url: '/contact/12'},
+                {name: '網網相連',url: '/link/link'},
+                {name: '教學資源',url: '/module/教學資源/category/1'},
+                {name: '美感人才',url: '/hr/staff/category/1'},
+                {name: '網站地圖',url: '/map/網站地圖'},
+                {name: '常見問題',url: '/collapse/常見問題'},
                 {name: '活動報名',url: '/activity/1'},
             ],
             footList: [

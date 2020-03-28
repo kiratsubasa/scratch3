@@ -2,9 +2,6 @@
 #app
     .listPageContent 
         SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='theArticleList')
-        h1#listPageTitle {{pageTitle}}
-        .markBlockContainer
-            router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="typ") {{typ}}
         .cardContainer      
             #Card(v-for="idx in pageDataNum" v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")  
                 .cardcontentContainer
@@ -13,6 +10,8 @@
                         .ListTypeBlock {{theArticleList[idx+(currentPage-1)*pageDataNum-1].type}}
                         .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
                         .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
+                    div#downloadBtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile")
+                        a#sehref(:href='theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
 
         a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
         a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
@@ -28,20 +27,16 @@ export default {
     components: {
         SearchBar
     },
-    props: ['page-title','search-placeholder','article-list','typeList'],
+    props: ['page-title','search-placeholder','the-article-list'],
     data() {
         return {
-            pageDataNum: 8,
+            pageDataNum: 12,
             currentPage: 1,
             totalPage: 1,
             firstPage: '第一頁',
             prev: '上一頁',
             next: '下一頁',
             finalPage: '最末頁',
-            theArticleList: '',
-            selectedQuery: '',
-            searchStatus: false,
-            searchQuery: ''
         }
     },
     watch: {
@@ -49,30 +44,12 @@ export default {
             this.$router.push({query: {page: page} });
             window.scrollTo(0,0);
         },
-        selectedQuery: function(query) {
-            this.theArticleList = this.articleList.filter((item)=>{
-                return item.type.includes(query);
-            })
-        },
-        searchQuery: function(query){
-            this.theArticleList = this.articleList.filter((item)=>{
-                if(item.title.includes(query)){
-                    this.searchStatus = true;
-                    return item.title.includes(query);
-                }
-            })
-        },
         theArticleList: function(){
             this.pageInit();
-        },
-        '$route' (){
-            this.searchInit();
         }
     },
     beforeMount(){
-        this.searchInit();
         this.pageInit();
-        this.selectedQuery = this.$route.params.id;
         if(this.$route.query.page)
             this.currentPage = this.$route.query.page;
     },
@@ -90,12 +67,6 @@ export default {
         },
         changePath: function(idx){
             this.$router.push({ path: this.theArticleList[idx].link})
-        },
-        searchInit: function(){
-            if(this.$route.query.search)
-                this.searchQuery = this.$route.query.search;
-            else
-                this.theArticleList = this.articleList;
         },
         beforeEnter: function (el) {
             el.style.opacity = 0

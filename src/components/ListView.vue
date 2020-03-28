@@ -1,5 +1,6 @@
 <template lang="pug">
 #app
+    //- SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='articleList')
     .listPageContent
         transition-group(name="staggered-fade" tag="ul" v-bind:css="false" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave")
             .List(v-for="idx in pageDataNum" :key="idx" :data-index="idx")
@@ -13,8 +14,7 @@
                             .ListTitle {{articleList[idx+(currentPage-1)*pageDataNum-1].title}}
                             .ListContent {{stripHTML(articleList[idx+(currentPage-1)*pageDataNum-1].body)}}
                             .dateNote 更新日期 {{articleList[idx+(currentPage-1)*pageDataNum-1].updated_at.split("T")[0]}}
-                            //- div#downloadBtn(v-if="articleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile")
-                            //-     a#sehref(:href='articleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{articleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
+                            
     
         a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
         a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
@@ -28,15 +28,15 @@
 
 <script>
 import SearchBar from '@/components/searchBar.vue'
-
+// import { ListArticles } from '@/api/Articles';
 export default {
     components: {
         SearchBar
     },
-    props: ['page-title','search-placeholder','tabs','article-list'],
+    props: ['page-title','search-placeholder','article-list'],
     data() {
         return {
-            pageDataNum: 8,
+            pageDataNum: 12,
             currentPage: 1,
             totalPage: 1,
             firstPage: '第一頁',
@@ -56,6 +56,7 @@ export default {
     },
     created() {
         // this.ApiListArticles(2);
+        
     },
     mount(){
         this.pageInit();

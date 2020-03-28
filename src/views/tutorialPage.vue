@@ -1,20 +1,22 @@
 <template lang="pug">
 #app
     .PathText 你的位置 : 首頁 > {{pageTitle}} 
-    router-view(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type-list='typeList')
-    newsListinArticle(:article-list='articleList' :page-title='pageTitle')
+    tabs
+    router-view(:the-article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder')
+    //- newsListinArticle(:article-list='articleList' :page-title='pageTitle')
 </template>
 
 <script>
 import newsListinArticle from '@/components/ListViewinArticle'
+import tabs from '@/components/tabs_head.vue'
 export default {
     components: {
+        tabs,
         newsListinArticle
     },
     data() {
         return {
             pageTitle: "教學資源",
-            typeList: ['教學資源','跨域薈萃',' 視覺藝術'],
             searchPlaceholder: "關鍵字",
             articleList: [
                 {
@@ -431,10 +433,46 @@ export default {
                         video:[""],
                         link:[''],
                     src:[],text: ['大家有「聽」過聲音嗎？若答案是肯定的，那麼…大家是否可曾「感受」過聲音呢？本次帶來的課程，讓學生們對於聲音，不再侷限以往用「聽」的模式，甚至於不再只是「發出」聲音，而更是要以藝術創作的方式去「展現」聲音。',' ','【跨領域美感課程主打星自然領域∩視覺藝術】','課程名稱： 聲聲不息','執行學校： 金門縣立金沙國民中學','教師團隊','曾逸仁教授、自然科林建義老師、視覺藝術科李婉琪老師、陳西村老師','課程介紹：','　　聲音對學生來說是再熟悉不過的生活經驗，本次課程要打破一般人用「聽」的聲音經驗，透過不同形式的活動，讓學生分別從動手做樂器、音符作畫等，結合視覺感受、科學實作，拓展學生對聲音的美感體驗。','自然科的部分，除了延續課本中波動、聲音的產生，及聲音三要素的認知學習，並動手自製樂器，實際體驗直笛發音原理，感受吹奏音階的變化，察覺音調高低與空氣柱長短的關係，並分享自己吹奏自製樂器的表現。','視覺藝術的部分，則以藝術基本元素點、線、面，結合抽象畫與音感作畫的概念，讓學生將無形的聲音轉化為有形的畫面，以聲音結合繪畫的方式創作作品，察覺聲音變化的可能性，並體驗抽象的表現手法。',' ','影片傳送門',' ','更多精彩的課程影片，請至跨領域美感教育網站影音區瀏覽','http://www.inarts.edu.tw/videos',' ',] }
-                },]
+                },],
+            selectedQuery: '',
+            searchStatus: false,
+            searchQuery: ''
         }
     },
+    watch: {
+        selectedQuery: function(query) {
+            this.theArticleList = this.articleList.filter((item)=>{
+                for(var i=0;i<item.type.length;i++){
+                    if(item.type[i] == query)
+                        return true;
+                }
+                return false;
+            })
+        },
+        searchQuery: function(query){
+            this.theArticleList = this.articleList.filter((item)=>{
+                if(item.title.includes(query)){
+                    this.searchStatus = true;
+                    return item.title.includes(query);
+                }
+            })
+        },
+        '$route' (){
+            this.searchInit();
+        }
+    },
+    beforeMount(){
+        this.searchInit();
+        this.selectedQuery = this.$route.params.categoryid;
+        
+    },
     methods: {
+        searchInit: function(){
+            if(this.$route.query.search)
+                this.searchQuery = this.$route.query.search;
+            else
+                this.theArticleList = this.articleList;
+        },
     }
 }
 

@@ -1,6 +1,5 @@
 <template lang="pug">
 .listPageContent
-    SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='articleList')
     h1#listPageTitle {{pageTitle}}
     .markBlockContainer
         router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in tabs' :key='t' :to="typ") {{typ}}
@@ -9,25 +8,23 @@
 
 
 <script>
-import SearchBar from '@/components/searchBar.vue'
-// import { ListArticles } from '@/api/Articles';
 export default {
     components: {
-        SearchBar
+        
     },
-    props: ['page-title','search-placeholder','tabs','articleList'],
+    props: ['tabs'],
     data() {
         return {
+            pageTitle: '',
+            searchPlaceholder: ''
+
         }
     },
     watch: {
         
     },
     created() {
-        // this.ApiListArticles(2);
-    },
-    mount(){
-        
+        this.pageTitle = this.$route.params.pageid;
     },
     methods: {
         

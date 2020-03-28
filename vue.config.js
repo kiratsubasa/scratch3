@@ -8,14 +8,14 @@ module.exports = {
         open: true,
         // proxy: 'http://fbilab.cc:8080',
         proxy: {
-            '': {
-                target: 'http://fbilab.cc:8080/api/', //设置调用的接口域名和端口
+            '/api/': {
+                target: 'http://fbilab.cc:8008/api/', //设置调用的接口域名和端口
                 changeOrigin: true, //是否跨域
-                // ws: true,
-                // pathRewrite: {
-                //     '^/api': ''
-                // }
-            }
+                ws: true,
+                pathRewrite: {
+                    '^/api/': ''
+                }
+            },
         }
     }
 }
