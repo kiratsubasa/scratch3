@@ -24,8 +24,10 @@ export default {
     max-width: 1280px
     margin: auto
     margin-top: 20px
+    display: flex
+    flex-direction: column
 .messageAndContactTitle
-    float: left
+    text-align: left
     font-weight: 600
     font-size: 20px
     margin-left: 20px
