@@ -2,13 +2,17 @@
 .contactContainer
     h1#listPageTitle {{pageData.title}}
     .HTMLContainer(v-html="pageData.body")
+    .contactContent 
+        messageAndContact() 
     
 </template>
 <script>
 import { GetPage } from "@/api/client/Page";
-import { ContactProject } from "@/api/client/Project";
-
+import messageAndContact from '@/components/messageAndContact.vue'
 export default {
+    components: {
+        messageAndContact
+    },
     data(){
         return{
             pageData: {}
@@ -37,23 +41,8 @@ export default {
     padding: 30px
     margin: auto
 
-.contactFlexContainer
-    width: 80%
-    margin: auto
-    display: flex
-    flex-wrap: wrap
-    flex-direction: row
-    align-content: center
-    justify-content: centers
-
-.contactFlex
-    min-width: 50%
-    text-align: left
-    //border: 1px solid #F2DCE0
-    margin-top: 50px
 
 .contactContent
-    margin-top: 5px
-
+    
 
 </style>
