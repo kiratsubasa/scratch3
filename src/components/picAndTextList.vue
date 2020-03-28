@@ -1,22 +1,15 @@
 <template lang="pug">
 .picAndTextContainer
-    .picAndText(v-for='(items,id) in picAndText' v-if="id%2==0")
+    .picAndText(v-for='(items,id) in picAndText'  )
         .picAndTextPic(:style="{'background-image': 'url(' + items.Pic + ')'}")
-            //img(:src="items.Pic" style="min-width:100%")
         .picAndTextText
             .picAndTextTitle {{items.title}}
             .picAndTextSubtitle {{items.Subtitle}}
-    .picAndText(v-for='(items,id) in picAndText' v-if="id%2==1")
-        .picAndTextText
-            .picAndTextTitle {{items.title}}
-            .picAndTextSubtitle {{items.Subtitle}}
-        .picAndTextPic(:style="{'background-image': 'url(' + items.Pic + ')'}")
-            //img(:src="items.Pic" style="min-width:100%")
-        // .picAndTextPic(:style="{'background-image': 'url(' + items.Pic + ')'}")
-        //     //img(:src="items.Pic" style="min-width:100%")
-        // .picAndTextText
-        //     .picAndTextTitle {{items.title}}
-        //     .picAndTextSubtitle {{items.Subtitle}}
+    // .picAndText(v-for='(items,id) in picAndText' v-if="id%2==1")
+    //     .picAndTextText
+    //         .picAndTextTitle {{items.title}}
+    //         .picAndTextSubtitle {{items.Subtitle}}
+    //     .picAndTextPic(:style="{'background-image': 'url(' + items.Pic + ')'}")
 </template>
 <script>
 export default {
@@ -39,12 +32,12 @@ export default {
 .picAndText
     width: 100%
     height: 480px
-    background-color: #ddd
+    background-color: #ECE8E3
     // overflow: hidden
     display: flex
     flex-wrap: wrap
     flex-direction: row
-    
+    color: #95AC9A
 .picAndTextPic
     width: 50%
     background-size: cover
@@ -55,8 +48,8 @@ export default {
     // padding-top: 200px
     // padding-bottom: 200px
 .picAndText:hover
-    background-color: #555
-    color: white
+    background-color: #95AC9A
+    color: #ECE8E3
 .picAndTextTitle
     font-size: 2em
     font-weight: 600

@@ -27,23 +27,34 @@
     //                 a#myhref(:href="article.link")
     //                     div.imageBlock(:style="{'background-image': 'url(' + article.src + ')'}") 
     //                         div.imageMask {{article.title}}
+    .newsListContainer
+        .newsTitle {{newsTitle}}
+        newsList(:news-list='news')
     picAndTextList(:pic-and-text='picAndText')
-    messageAndContact(:message-and-contact='inputTitle') 
+    messageAndContact
+    textList(:text-list='text') 
+    
+    
 </template>
 
 <script>
 import SlideShow from './SlideShow.vue'
 import { ListSlider } from '@/api/Slider';
 import picAndTextList from '@/components/picAndTextList.vue';
-import messageAndContact from '@/components/messageAndContact.vue'
+import messageAndContact from '@/components/messageAndContact.vue';
+import textList from '@/components/textList.vue';
+import newsList from '@/components/newsList.vue'
 export default {
     components: {
         SlideShow,
         picAndTextList,
-        messageAndContact
+        messageAndContact,
+        textList,
+        newsList
     },
     data() {
         return {
+            newsTitle: "最新消息",
             jumpBar: [
                 {title:'Title1',sub_title:'Subtitle1',media:{info:{src:'//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'}}},
                 {title:'Title2',sub_title:'Subtitle2',media:{info:{src:'https://d2jcw5q7j4vmo4.cloudfront.net/Iqoa6agJVh_B6KXdj4HdrbWfJHEMvhZCeUwvpkDJsanXAcb4Ex2h4mOtirVhiEYxfuY=w1440-h620'}}},
@@ -72,11 +83,18 @@ export default {
                 {title: '五種生活美感實踐',Subtitle: '',Description: '',Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png'},
                 {title: '美感紀錄',Subtitle: '播下美好生活種子',Description: '',Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2018/12/花蓮富北東里國中02.jpg'}
             ],
-            inputTitle:[
-                {title: '姓名',id: '',getdata: ''},
-                {title: '信箱',id: '',getdata: ''},
-                {title: '主旨',id: '',getdata: ''},
-                {title: '內容',id: '',getdata: ''}
+            text:[
+                {style: '一',title: '五種生活美感實踐',Subtitle: '',Description: '',Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png'},
+                {style: '一',title: '美感紀錄',Subtitle: '播下美好生活種子',Description: '',Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2018/12/花蓮富北東里國中02.jpg'},
+                {style: '一',title: '五種生活美感實踐',Subtitle: '',Description: '',Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png'},
+                {style: '一',title: '美感紀錄',Subtitle: '播下美好生活種子',Description: '',Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2018/12/花蓮富北東里國中02.jpg'}
+            ],
+            news:[
+                {date: '1997/11/19',title: '「應十二年國教之音樂跨領域創新教學學術研討會」歡迎各位師長蒞臨與會！報名網址請詳見內文'},
+                {date: '2000/08/05',title: '「應十二年國教之音樂跨領域創新教學學術研討會」歡迎各位師長蒞臨與會！報名網址請詳見內文'},
+                {date: '2019/11/19',title: '「應十二年國教之音樂跨領域創新教學學術研討會」歡迎各位師長蒞臨與會！報名網址請詳見內文'},
+                {date: '2019/12/11',title: '「應十二年國教之音樂跨領域創新教學學術研討會」歡迎各位師長蒞臨與會！報名網址請詳見內文'},
+                {date: '2020/03/04',title: '「應十二年國教之音樂跨領域創新教學學術研討會」歡迎各位師長蒞臨與會！報名網址請詳見內文'}
             ]
         }
     },
@@ -100,5 +118,13 @@ export default {
 
 <style lang="sass">
 @import "@/style/mainPage.sass"
+.newsListContainer
+    max-width: 1350px
+    margin: auto
+    padding: 37px 44px 37px 44px
+    background-color: #95AC9A
+.newsTitle
+    text-align: left
+    margin-bottom: 35px
 </style>
 
