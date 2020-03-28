@@ -4,10 +4,18 @@
         h1#listPageTitle {{pageTitle}}
         .markBlockContainer
             router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in typeList' :key='t' :to="typ") {{typ}}
-        .questionAndAnswer(v-for='QAs in theArticleList' @click="extend" tabindex="0")
-            .question Q.{{QAs.question}}
-            br
-            .answer {{QAs.answer}}
+        // .questionAndAnswer(v-for='QAs in theArticleList' @click="extend" tabindex="0")
+        v-list-group.questionAndAnswer(v-for='QAs in theArticleList' :key="QAs.question" no-action)
+            template(v-slot:activator)
+                v-list-item-content
+                    v-list-item-title.bold(v-text="QAs.question")
+            v-list-item(v-for="QAs in theArticleList" :key="QAs.answer" @click="")
+                v-list-item-content
+                    v-list-item-title(v-text="QAs.answer")
+            // .question Q.{{QAs.question}}
+            // br
+            // .answer {{QAs.answer}}
+        
 </template>
 <script>
 export default {
@@ -75,7 +83,7 @@ export default {
     margin: auto
     margin-bottom: 40px
     border: 1px solid #F2DCE0
-    max-height: 40px
+    //max-height: 40px
     overflow: hidden
     transition: max-height 0.2s
 .questionAndAnswer:focus
@@ -93,4 +101,15 @@ export default {
     max-height: 500px
 input:focus
     background-color: #ccc
+.bold
+    font-weight: 550
+v-list-item__content
+    padding: 0px
+.v-list-item
+    min-height: 0px
+.v-list-group__items
+    cursor: default
+.v-list-item--link
+    cursor: default
+.theme--light
 </style>
