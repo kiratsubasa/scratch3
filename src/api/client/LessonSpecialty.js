@@ -7,7 +7,7 @@ import { validAlias } from '@/utils/validate';
 
 export function ListLessonSpecialties(project) {
   return request({
-    url: 'api/projects/' + validAlias(project) + '/lessonSpecialties',
+    url: '/api/projects/' + validAlias(project) + '/lessonSpecialties',
     method: 'get',
   });
 }

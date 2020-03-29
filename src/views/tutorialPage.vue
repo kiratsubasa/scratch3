@@ -1,17 +1,15 @@
 <template lang="pug">
 #app
     .PathText 你的位置 : 首頁 > {{pageTitle}} 
-    tabs
-    router-view(:the-article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder')
+    router-view(:the-article-list='articleList' :page-title='pageTitle')
     //- newsListinArticle(:article-list='articleList' :page-title='pageTitle')
 </template>
 
 <script>
 import newsListinArticle from '@/components/ListViewinArticle'
-import tabs from '@/components/tabs_head.vue'
+
 export default {
     components: {
-        tabs,
         newsListinArticle
     },
     data() {

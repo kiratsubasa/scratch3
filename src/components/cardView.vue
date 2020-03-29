@@ -1,7 +1,7 @@
 <template lang="pug">
 #app
     .listPageContent 
-        SearchBar.searchBar-list(:searchPlaceholder='searchPlaceholder' :search-lists='theArticleList')
+        SelectorHead(:page-title='pageTitle')
         .cardContainer      
             #Card(v-for="idx in pageDataNum" v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")  
                 .cardcontentContainer
@@ -22,12 +22,12 @@
 </template>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
 <script>
-import SearchBar from '@/components/searchBar.vue'
+import SelectorHead from '@/components/bookmarkSelector.vue'
 export default {
     components: {
-        SearchBar
+        SelectorHead
     },
-    props: ['page-title','search-placeholder','the-article-list'],
+    props: ['page-title','the-article-list'],
     data() {
         return {
             pageDataNum: 12,
