@@ -29,8 +29,8 @@ export default {
 @import "@/style/common.sass"
 .footerContainer
     width: 100%
-    background-color: $c-secondary
-    color: $textC-secondary
+    background-color: $c-primary
+    color: $c-secondary
     
 #footer
     bottom: 0

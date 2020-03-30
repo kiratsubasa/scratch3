@@ -7,7 +7,8 @@
             .textPic(:style="{'background-image': 'url(' + lists.Pic + ')'}")
             .textText
                 .textTitle {{lists.title}}
-                .textSubTitle {{lists.Subtitle}}
+                .textDescription {{lists.Description.substring(0,65)}}
+                .textLearnMore LEARN MORE
 </template>
 <script>   
 export default {
@@ -25,36 +26,55 @@ export default {
 @import "@/style/common.sass"
 .textListContainer
     margin: auto
-    max-width: 1280px
+    padding-bottom: 135px
 .textListTabContainer
     display: flex
     flex-direction: row
-    margin-bottom: 20px
+    margin-bottom: 64px
 .textListTab
     box-sizing: border-box
-    padding-left: 10px
-    padding-right: 10px
-    padding-top: 5px
-    padding-bottom: 5px
+    color: $c-text
+    font-size: 25px
+    padding: 15px 23px 15px 23px
+    border-bottom: 8px solid $c-bg
 .textListTab:hover
-    border-bottom: 3px solid $c-secondary
+    border-bottom: 8px solid $c-primary
 .textListFlex
+    max-width: 1350px
     display: flex
     flex-direction: row
+    flex-wrap: wrap
 .textList
-    width: 300px
-    margin-left: 10px
-    margin-right: 10px
+    width: 430px
+    height: 676px
+    margin: 10px
+    margin-bottom: 70px
 .textPic
-    width: 100%
-    height: 168px
+    width: 430px
+    height: 430px
     background-size: cover
 .textText
-    padding: 10px
+    width: 430px
+    height: 246px
+    padding: 27px 15px 27px 15px
+    background-color: $c-secondary
 .textTitle
-    font-size: 1.25em
-    text-align: left
-    margin-bottom: 10px
-.textSubtitle
-    text-align: left
+    font-size: 33px
+    color: $c-primary
+    margin-bottom: 30px
+.textDescription
+    font-size: 16px
+    line-height: 24px
+    margin-bottom: 30px
+.textLearnMore
+    background-color: $c-primary
+    color: $c-secondary
+    font-weight: 600
+    width: 194px
+    height: 53px
+    padding: 15px 34px 15px 34px
+    margin: auto
+.textLearnMore:hover
+    cursor: pointer
+    opacity: 0.75
 </style>

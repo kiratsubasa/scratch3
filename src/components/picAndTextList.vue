@@ -1,15 +1,10 @@
 <template lang="pug">
 .picAndTextContainer
-    .picAndText(v-for='(items,id) in picAndText'  )
+    .picAndText(v-for='(items,id) in picAndText' :class="id%2==0? 'flexRow':'flexRowReverse'")
         .picAndTextPic(:style="{'background-image': 'url(' + items.Pic + ')'}")
         .picAndTextText
             .picAndTextTitle {{items.title}}
             .picAndTextSubtitle {{items.Subtitle}}
-    // .picAndText(v-for='(items,id) in picAndText' v-if="id%2==1")
-    //     .picAndTextText
-    //         .picAndTextTitle {{items.title}}
-    //         .picAndTextSubtitle {{items.Subtitle}}
-    //     .picAndTextPic(:style="{'background-image': 'url(' + items.Pic + ')'}")
 </template>
 <script>
 export default {
@@ -26,9 +21,7 @@ export default {
 <style lang="sass">
 @import "@/style/common.sass"
 .picAndTextContainer
-    max-width: 1280px
-    margin: auto
-    margin-top: 20px
+    padding-bottom: 135px
 .picAndText
     width: 100%
     height: 480px
@@ -36,8 +29,14 @@ export default {
     // overflow: hidden
     display: flex
     flex-wrap: wrap
-    flex-direction: row
+    //flex-direction: row
     color: #95AC9A
+.flexRow
+    flex-direction: row
+.flexRowReverse
+    flex-direction: row-reverse
+.picAndText:hover
+    cursor: pointer
 .picAndTextPic
     width: 50%
     background-size: cover
@@ -50,6 +49,7 @@ export default {
 .picAndText:hover
     background-color: #95AC9A
     color: #ECE8E3
+    opacity: 0.75
 .picAndTextTitle
     font-size: 2em
     font-weight: 600

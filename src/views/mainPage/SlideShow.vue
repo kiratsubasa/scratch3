@@ -14,7 +14,8 @@ div#slideshow-container
         p {{jumpBar[slideIndex-1].subtitle}}
     //- div.prevBut(@click='plusSlides(-1)') <
     //- div.nextBut(@click='plusSlides(1)') >
-    span.dot(v-for="(dot,index) in jumpBar" @click='currentSlide(index+1)')
+    .dotContainer
+        span.dot(v-for="(dot,index) in jumpBar" @click='currentSlide(index+1)')
 
 </template>
 
@@ -92,12 +93,13 @@ export default {
 @import "@/style/common.sass"
 #slideshow-container
     background-color: $c-bg
-    max-width: 1280px
+    max-width: 100%
     max-height: 960px
     position: relative
     margin: auto
-    -webkit-box-shadow: -1px 3px 10px -1px rgba(0,0,0,0.20)
-    box-shadow: -1px 3px 8px -1px rgba(0,0,0,0.20)
+    margin-bottom: 135px
+    // -webkit-box-shadow: -1px 3px 10px -1px rgba(0,0,0,0.20)
+    // box-shadow: -1px 3px 8px -1px rgba(0,0,0,0.20)
     // margin-top: 1px
 
 .mySlides
@@ -134,12 +136,15 @@ export default {
     animation-timing: ease-in-out
     animation-delay: 0.4s
 
-
+.dotContainer
+    position: absolute
+    bottom: 35px
+    left: 48%
 .dot
     cursor: pointer
     height: 10px
     width: 10px
-    margin: 0 2px
+    margin: 0 5px
     margin-top:10px
     background-color: $c-primary
     border-radius: 50%
@@ -154,21 +159,20 @@ export default {
     position: absolute
     bottom: 5%
     text-align: left
-    width: 60%
     margin-left: 1%
-    background-color: $c-bg
-    opacity: 1
+    background-color: $c-secondary
+    opacity: 0.75
     padding: 10px
     cursor: pointer
-    -webkit-box-shadow: -5px 3px 15px 4px rgba(0,0,0,0.4)
-    box-shadow: -5px 3px 15px 4px rgba(0,0,0,0.4)
     font-size: 1.2em
     line-height: 2em
 #slideTextBlockTitle 
     margin: 5px
+    color: $c-text
 
 .slideTextBlock:hover
-    opacity: 0.4
+    background-color: $c-primary
+    color: $c-secondary
 
 
 @keyframes fade
