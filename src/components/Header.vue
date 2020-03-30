@@ -102,10 +102,11 @@ export default {
 
 #menuItemLink
     padding: 5px
-    color: #28292D
+    color: $c-secondary
     text-decoration: none 
     font-weight: bold
-    
+#menuItemLink:hover
+    color: $c-text
 .change .menuIconBar1
     opacity: 0
     
