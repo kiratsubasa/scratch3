@@ -5,16 +5,17 @@
         transition-group(name="staggered-fade" tag="ul" v-bind:css="false" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave")
             .List(v-for="idx in pageDataNum" :key="idx" :data-index="idx")
                 .Listbtn(v-if="articleList[idx+(currentPage-1)*pageDataNum-1]")
-                    .ListContainer
-                        .Listhead
-                            .ListImage(v-if="articleList[idx+(currentPage-1)*pageDataNum-1].media!=null" :style="{'background-image': 'url(' + articleList[idx+(currentPage-1)*pageDataNum-1].media.info.src + ')'}") 
-                            .listTypeContainer
-                                    router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in articleList[idx+(currentPage-1)*pageDataNum-1].categories' :key='t' :to="'/'+typ") {{typ.name}} 
+                    .ListContainer 
                         .ListTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
+                            .dateNote 更新日期 {{articleList[idx+(currentPage-1)*pageDataNum-1].updated_at.split("T")[0]}}
                             .ListTitle {{articleList[idx+(currentPage-1)*pageDataNum-1].title}}
                             .ListContent {{stripHTML(articleList[idx+(currentPage-1)*pageDataNum-1].body)}}
-                            .dateNote 更新日期 {{articleList[idx+(currentPage-1)*pageDataNum-1].updated_at.split("T")[0]}}
-                            
+                            .listTypeContainer
+                                    router-link.ListTypeBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in articleList[idx+(currentPage-1)*pageDataNum-1].categories' :key='t' :to="'/'+typ") {{typ.name}}
+                                    
+                        .Listhead
+                            .ListImage(v-if="articleList[idx+(currentPage-1)*pageDataNum-1].media!=null" :style="{'background-image': 'url(' + articleList[idx+(currentPage-1)*pageDataNum-1].media.info.src + ')'}") 
+                                
     
         a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
         a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
