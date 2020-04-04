@@ -1,17 +1,16 @@
 <template lang="pug">
 #app
     .listPageContent 
-        SelectorHead(:page-title='pageTitle')
+        SelectorHead(:page-title='pageTitle' v-on:bookmarkList="bookmarkList")
         .cardContainer      
-            #Card(v-for="idx in pageDataNum" v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1]")  
+            #Card(v-for="card in theArticleList")  
                 .cardcontentContainer
-                    .ListImage(:style="{'background-image': 'url(' + theArticleList[idx+(currentPage-1)*pageDataNum-1].src + ')'}") 
+                    .cardImage(:style="{'background-image': 'url(' + card.cover.info.src + ')'}") 
                     .CardTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
-                        .ListTypeBlock {{theArticleList[idx+(currentPage-1)*pageDataNum-1].type}}
-                        .ListTitle {{theArticleList[idx+(currentPage-1)*pageDataNum-1].title}}
-                        .ListContent {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.text[0]}}
-                    div#downloadBtn(v-if="theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile")
-                        a#sehref(:href='theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadFile' download) {{theArticleList[idx+(currentPage-1)*pageDataNum-1].content.downloadText}}
+                        .ListTypeBlock(v-for='tag in card.categories') {{tag.name}}
+                        .ListTitle {{card.title}}
+                        .ListTypeBlock(v-for='tag in card.specialties') {{tag.name}}
+                        .ListTypeBlock(v-for='tag in card.authors') {{tag.name}}
 
         a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
         a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
@@ -27,9 +26,10 @@ export default {
     components: {
         SelectorHead
     },
-    props: ['page-title','the-article-list'],
+    props: ['page-title'],
     data() {
         return {
+            theArticleList: [],
             pageDataNum: 12,
             currentPage: 1,
             totalPage: 1,
@@ -40,20 +40,23 @@ export default {
         }
     },
     watch: {
-        currentPage: function(page){
-            this.$router.push({query: {page: page} });
-            window.scrollTo(0,0);
-        },
-        theArticleList: function(){
-            this.pageInit();
-        }
+        // currentPage: function(page){
+        //     this.$router.push({query: {page: page} });
+        //     window.scrollTo(0,0);
+        // },
+        // theArticleList: function(){
+        //     this.pageInit();
+        // }
     },
     beforeMount(){
-        this.pageInit();
-        if(this.$route.query.page)
-            this.currentPage = this.$route.query.page;
+        // this.pageInit();
+        // if(this.$route.query.page)
+        //     this.currentPage = this.$route.query.page;
     },
     methods: {
+        bookmarkList: function(data){
+            this.theArticleList = data;
+        },
         pageInit: function(){
             this.totalPage = Math.ceil(this.theArticleList.length/this.pageDataNum);
         },
@@ -115,5 +118,9 @@ export default {
     display: flex
     flex-wrap: wrap
     margin-bottom: 50px
+.cardImage
+    width: 238px
+    height: 180px
+    background-size: cover
 </style>
 
