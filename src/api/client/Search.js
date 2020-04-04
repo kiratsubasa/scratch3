@@ -6,7 +6,7 @@ import request from '@/utils/request';
 
 export function SearchArticles(data, page) {
   return request({
-    url: 'api/search/articles',
+    url: '/api/search/articles',
     method: 'post',
     data,
     params: page,
@@ -15,7 +15,7 @@ export function SearchArticles(data, page) {
 
 export function SearchPages(data, page) {
   return request({
-    url: 'api/search/pages',
+    url: '/api/search/pages',
     method: 'post',
     data,
     params: page,
@@ -24,7 +24,7 @@ export function SearchPages(data, page) {
 
 export function SearchHumanResources(data, page) {
   return request({
-    url: 'api/search/humanResources',
+    url: '/api/search/humanResources',
     method: 'post',
     data,
     params: page,
@@ -33,7 +33,7 @@ export function SearchHumanResources(data, page) {
 
 export function SearchLessons(data, page) {
   return request({
-    url: 'api/search/lessons',
+    url: '/api/search/lessons',
     method: 'post',
     data,
     params: page,

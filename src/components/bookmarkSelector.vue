@@ -17,7 +17,7 @@
     SearchBar(:searchPlaceholder='searchPlaceholder' :queryObj='queryObj'  v-on:searchByQuery="searchByQuery")
 
     .searchList(v-if="queryStatus") 您的搜索條件為: 
-        span.searchItem(v-for="que in queryObj")  {{que}} | 
+        span.searchItem(v-for="que in showQuery")  {{que}} | 
 
 </template>
 
@@ -27,7 +27,7 @@ import tabs from '@/components/tabs_head.vue'
 import { ListLessonCategories } from '@/api/client/LessonCategory';
 import { ListLessonSpecialties } from '@/api/client/LessonSpecialty';
 import { ListLessonsOfCategory,ListLessons} from '@/api/client/Lesson';
-import { SearchLessons } from '@/api/client/Search';
+import { SearchLessons } from '@/api/client/Search.js';
 
 export default {
     components: {
@@ -50,6 +50,7 @@ export default {
             stage: '',
             search: '',
             queryObj: {},
+            showQuery: {},
             queryStatus: false
         }
     },
@@ -58,20 +59,21 @@ export default {
         this.ApiGetLessSpe(2);
     },
     watch: {
-        // specialty: function(query){
-        //     Object.assign(this.queryObj, {specialty: query});
-        // },
-        // area: function(query){
-        //     Object.assign(this.queryObj, {area: query});
-        // },
-        // stage: function(query){
-        //     Object.assign(this.queryObj, {stage: query});
-        // },
         '$route.query': function(route){
-            console.log(route);
+            this.showQuery = route;
+            this.getListByQuery(route);
         }
     },
     methods: {
+        getListByQuery(querys){
+            console.log(querys);
+            if(querys.specialty){
+                var data = {
+                    
+                }
+                this.ApiSearchLess(data,1);
+            }
+        },
         searchByQuery(query){
             this.search = query;
             this.assignAllQuery();
@@ -90,24 +92,33 @@ export default {
         ListbyQuery(){
             if(this.$route.query.specialty){
                 this.queryStatus = true;
-                // Object.assign(this.queryObj, {specialty: this.$route.query.specialty});
+                Object.assign(this.showQuery, {specialty: this.$route.query.specialty});
             }
             if(this.$route.query.area){
                 this.queryStatus = true;
-                // Object.assign(this.queryObj, {area: this.$route.query.area});
+                Object.assign(this.showQuery, {area: this.$route.query.area});
             }
             if(this.$route.query.stage){
                 this.queryStatus = true;
-                // Object.assign(this.queryObj, {stage: this.$route.query.stage});
+                Object.assign(this.showQuery, {stage: this.$route.query.stage});
             }
             if(this.$route.query.search){
                 this.queryStatus = true;
-                // Object.assign(this.queryObj, {search: this.$route.query.search});
+                Object.assign(this.showQuery, {search: this.$route.query.search});
             }
             if(!this.queryStatus){
                 this.$router.push({ path: 'all'});
                 this.ApiListAllLess(2,1);
             }
+        },
+        ApiSearchLess(data, page){
+            SearchLessons(data, page)
+            .then(response => {
+                    console.log(response.data);
+                })
+                .catch(err => {
+                console.log(err);
+            });
         },
         ApiListAllLess(id,page){
             ListLessons(id,page)
