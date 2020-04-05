@@ -5,7 +5,6 @@ import newsPage from '@/views/newsPage'
 import article from '@/components/article'
 import postArticle from '@/components/postArticle.vue'
 import tabs from '@/components/tabs_head.vue'
-// import resultPage from '@/views/resultPage'
 import otherWeb from '@/views/otherWebPage'
 import QA from '@/views/footer/QAPage'
 import activityPage from '@/views/activityPage.vue'
@@ -13,8 +12,8 @@ import staffPage from '@/views/staffPage.vue'
 import tutorialPage from '@/views/tutorialPage.vue'
 import contectPage from '@/views/footer/contectPage.vue'
 import webTreePage from '@/views/footer/webTreePage.vue'
-import staffListView from '@/components/staffListView.vue'
 import cardView from '@/components/cardView.vue'
+import lessonArticle from '@/components/lessonArticle.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -53,14 +52,14 @@ export default new Router({
             component: tutorialPage,
             children: [
                 {path: 'category/:categoryid',component: cardView},
-                {path: 'post/:postid',component: postArticle}
+                {path: 'post/:postid',component: lessonArticle}
             ]
           },
           {
             path: '/hr/:pageid',
             component: staffPage,
             children: [
-                {path: 'category/:categoryid',component: staffListView},
+                {path: 'category/:categoryid',component: cardView},
                 {path: 'post/:postid',component: postArticle}
             ]
           },

@@ -1,24 +1,25 @@
 <template lang="pug">
-#app
-    .listPageContent 
-        SelectorHead(:page-title='pageTitle' v-on:bookmarkList="bookmarkList")
-        .cardContainer      
-            #Card(v-for="card in theArticleList")  
-                .cardcontentContainer
-                    .cardImage(:style="{'background-image': 'url(' + card.cover.info.src + ')'}") 
-                    .CardTextBlock(@click="changePath(idx+(currentPage-1)*pageDataNum-1)")
-                        .ListTypeBlock(v-for='tag in card.categories') {{tag.name}}
-                        .ListTitle {{card.title}}
-                        .ListTypeBlock(v-for='tag in card.specialties') {{tag.name}}
-                        .ListTypeBlock(v-for='tag in card.authors') {{tag.name}}
-                        .ListTypeBlock {{card.area}}
+.listPageContent 
+    SelectorHead(:page-title='pageTitle' v-on:bookmarkList="bookmarkList")
+    .cardContainer      
+        #Card(v-for="card in theArticleList")  
+            .cardcontentContainer
+                .cardImage(:style="{'background-image': 'url(' + card.cover.info.src + ')'}") 
+                .CardTextBlock
+                    .ListTypeBlock(v-for='tag in card.categories') {{tag.name}}
+                    .ListTitle {{card.title}}
+                    .ListTypeBlock(v-for='tag in card.specialties') {{tag.name}}
+                    .ListTypeBlock(v-for='tag in card.authors') {{tag.name}}
+                    .ListTypeBlock {{card.area}}
+                    .ListTypeBlock {{card.stage}}
+                    #textBtn(@click='changePath(card.id)') Read More
 
-        a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
-        a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
-        select.pageSel(v-model="currentPage")
-            option(v-for="idx in totalPage") {{ idx }}
-        a#myhref.pageBtn.next(v-if="currentPage!=totalPage" @click="setPage(currentPage + 1)") {{ next }}
-        a#myhref.pageBtn.finalPage(v-if="currentPage!=totalPage" @click="setPage(totalPage)") {{ finalPage }}
+    a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
+    a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}
+    select.pageSel(v-model="currentPage")
+        option(v-for="idx in totalPage") {{ idx }}
+    a#myhref.pageBtn.next(v-if="currentPage!=totalPage" @click="setPage(currentPage + 1)") {{ next }}
+    a#myhref.pageBtn.finalPage(v-if="currentPage!=totalPage" @click="setPage(totalPage)") {{ finalPage }}
 </template>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
 <script>
@@ -70,7 +71,7 @@ export default {
             }
         },
         changePath: function(idx){
-            this.$router.push({ path: this.theArticleList[idx].link})
+            this.$router.push({ path: '../post/'+idx})
         },
         beforeEnter: function (el) {
             el.style.opacity = 0
@@ -104,12 +105,10 @@ export default {
 <style lang="sass">
 @import "@/style/common.sass"
 #Card
-    width: 240px
+    width: 300px
     border: 1px $c-primary solid
     border-radius: 3px
     margin: 10px
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3)
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3)
     color: #333
     text-decoration:none
 
@@ -120,8 +119,23 @@ export default {
     flex-wrap: wrap
     margin-bottom: 50px
 .cardImage
-    width: 238px
+    width: 300px
     height: 180px
     background-size: cover
+
+#textBtn
+    color: $textC-secondary
+    width: 110px
+    border: 1px $c-primary solid
+    background-color: $c-primary
+    padding: 5px
+    margin: 15px
+    text-align: center
+    border-radius: 20px
+    cursor: pointer
+    &:hover
+        background-color: $c-secondary
+        color: $c-text
+        width: 110px
 </style>
 

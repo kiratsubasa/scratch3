@@ -43,7 +43,7 @@ export default {
             tempDataList: [],
             specialtyList: [],
             areaList: ['嘉義','新竹','花蓮縣'],
-            stageList: ['小學','大學'],
+            stageList: ['小學','大學','國中'],
             searchPlaceholder: 'keyword',
             cate: '',
             specialty: '',
@@ -60,11 +60,16 @@ export default {
         this.ApiGetLessSpe(2);
         
     },
-    updated(){
-        if(this.$route.query)
-            this.getListByQuery(this.$route.query);
-    },
     watch: {
+        'specialty': function(query){
+            this.$router.push({ path: 'all',query: {specialty: query}});
+        },
+        'area': function(query){
+            this.$router.push({ path: 'all',query: {area: query}});
+        },
+        'stage': function(query){
+            this.$router.push({ path: 'all',query: {stage: query}});
+        },
         '$route.query': function(route){
             this.showQuery = route;
             this.getListByQuery(route);
@@ -72,7 +77,6 @@ export default {
     },
     methods: {
         getListByQuery(querys){
-            this.bookmarkList = [];
             var spe = querys.specialty;
             var speID = -1;
             if(spe){
@@ -94,6 +98,24 @@ export default {
                 }
                 this.ApiSearchLess(data,1);
             }
+            var stage = querys.stage;
+            if(stage){
+                data={
+                    project_id: 2,
+                    column: "stage",
+                    pattern: stage
+                }
+                this.ApiSearchLess(data,1);
+            }
+            var search = querys.search;
+            if(search){
+                data={
+                    project_id: 2,
+                    column: "content",
+                    pattern: search
+                }
+                this.ApiSearchLess(data,1);
+            }
         },
         getListBySpe(id,page){
             ListLessonsOfSpecialty(id,page)
@@ -107,27 +129,12 @@ export default {
         },
         changePathByQuery(query){
             this.search = query;
-            this.assignAllQuery();
-            this.$router.push({ path: 'all',query: this.queryObj});
-        },
-        assignAllQuery(){
-            if(this.specialty)
-                Object.assign(this.queryObj, {specialty: this.specialty});
-            if(this.area)
-                Object.assign(this.queryObj, {area: this.area});
-            if(this.stage)
-                Object.assign(this.queryObj, {stage: this.stage});
-            if(this.search)
-                Object.assign(this.queryObj, {search: this.search});
+            this.$router.push({ path: 'all',query: {search: query}});
         },
         ApiSearchLess(data, page){
             SearchLessons(data, page)
             .then(response => {
-                this.tempDataList = response.data;
-                for(var i=0;i<this.tempDataList.length;i++){
-                    this.bookmarkList.push(this.tempDataList[i]);
-                }
-                console.log(this.bookmarkList);
+                this.bookmarkList = response.data;
                 this.$emit('bookmarkList', this.bookmarkList);
                 // console.log(response.data);
                 // console.log(response.meta.last_page);
