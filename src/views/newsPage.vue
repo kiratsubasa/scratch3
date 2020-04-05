@@ -74,10 +74,10 @@ export default {
                     this.pageData = response.data;
                     this.pageTitle = this.pageData.title;
                     //give tabs
-                    for(var i=0;i<this.pageData.type.tabs.length;i++){
-                        this.tabs.push(this.pageData.type.tabs[i].name);
-                        if(this.$route.params.categoryid==this.pageData.type.tabs[i].name){
-                            this.selectedQuery =this.pageData.type.tabs[i].id;
+                    for(var i=0;i<this.pageData.type.section.tabs.length;i++){
+                        this.tabs.push(this.pageData.type.section.tabs[i].name);
+                        if(this.$route.params.categoryid==this.pageData.type.section.tabs[i].name){
+                            this.selectedQuery =this.pageData.type.section.tabs[i].id;
                             this.ListArticleByCate(this.selectedQuery,1);
                         }
                     }

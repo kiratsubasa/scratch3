@@ -7,7 +7,7 @@ import { validAlias } from '@/utils/validate';
 
 export function ListLessonsOfSpecialty(id, page) {
   return request({
-    url: 'api/lessonSpecialties/' + id + '/lessons',
+    url: '/api/lessonSpecialties/' + id + '/lessons',
     method: 'get',
     params: page,
   });
@@ -15,7 +15,7 @@ export function ListLessonsOfSpecialty(id, page) {
 
 export function ListLessonsOfCategory(id, page) {
   return request({
-    url: 'api/lessonCategories/' + id + '/lessons',
+    url: '/api/lessonCategories/' + id + '/lessons',
     method: 'get',
     params: page,
   });
@@ -23,7 +23,7 @@ export function ListLessonsOfCategory(id, page) {
 
 export function ListLessonsOfAuthor(id, page) {
   return request({
-    url: 'api/lessonAuthors/' + id + '/lessons',
+    url: '/api/lessonAuthors/' + id + '/lessons',
     method: 'get',
     params: page,
   });
@@ -31,7 +31,7 @@ export function ListLessonsOfAuthor(id, page) {
 
 export function ListLessonsOfTag(id, page) {
   return request({
-    url: 'api/tags/' + id + '/lessons',
+    url: '/api/tags/' + id + '/lessons',
     method: 'get',
     params: page,
   });
@@ -43,7 +43,7 @@ export function ListLessonsOfTag(id, page) {
 
 export function ListLessons(project, page) {
   return request({
-    url: 'api/projects/' + validAlias(project) + '/lessons',
+    url: '/api/projects/' + validAlias(project) + '/lessons',
     method: 'get',
     params: page,
   });
@@ -51,14 +51,14 @@ export function ListLessons(project, page) {
 
 export function GetLesson(project, id) {
   return request({
-    url: 'api/projects/' + validAlias(project) + '/lessons/' + id,
+    url: '/api/projects/' + validAlias(project) + '/lessons/' + id,
     method: 'get',
   });
 }
 
 export function ListLessonsOfTagInProject(project, id, page) {
   return request({
-    url: 'api/projects/' + validAlias(project) + '/tags/' + id + '/lessons',
+    url: '/api/projects/' + validAlias(project) + '/tags/' + id + '/lessons',
     method: 'get',
     params: page,
   });
