@@ -15,7 +15,6 @@ export default {
     props: ['tabs','page-title'],
     data() {
         return {
-            pageTitle: '',
             searchPlaceholder: ''
 
         }

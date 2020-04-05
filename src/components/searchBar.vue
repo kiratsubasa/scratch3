@@ -2,15 +2,9 @@
 #searchBox(@click='searchStatus=false')
     .input-group
         input.search(type='text' :placeholder='searchPlaceholder' v-model='searchQuery' @keyup.enter="search")
-        button.searchButton(v-on:click="isHidden=false" @click="search")
+        button.searchButton(@click="search")
             i.mdi.mdi-magnify(aria-hidden='true')
-        .search-previewBlock
-            .search-preview(v-if="searchQuery" v-for='(item,index) in filteredResources' :key="index")
-                        md-card(md-with-hover='' )
-                            md-ripple
-                                a#myhref(:href='"/page/"+item.id')
-                                    md-card-header
-                                        .sm-title {{item.title}}
+    .warning(v-if="textLenWarning.display") {{textLenWarning.msg}}
 
 
 </template>
@@ -18,29 +12,31 @@
 <script>
 
 export default {
-    props: ['searchPlaceholder','search-lists'],
+    props: ['searchPlaceholder','queryObj'],
     data() {
         return {
             drawerStatus: false,
             searchQuery:'',
-            isHidden: true,
-            searchStatus: false
-        }
-    },
-    computed: {
-        filteredResources (){
-            if(this.searchQuery){
-                return this.searchLists.filter((item)=>{
-                    return item.title.includes(this.searchQuery);
-            })
-            }else{
-                return this.searchLists;
+            searchStatus: false,
+            textLenWarning: {
+                msg: "請輸入2字以上",
+                display: false
             }
         }
     },
+    computed: {
+
+    },
     methods: {
         search: function(){
-            this.$router.push({path: this.$route.path , query: {search: this.searchQuery} });
+            if(this.searchQuery<2){
+                this.textLenWarning.display=true;
+            }
+            else{
+                this.textLenWarning.display=false;
+                this.$emit('changePathByQuery', this.searchQuery)
+            }
+            // location.reload();
         }
     }
 }
@@ -48,6 +44,7 @@ export default {
 
 <style lang="sass">
 @import "@/style/common.sass"
-
+.warning
+    color: red
 </style>
 
