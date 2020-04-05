@@ -11,6 +11,7 @@
                         .ListTitle {{card.title}}
                         .ListTypeBlock(v-for='tag in card.specialties') {{tag.name}}
                         .ListTypeBlock(v-for='tag in card.authors') {{tag.name}}
+                        .ListTypeBlock {{card.area}}
 
         a#myhref.pageBtn.firstPage(v-if="currentPage!=1" @click="setPage(1)") {{ firstPage }}
         a#myhref.pageBtn.previous(v-if="currentPage!=1" @click="setPage(currentPage - 1)") {{ prev }}

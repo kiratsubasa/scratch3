@@ -33,10 +33,12 @@ export function SearchHumanResources(data, page) {
 
 export function SearchLessons(data, page) {
   return request({
-    url: '/api/search/lessons',
+    url: '/api/search/lessons?page=' + page,
     method: 'post',
     data,
-    params: page,
+    // params: page,
   });
+
+
 }
 

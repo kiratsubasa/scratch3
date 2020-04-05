@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         search: function(){
-            this.$emit('searchByQuery', this.searchQuery)
+            this.$emit('changePathByQuery', this.searchQuery)
             // location.reload();
         }
     }
