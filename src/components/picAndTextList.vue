@@ -61,13 +61,24 @@ export default {
 @media only screen and (max-width: 480px)
     .picAndText
         width: 100%
+        height: 270px
+        position: relative
     .picAndTextPic
         width: 100%
         background-size: cover
         //float: left
     .picAndTextText
-        width: 100%
-        background-color: #ddd
+        position: absolute
+        width: 50%
+        height: 100%
+        background-color: $c-secondary
+        opacity: 0.75
     .picAndTextTitle
         margin-bottom: 10px
+        font-size: 16px
+        line-height: 20px
+        margin-top: 120px
+    .picAndTextSubtitle
+        font-size: 10px
+        line-height: 15px
 </style>

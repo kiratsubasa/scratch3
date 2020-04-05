@@ -81,4 +81,9 @@ export default {
 .sendButton:hover
     opacity: 0.75
     cursor: pointer
+@media only screen and (max-width: 665px)
+    .messageAndContactContainer
+        width: 100%
+    .titleAndInput
+        margin-bottom: 40px
 </style>
