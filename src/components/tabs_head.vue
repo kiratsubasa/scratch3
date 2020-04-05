@@ -2,7 +2,7 @@
 .listPageContent
     h1#listPageTitle {{pageTitle}}
     .markBlockContainer
-        router-link.markBlock(style="color: #333; text-decoration: none;" v-for='(typ,t) in tabs' :key='t' :to="typ") {{typ}}
+        router-link.markBlock(style="color: #707070; text-decoration: none;" v-for='(typ,t) in tabs' :key='t' :to="typ") {{typ}}
         
 </template>
 
@@ -15,7 +15,6 @@ export default {
     props: ['tabs','page-title'],
     data() {
         return {
-            pageTitle: '',
             searchPlaceholder: ''
 
         }

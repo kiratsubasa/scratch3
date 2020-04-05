@@ -1,12 +1,13 @@
 <template lang="pug">
-.PathText 你的位置 : 首頁 > {{pageTitle}}
+#app
+    .PathText 你的位置 : 首頁 > {{pageTitle}}
     .webContainer
         h1#listPageTitle {{pageTitle}}
         .webFlexContainer
             .webFlex(v-for='web in webList')
                 a.webLink#myhref(:href="web.url" target="_blank" )
-                    img.webImg(:src="web.media")
-                    .webTitle {{web.title}}
+                    .webImg(:style="{'background-image': 'url(' + web.media + ')'}")
+                        .webTitle {{web.title}}
         
 </template>
 
@@ -41,12 +42,13 @@ export default {
 </script>
 
 <style lang="sass">
+@import "@/style/mainPage.sass"
 .webContainer
-    max-width: 1280px
+    max-width: 1350px
     min-height: 1500px
     // border: 1px #ccc solid
     margin: auto
-    padding: 100px
+    // padding: 100px
 
 
 .webFlexContainer
@@ -55,16 +57,33 @@ export default {
     flex-direction: row
 
 .webFlex
-    width: 200px
-    margin: 25px
-
-.webTitle
-    width: 200px
-    line-height: 30px
-    text-align: center
-    font-size: 18px
+    width: 320px
+    height: 320px
+    margin: 8px
+    margin-bottom: 70px
 
 .webImg
-    width: 200px
-    height: auto
+    width: 320px
+    height: 320px
+    background-size: cover
+    position: relative
+
+.webTitle
+    padding-top: 25px
+    padding-bottom: 25px
+    height: 75px
+    width: 320px
+    background-color: $c-secondary
+    opacity: 0.75
+    line-height: 30px
+    text-align: center
+    font-size: 25px
+    color: $c-text
+    position: absolute
+    bottom: 0px
+    overflow: hidden
+.webTitle:hover
+    height: 320px
+    background-color: $c-primary
+    color: $c-secondary
 </style>

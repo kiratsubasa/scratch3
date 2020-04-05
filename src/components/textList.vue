@@ -8,6 +8,7 @@
             .textText
                 .textTitle {{lists.title}}
                 .textDescription {{lists.Description.substring(0,65)}}
+                .textLearnMoreDot ...
                 .textLearnMore LEARN MORE
 </template>
 <script>   
@@ -54,7 +55,7 @@ export default {
     height: 430px
     background-size: cover
 .textText
-    width: 430px
+    width: 100%
     height: 246px
     padding: 27px 15px 27px 15px
     background-color: $c-secondary
@@ -77,4 +78,42 @@ export default {
 .textLearnMore:hover
     cursor: pointer
     opacity: 0.75
+.textLearnMoreDot
+    display: none
+@media only screen and (max-width: 480px)
+    .textListTab
+        font-size: 16px
+        padding:20px 15px 20px 15px
+    .textListTabContainer
+        margin-bottom: 25px
+    .textListFlex
+        width: 100%
+    .textList
+        width: 170px
+        height: 270px
+        overflow: hidden
+        margin-left: 8px
+        margin-right: 8px
+        margin-bottom: 30px
+    .textPic
+        width: 170px
+        height: 170px
+    .textText
+        padding: 5px
+    .textTitle
+        font-size: 16px
+        line-height: 20px
+        margin-bottom: 5px
+    .textDescription
+        height: 45px
+        overflow: hidden
+        font-size: 10px
+        line-height: 16px
+        margin-bottom: -5px
+    .textLearnMore
+        display: none
+    .textLearnMoreDot
+        display: block
+        color: $c-primary
+        text-align: right
 </style>

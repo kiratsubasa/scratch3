@@ -12,9 +12,8 @@ $c-text: #707070
     letter-spacing: 2px
 
 .router-link-exact-active.router-link-active
-    background-color: $c-primary
-    padding: 5px
-
+    border-bottom: 8px solid $c-primary
+    color: $c-text
 #myhref
     text-decoration: none
     color: #333
@@ -24,18 +23,20 @@ $c-text: #707070
 
 //tabs style
 .markBlockContainer
+    width: 100%
     display: inline-flex
-    margin: 10px
+    margin-bottom: 56px
+    left: 0px
 .markBlock
-    margin: 10px
-    padding: 5px
-    border-radius: 5px
-    border: 1px $c-primary solid
+    padding: 25px 23px 25px 23px
+    border-bottom: 8px solid $c-bg
     background-color: $c-bg
+    font-size: 25px
+    color: $c-text
+    float: left
 .markBlock:hover
-    // border-radius: 30px
-    background-color: $c-primary
-
+    border-bottom: 8px solid $c-primary
+    opacity: 0.75
 //tabs in rect style. (lawpage)
 .BookMarkContainer
     display: flex
@@ -70,7 +71,6 @@ $c-text: #707070
 .listPageContent,.BookMarkPageContainer
     max-width: 1350px
     margin: auto
-    //padding: 50px
 
 .searchBar-list
     margin: 0px
@@ -105,13 +105,14 @@ $c-text: #707070
     // border-radius: 5px
 
 .ListTextBlock
+    color: $c-text
     width: 75%
     height: 309px
     position: absolute
     right: 0px
     background-color: $c-secondary
     cursor: pointer
-    padding: 20px 20px 20px 56px 
+    padding: 17px 20px 20px 56px 
     margin-bottom: 17px
 .listTypeContainer
     display: flex
@@ -207,7 +208,7 @@ $c-text: #707070
 
 .HTMLContainer
     max-width: 1280px
-    margin: auto
+    //margin: auto
     div
         padding: 10px
     p

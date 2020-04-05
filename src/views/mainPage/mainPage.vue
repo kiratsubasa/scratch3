@@ -28,7 +28,7 @@
     //                     div.imageBlock(:style="{'background-image': 'url(' + article.src + ')'}") 
     //                         div.imageMask {{article.title}}
     .newsListContainer
-        .newsTitle {{newsTitle}}
+        .newsListTitle {{newsTitle}}
         newsList(:news-list='news')
     .picLinkContainer
         .picLinkTitle {{picLinkTitle}}
@@ -46,7 +46,7 @@
     .linkContainer
         .linkTitle {{linkTitle}}
         .linkBackground
-        smallSlider(:small-slider='link')
+        smallSlider(:small-slider="link")
     
     
     
@@ -123,14 +123,14 @@ export default {
                 {date: '2020/03/04',title: '「應十二年國教之音樂跨領域創新教學學術研討會」歡迎各位師長蒞臨與會！報名網址請詳見內文'}
             ],
             link:[
-                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: '//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'},
-                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png'},
-                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2018/12/花蓮富北東里國中02.jpg'},
-                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png'},
-                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: '//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'},
-                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: '//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'}
+                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: '//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png',media:{info:{src:'//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'}}},
+                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png',media:{info:{src:'//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'}}},
+                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2018/12/花蓮富北東里國中02.jpg',media:{info:{src:'//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'}}},
+                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: 'https://www.aade.org.tw/website/wp-content/uploads/2019/05/霧室.png',media:{info:{src:'//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'}}},
+                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: '//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png',media:{info:{src:'//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'}}},
+                {title: '「應十二年國教之音樂跨領域創新教學學術研討會」', Pic: '//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png',media:{info:{src:'//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'}}}
             ],
-            emptyPage: {title: "<div>「應十二年國教之音樂跨領域創新教學學術研討會」歡迎各位師長蒞臨與會！報名網址請詳見內文</div>", img: "<img src='//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'",content: "<div>各位敬愛師長您好：臺北市立大學2016音樂教育研討會以「因應十二年國教之音樂跨領域創新教學學術研討會」為主題，於105年12月17日（星期六）舉辦。竭誠歡迎各位廣邀學生與夥伴與會。每年與您們相聚共商藝術教育的未來，是歲末最令人期待的溫馨時刻，期待您們與會及蒞臨指導。欲參加之師長，請填寫google表單：https://goo.gl/forms/egT6CiM5XKCo3iv83 進行報名，謝謝。簡錄研討會資訊，謹供卓參。</div>"},
+            emptyPage: {title: "<div>「應十二年國教之音樂跨領域創新教學學術研討會」歡迎各位師長蒞臨與會！報名網址請詳見內文</div>", img: "<img src='//fbilab.cc:8008/storage/photos/7cba19e69372181d1ff283c144cb0978b761e8394be25b43e6b6779ab3e4e4d2.png'>",content: "<div>各位敬愛師長您好：臺北市立大學2016音樂教育研討會以「因應十二年國教之音樂跨領域創新教學學術研討會」為主題，於105年12月17日（星期六）舉辦。竭誠歡迎各位廣邀學生與夥伴與會。每年與您們相聚共商藝術教育的未來，是歲末最令人期待的溫馨時刻，期待您們與會及蒞臨指導。欲參加之師長，請填寫google表單：https://goo.gl/forms/egT6CiM5XKCo3iv83 進行報名，謝謝。簡錄研討會資訊，謹供卓參。</div>"},
         }
     },
     created() {
@@ -159,7 +159,7 @@ export default {
     padding: 37px 44px 37px 44px
     margin-bottom: 135px
     background-color: $c-primary
-.newsTitle
+.newsListTitle
     text-align: left
     font-size: 40px
     color: $c-secondary
@@ -218,11 +218,13 @@ export default {
     font-weight: 600
     margin-bottom: 55px
 .introContainer
+    display: flex
+    flex-direction: column
     max-width: 1350px
     margin: auto
 .introTitle
     font-size: 40px
-    float: left
+    text-align: left
     color: $c-primary
     font-weight: 600
     margin-bottom: 55px

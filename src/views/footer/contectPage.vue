@@ -1,9 +1,10 @@
 <template lang="pug">
 .contactContainer
     h1#listPageTitle {{pageData.title}}
-    .HTMLContainer(v-html="pageData.body")
-    .contactContent 
-        messageAndContact() 
+    .contactFlexContainer
+        .HTMLContainer(v-html="pageData.body")
+        .contactContent 
+            messageAndContact() 
     
 </template>
 <script>
@@ -35,14 +36,22 @@ export default {
 }
 </script>
 <style lang="sass">
+@import "@/style/common.sass"
 .contactContainer
-    max-width: 1280px
+    max-width: 1350px
     min-height: 960px
-    padding: 30px
+    padding-top: 30px
     margin: auto
-
-
+.contactFlexContainer
+    max-width: 100%
+    display: flex
+    flex-direction: row
+    padding-bottom: 135px
 .contactContent
-    
-
+    width: 49%
+    padding: 37px 44px 37px 44px
+    background-color: $c-secondary
+.HTMLContainer
+    width: 49%
+    text-align: left
 </style>
