@@ -46,27 +46,29 @@ export default {
     flex-direction: row
     flex-wrap: wrap
 .textList
-    width: 430px
-    height: 676px
-    margin: 10px
+    width: 31%
+    margin: 0.75%
     margin-bottom: 70px
 .textPic
-    width: 430px
-    height: 430px
+    width: 100%
+    height: 400px
     background-size: cover
 .textText
     width: 100%
-    height: 246px
-    padding: 27px 15px 27px 15px
+    height: 250px
+    padding:15px
     background-color: $c-secondary
 .textTitle
     font-size: 33px
+    line-height: 35px
     color: $c-primary
-    margin-bottom: 30px
+    margin-bottom: 20px
 .textDescription
+    height: 72px
+    overflow: hidden
     font-size: 16px
     line-height: 24px
-    margin-bottom: 30px
+    margin-bottom: 20px
 .textLearnMore
     background-color: $c-primary
     color: $c-secondary
@@ -89,14 +91,14 @@ export default {
     .textListFlex
         width: 100%
     .textList
-        width: 170px
+        width: 46%
         height: 270px
         overflow: hidden
-        margin-left: 8px
-        margin-right: 8px
+        margin-left: 1.8%
+        margin-right: 1.8%
         margin-bottom: 30px
     .textPic
-        width: 170px
+        width: 100%
         height: 170px
     .textText
         padding: 5px

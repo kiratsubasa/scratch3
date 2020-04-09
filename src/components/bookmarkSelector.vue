@@ -1,20 +1,21 @@
 <template lang="pug">
 #app
     tabs(:tabs='tabName' :page-title='pageTitle')
-    .selectContainer
-        .selectTitle 領域
-        select#mySelect(v-model='specialty')
-            option(v-for='(item,i) in specialtyList') {{item.name}}
-    .selectContainer
-        .selectTitle 地區
-        select#mySelect(v-model='area')
-            option(v-for='(item,i) in areaList') {{item}}
-    .selectContainer
-        .selectTitle 年級
-        select#mySelect(v-model='stage')
-            option(v-for='(item,i) in stageList') {{item}}
+    .selectAndSearch
+        .selectContainer
+            .selectTitle 領域
+            select#mySelect(v-model='specialty')
+                option(v-for='(item,i) in specialtyList') {{item.name}}
+        .selectContainer
+            .selectTitle 地區
+            select#mySelect(v-model='area')
+                option(v-for='(item,i) in areaList') {{item}}
+        .selectContainer
+            .selectTitle 年級
+            select#mySelect(v-model='stage')
+                option(v-for='(item,i) in stageList') {{item}}
 
-    SearchBar(:searchPlaceholder='searchPlaceholder' :queryObj='queryObj'  v-on:changePathByQuery="changePathByQuery")
+        SearchBar(:searchPlaceholder='searchPlaceholder' :queryObj='queryObj'  v-on:changePathByQuery="changePathByQuery")
 
     .searchList(v-if="queryStatus") 您的搜索條件為: 
         span.searchItem(v-for="que in showQuery")  {{que}} | 
@@ -199,15 +200,40 @@ export default {
 </script>
 
 <style lang="sass">
+@import "@/style/common.sass"
+.selectAndSearch
+    display: flex
+    flex-direction: row
+    margin-bottom: 45px
+    flex-wrap: wrap
+    width: 100%
 .selectContainer
-    width: 250px
-    display: inline
+    display: flex
+    flex-direction: row
+    align-items: center
 .selectTitle
-    display: inline
+    font-size: 25px
+    margin-right: 8px
+    padding: 0px
 #mySelect
-    border: 1px #D1B1B4 solid
     width: 150px
-
-
+    height: 50px
+    background-color: $c-secondary
+    margin-right: 40px
+#mySelect:focus
+    outline: none
+@media only screen and (max-width: 480px)
+    .selectAndSearch
+        margin-bottom: 20px
+    .selectTitle
+        font-size: 10px
+        margin-right: 3px
+    #mySelect
+        width: 73px
+        height: 20px
+        background-color: $c-secondary
+        margin-right: 15px
+    .selectContainer
+        margin-bottom: 10px 
 </style>
 

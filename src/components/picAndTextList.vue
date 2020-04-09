@@ -77,7 +77,7 @@ export default {
         margin-bottom: 10px
         font-size: 16px
         line-height: 20px
-        margin-top: 120px
+        padding-top: 120px
     .picAndTextSubtitle
         font-size: 10px
         line-height: 15px
