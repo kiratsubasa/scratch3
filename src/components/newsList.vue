@@ -37,7 +37,8 @@ export default {
 .NewsTitle
     font-size: 25px
     width: 86%
-    height: 20px
+    height: 25px
+    line-height: 25px
     overflow: hidden  
 .NewsMoreButton
     color: $c-secondary
@@ -74,7 +75,9 @@ export default {
     .NewsDate
         font-size: 10px
     .NewsTitle
+        width: 100%
         font-size: 16px
+        height: 72px
         margin-bottom: 5px
     .NewsMoreButton
         align-self: flex-end
