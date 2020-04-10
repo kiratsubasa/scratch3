@@ -1,51 +1,51 @@
 <template lang="pug">
 #newsApp
     h1.articlePageTitle {{data.title}}
-    
     #lesSlider
         #lesImg(:style="{'background-image': 'url(' + jumpBar[jumpBarIdx] + ')'}")
         .ledImgs(v-for="(img,i) in jumpBar" :style="{'background-image': 'url(' + img + ')'}" @click="changeSlider(i)")
+    .lessonTextContainer
+        .timeContainer
+            .information 活動時間： {{data.teach_hour}}
+            .information 適合對象： {{data.stage}}
 
-    p 活動時間： {{data.teach_hour}}
-    p 適合對象： {{data.stage}}
+        .lesSummary.lessonTitle 課程大綱
+        .lessonContent {{data.summary}}
 
-    h3.lesSummary 課程大綱
-    p {{data.summary}}
+        .lesMainidea.lessonTitle 核心概念
+        .lessonContent {{data.concept}}
 
-    h3.lesMainidea 核心概念
-    p {{data.concept}}
+        .lesTarget.lessonTitle 教學目標
+        .lessonContent {{data.target}}
 
-    h3.lesTarget 教學目標
-    p {{data.target}}
+        .lesCommon.lessonTitle 教案概說
+        .comment(v-for="ol in data.outline")
+            .lessonSubtitle {{ol.title}}
+            .lessonContent {{ol.content}}
+        
+        .lesContent.lessonTitle 教學內容
+            .HTMLContainer(v-html="data.body")
 
-    h3.lesCommon 教案概說
-    .comment(v-for="ol in data.outline")
-        h3 {{ol.title}}
-        p {{ol.content}}
-    
-    h3.lesContent 教學內容
-        .HTMLContainer(v-html="data.body")
+        a#downloadBtn(:href="data.file" download) DOWNLOAD
+        
+        .lesReflection.lessonTitle 課後省思
+        .lessonContent {{data.reflection}}
 
-    h3.lesFile
-        a#downloadBtn(:href="data.file" download) 教學檔案
-    
-    h3.lesReflection 課後省思
-    p {{data.reflection}}
-
-    .authorContainer 作者簡介
-        .author(v-for="author in data.authors")
-            .authorImg(:style="{'background-image': 'url(' + author.avatar.info.src + ')'}")
-            h3.authorText {{author.name}}
-            h3.authorText 服務單位：{{author.agency}}
-            h3.authorText 職稱：{{author.job_title}}
-            h3.authorText 電子信箱：{{author.email}}
-            h3.authorText 電話：{{author.phone}}
-            h3.authorText 服務地區：{{author.area}}
-    div
-        a#hashTag(v-for='tag in data.tags') &#35;{{tag.name}}
-    p 區域： {{data.area}}
-    .dateNote 發布日期 {{data.created_at.split("T")[0]}}
-    .dateNote 更新日期 {{data.updated_at.split("T")[0]}}
+        .authorContainer
+            .lessonTitle 作者簡介
+            .author(v-for="author in data.authors")
+                .authorImg(:style="{'background-image': 'url(' + author.avatar.info.src + ')'}")
+                .authorText {{author.name}}
+                .authorText 服務單位：{{author.agency}}
+                .authorText 職稱：{{author.job_title}}
+                .authorText 電子信箱：{{author.email}}
+                .authorText 電話：{{author.phone}}
+                .authorText 服務地區：{{author.area}}
+        div
+            a#hashTag(v-for='tag in data.tags') &#35;{{tag.name}}
+        .information 區域： {{data.area}}
+        .dateNote 發布日期 {{data.created_at.split("T")[0]}}
+        .dateNote 更新日期 {{data.updated_at.split("T")[0]}}
 
 </template>
 
@@ -96,7 +96,36 @@ export default {
 
 <style lang="sass" scoped>
 @import "@/style/common.sass"
-
+.lessonTextContainer
+    display: flex
+    flex-direction: column
+.timeContainer
+    text-align: left
+    margin-bottom: 10px
+    color: $c-text
+.information
+    font-size: 16px
+    margin-bottom: 5px
+.lessonTitle
+    font-size: 20px
+    font-weight: 600
+    color: $c-text
+    text-align: left
+    margin-bottom: 20px
+    margin-top: 20px
+.lessonSubtitle
+    font-size: 16px
+    color: $c-text
+    line-height: 20px
+    text-align: left
+    font-weight: 600 
+    margin-bottom: 10px
+.lessonContent
+    font-size: 16px
+    color: $c-text
+    line-height: 20px
+    text-align: left
+    margin-bottom: 10px
 .articlePageVideoPlayer
     margin: 50px
 
@@ -107,11 +136,18 @@ export default {
     margin: auto
     background-position: center
 
-
+h3
+    font-size: 20px
+    font-weight: 600
+    color: $c-text
+p
+    font-size: 16px
+    color: $c-text
 .articlePageTitle
     text-align: left
     line-height: 1.8em
-    margin: 40px
+    margin-bottom: 40px
+    color: $c-primary
 .articlePageContent
     // margin: 40px
     // margin-left: 30%
@@ -131,10 +167,12 @@ h1,h2,h3,p,span
     line-height: 25px
 
 #lesSlider
+    max-width: 1350px
     display: flex
     flex-wrap: wrap
+    margin-bottom: 20px
 #lesImg
-    width: 1280px
+    width: 100%
     height: 640px
     background-size: cover
     background-position: center
@@ -150,10 +188,39 @@ h1,h2,h3,p,span
         opacity: 1
 .authorContainer
     
+.authorText
+    font-weight: 500
+    font-size: 16px
+    text-align: left
+    line-height: 20px
+    color: $c-text
+    margin-bottom: 5px
 .authorImg
+    margin-bottom: 20px
     width: 180px
     height: 200px
     background-size: cover
     background-position: center
-
+@media only screen and (max-width:480px)
+    .lessonTextContainer
+        padding: 10px
+    .lessonTitle
+        font-size: 20px
+        margin-top: 10px
+        margin-bottom: 10px
+    .lessonSubtitle
+        font-size: 16px
+        margin-bottom: 5px
+    .lessonContent
+        font-size: 16px
+        margin-bottom: 5px
+    .authorText
+        font-size: 16px
+    #lesSlider
+        margin-bottom: 10px
+    #lesImg
+        height: 249px
+    .ledImgs
+        width: 25%
+        height: 60px
 </style>
