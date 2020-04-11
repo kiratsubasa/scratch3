@@ -8,12 +8,14 @@ import tabs from '@/components/tabs_head.vue'
 import otherWeb from '@/views/otherWebPage'
 import QA from '@/views/footer/QAPage'
 import activityPage from '@/views/activityPage.vue'
-import staffPage from '@/views/staffPage.vue'
 import tutorialPage from '@/views/tutorialPage.vue'
 import contectPage from '@/views/footer/contectPage.vue'
 import webTreePage from '@/views/footer/webTreePage.vue'
 import cardView from '@/components/cardView.vue'
 import lessonArticle from '@/components/lessonArticle.vue'
+import staffPage from '@/views/staffPage.vue'
+import staffListView from '@/components/staffListView.vue'
+import hrArticle from '@/components/hrArticle.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -59,8 +61,8 @@ export default new Router({
             path: '/hr/:pageid',
             component: staffPage,
             children: [
-                {path: 'category/:categoryid',component: cardView},
-                {path: 'post/:postid',component: postArticle}
+                {path: 'category/:categoryid',component: staffListView},
+                {path: 'post/:postid',component: hrArticle}
             ]
           },
           {

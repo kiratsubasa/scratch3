@@ -7,7 +7,7 @@ import { validAlias } from '@/utils/validate';
 
 export function ListHumanResourcesOfSpecialty(id, page) {
   return request({
-    url: 'api/humanResourceSpecialties/' + id + '/humanResources',
+    url: '/api/humanResourceSpecialties/' + id + '/humanResources',
     method: 'get',
     params: page,
   });
@@ -15,7 +15,7 @@ export function ListHumanResourcesOfSpecialty(id, page) {
 
 export function ListHumanResourcesOfCategory(id, page) {
   return request({
-    url: 'api/humanResourceCategories/' + id + '/humanResources',
+    url: '/api/humanResourceCategories/' + id + '/humanResources',
     method: 'get',
     params: page,
   });
