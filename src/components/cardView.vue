@@ -1,6 +1,6 @@
 <template lang="pug">
 .listPageContent 
-    SelectorHead(:page-title='pageTitle' v-on:bookmarkList="bookmarkList")
+    SelectorHead(:page-title='pageTitle' v-on:bookmarkList="bookmarkList" :currentPage='currentPage')
     .cardContainer      
         #Card(v-for="card in theArticleList")  
             .cardcontentContainer
@@ -45,25 +45,20 @@ export default {
         }
     },
     watch: {
-        // currentPage: function(page){
-        //     this.$router.push({query: {page: page} });
-        //     window.scrollTo(0,0);
-        // },
-        // theArticleList: function(){
-        //     this.pageInit();
-        // }
+        currentPage: function(page){
+            // var addQuery = this.$route.query;
+            // Object.assign(addQuery,{page: page});
+            // console.log(addQuery)
+            // this.$router.push({query: addQuery });
+            window.scrollTo(0,0);
+        }
     },
     beforeMount(){
-        // this.pageInit();
-        // if(this.$route.query.page)
-        //     this.currentPage = this.$route.query.page;
     },
     methods: {
-        bookmarkList: function(data){
+        bookmarkList: function(data,lastPage){
             this.theArticleList = data;
-        },
-        pageInit: function(){
-            this.totalPage = Math.ceil(this.theArticleList.length/this.pageDataNum);
+            this.totalPage=lastPage;
         },
         setPage: function(page) {
             if (page <= 0 || page > this.totalPage) {

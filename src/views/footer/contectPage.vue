@@ -4,7 +4,7 @@
     .contactFlexContainer
         .HTMLContainer(v-html="pageData.body")
         .contactContent 
-            messageAndContact() 
+            messageAndContact
     
 </template>
 <script>

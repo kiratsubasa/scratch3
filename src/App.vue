@@ -23,13 +23,13 @@ export default {
             iconSrc: 'https://www.aade.org.tw/website/wp-content/themes/twentyseventeen/img/logo.svg?v=1',
             menuList: [
                 {name: '最新消息',url: '/section/2/category/最新消息'},
-                {name: '計畫簡介',url: '/page/11'},
+                {name: '計畫簡介',url: '/page/9'},
                 {name: '聯繫與服務',url: '/contact/7'},
-                {name: '網網相連',url: '/link/3'},
+                {name: '網網相連',url: '/link/56'},
                 {name: '教學資源',url: '/module/教學資源/category/1'},
                 {name: '美感人才',url: '/hr/staff/category/1'},
                 {name: '網站地圖',url: '/map/10'},
-                {name: '常見問題',url: '/collapse/4'},
+                {name: '常見問題',url: '/collapse/58'},
                 {name: '活動報名',url: '/activity/1'},
             ],
             footList: [

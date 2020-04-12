@@ -7,9 +7,9 @@ import { validAlias } from '@/utils/validate';
 
 export function ListArticlesOfCategory(id, page) {
   return request({
-    url: '/api/articleCategories/' + id + '/articles',
+    url: '/api/articleCategories/' + id + '/articles?page=' + page,
     method: 'get',
-    params: page,
+    // params: page,
   });
 }
 
@@ -43,7 +43,7 @@ export function ListArticles(project, page) {
 
 export function GetArticle(project, id) {
   return request({
-    url: 'api/projects/' + validAlias(project) + '/articles/' + id,
+    url: '/api/projects/' + validAlias(project) + '/articles/' + id,
     method: 'get',
   });
 }

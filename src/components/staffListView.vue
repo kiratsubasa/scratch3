@@ -1,7 +1,8 @@
 <template lang="pug">
 .listPageContent 
+    SelectorHead.staffSel(:page-title='pageTitle' :tab-name='tabName' :specialtyList='specialtyList')
     .cardContainer      
-        #Card(v-for="card in theArticleList")  
+        #Card(v-for="card in articleList")  
             .cardcontentContainer
                 .cardImage(:style="{'background-image': 'url(' + card.avatar.info.src + ')'}") 
                 .CardTextBlock
@@ -26,15 +27,19 @@
 </template>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
 <script>
-import SelectorHead from '@/components/bookmarkSelector.vue'
+import SelectorHead from '@/components/Selector.vue'
+import { ListHumanResourcesOfCategory } from "@/api/client/HumanResource";
+import { ListHumanResourceCategories } from "@/api/client/HumanResourceCategory";
+import { ListHumanResourceSpecialties } from "@/api/client/HumanResourceSpecialty";
+import { SearchHumanResources } from "@/api/client/Search";
 export default {
     components: {
         SelectorHead
     },
-    props: ['articleList'],
+    props: [],
     data() {
         return {
-            theArticleList: [],
+            pageTitle: "美感人才",
             pageDataNum: 12,
             currentPage: 1,
             totalPage: 1,
@@ -42,26 +47,105 @@ export default {
             prev: '上一頁',
             next: '下一頁',
             finalPage: '最末頁',
+            tabData: [],
+            tabName: [],
+            cate: '',
+            articleList: [],
+            specialtyList: [],
         }
     },
     watch: {
-        // currentPage: function(page){
-        //     this.$router.push({query: {page: page} });
-        //     window.scrollTo(0,0);
-        // },
-        articleList: function(){
-            this.theArticleList = this.articleList;
+        currentPage: function(page){
+            this.changePage(page);
+            window.scrollTo(0,0);
+        },
+        '$route.query': function(route){
+            this.ApiSearch(route);
         }
     },
-    beforeMount(){
-
-        // this.pageInit();
-        // if(this.$route.query.page)
-        //     this.currentPage = this.$route.query.page;
+    created() {
+        this.ApiGetHrCate(2);
+        this.ApiGetHrSpe(2);
+        if(this.$route.params.categoryid=='all'){
+            this.ApiSearch(this.$route.query);
+        }
     },
     methods: {
-        pageInit: function(){
-            this.totalPage = Math.ceil(this.theArticleList.length/this.pageDataNum);
+        changePage(page){
+            this.currentPage = page;
+            if(this.$route.params.categoryid=='all'){
+                this.ApiSearch(this.$route.query);
+            }
+            else{
+                this.ApiGetHrwithCate(this.cate);
+            }
+        },
+        ApiSearch(qureys){
+            var data;
+            if(qureys.specialty!=-1){
+                data={
+                    specialty_id: qureys.specialty,
+                    column: qureys.type,
+                    pattern: qureys.search
+                }
+            }
+            else{
+                data={
+                    project_id: 2,
+                    column: qureys.type,
+                    pattern: qureys.search
+                }
+            }
+            SearchHumanResources(data, {page: this.currentPage})
+            .then(response => {
+                this.articleList = response.data;
+                this.totalPage = response.meta.last_page;
+            })
+            .catch(err => {
+                this.$router.push('/error')
+                console.log(err);
+            })
+        },
+        ApiGetHrwithCate(id){
+            ListHumanResourcesOfCategory(id,this.currentPage)
+                .then(response => {
+                    this.articleList = response.data;
+                    this.totalPage = response.meta.last_page;
+                })
+                .catch(err => {
+                console.log(err);
+            });
+        },
+        ApiGetHrCate(id) {
+            ListHumanResourceCategories(id)
+                .then(response => {
+                    this.tabData = response.data;
+                    var cate = this.$route.params.categoryid;
+                    var cateStatus=false;
+                    for(var i=0;i<this.tabData.length;i++){
+                        this.tabName.push(this.tabData[i].name);
+                        if(cate==this.tabData[i].name){
+                            this.ApiGetHrwithCate(this.tabData[i].id);
+                            cateStatus=true;
+                            this.cate = this.tabData[i].id;
+                        }
+                    }
+                    if(!cateStatus && cate != 'all')
+                        this.$router.push({ path: this.tabData[0].name});
+                })
+                .catch(err => {
+                console.log(err);
+            });
+        },
+        ApiGetHrSpe(id) {
+            ListHumanResourceSpecialties(id)
+                .then(response => {
+                    this.specialtyList = response.data;
+                    this.specialtyList.unshift({id: -1,name: '不分領域'});
+                })
+                .catch(err => {
+                console.log(err);
+            });
         },
         setPage: function(page) {
             if (page <= 0 || page > this.totalPage) {

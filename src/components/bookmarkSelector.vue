@@ -7,18 +7,11 @@
             select#mySelect(v-model='specialty')
                 option(v-for='(item,i) in specialtyList') {{item.name}}
         .selectContainer
-            .selectTitle 地區
-            select#mySelect(v-model='area')
-                option(v-for='(item,i) in areaList') {{item}}
-        .selectContainer
-            .selectTitle 年級
-            select#mySelect(v-model='stage')
-                option(v-for='(item,i) in stageList') {{item}}
+            .selectTitle 搜尋條件
+            select#mySelect(v-model='searchType')
+                option(v-for='(item,i) in searchTypeList') {{item.title}}
 
         SearchBar(:searchPlaceholder='searchPlaceholder' :queryObj='queryObj'  v-on:changePathByQuery="changePathByQuery")
-
-    .searchList(v-if="queryStatus") 您的搜索條件為: 
-        span.searchItem(v-for="que in showQuery")  {{que}} | 
 
 </template>
 
@@ -27,7 +20,7 @@ import SearchBar from '@/components/searchBar.vue'
 import tabs from '@/components/tabs_head.vue'
 import { ListLessonCategories } from '@/api/client/LessonCategory';
 import { ListLessonSpecialties } from '@/api/client/LessonSpecialty';
-import { ListLessonsOfCategory,ListLessons,ListLessonsOfSpecialty} from '@/api/client/Lesson';
+import { ListLessonsOfCategory,ListLessons} from '@/api/client/Lesson';
 import { SearchLessons } from '@/api/client/Search.js';
 
 export default {
@@ -35,7 +28,7 @@ export default {
         tabs,
         SearchBar
     },
-    props: ['page-title'],
+    props: ['page-title','currentPage'],
     data() {
         return {
             tabData: [],
@@ -43,13 +36,19 @@ export default {
             bookmarkList: [],
             tempDataList: [],
             specialtyList: [],
-            areaList: ['嘉義','新竹','花蓮縣'],
-            stageList: ['小學','大學','國中'],
+            searchTypeList: [
+                {title: "標題+內容",name: "content"},
+                {title: "核心概念",name: "concept"},
+                {title: "教學目標",name: "target"},
+                {title: "教案概述",name: "summary"},
+                {title: "課後省思",name: "reflection"},
+                {title: "教學階段",name: "stage"},
+                {title: "地區",name: "area"}
+            ],
             searchPlaceholder: 'keyword',
             cate: '',
             specialty: '',
-            area: '',
-            stage: '',
+            searchType: '',
             search: '',
             queryObj: {},
             showQuery: {},
@@ -62,83 +61,65 @@ export default {
         
     },
     watch: {
-        'specialty': function(query){
-            this.$router.push({ path: 'all',query: {specialty: query}});
+        '$route': function(route){
+            this.ApiSearch(route.query);
         },
-        'area': function(query){
-            this.$router.push({ path: 'all',query: {area: query}});
-        },
-        'stage': function(query){
-            this.$router.push({ path: 'all',query: {stage: query}});
-        },
-        '$route.query': function(route){
-            this.showQuery = route;
-            this.getListByQuery(route);
+        currentPage: function(){
+            if(this.$route.params.categoryid == 'all'){
+                if(this.$route.query.search){
+                    this.ApiSearch(this.$route.query);
+                }
+                else{
+                    this.ApiListAllLess(2,this.currentPage);
+                }
+            }
+            else{
+                this.ApiGetListwithCate(this.cate,this.currentPage);
+            }
         }
     },
     methods: {
-        getListByQuery(querys){
-            var spe = querys.specialty;
-            var speID = -1;
-            if(spe){
-                for(var i=0;i<this.specialtyList.length;i++){
-                    if(spe==this.specialtyList[i].name){
-                        speID = this.specialtyList[i].id;
-                    }
-                }
-                if(speID>0){
-                    this.getListBySpe(speID,1);
+        ApiSearch(qureys){
+            var data;
+            if(qureys.specialty!=-1){
+                data={
+                    specialty_id: qureys.specialty,
+                    column: qureys.type,
+                    pattern: qureys.search
                 }
             }
-            var area = querys.area;
-            if(area){
-                var data={
-                    project_id: 2,
-                    column: "area",
-                    pattern: area
-                }
-                this.ApiSearchLess(data,1);
-            }
-            var stage = querys.stage;
-            if(stage){
+            else{
                 data={
                     project_id: 2,
-                    column: "stage",
-                    pattern: stage
+                    column: qureys.type,
+                    pattern: qureys.search
                 }
-                this.ApiSearchLess(data,1);
             }
-            var search = querys.search;
-            if(search){
-                data={
-                    project_id: 2,
-                    column: "content",
-                    pattern: search
-                }
-                this.ApiSearchLess(data,1);
-            }
-        },
-        getListBySpe(id,page){
-            ListLessonsOfSpecialty(id,page)
-            .then(response => {
-                this.bookmarkList = response.data;
-                this.$emit('bookmarkList', this.bookmarkList);
-            })
-            .catch(err => {
-            console.log(err);
-            });
+            this.ApiSearchLess(data,this.currentPage);
         },
         changePathByQuery(query){
-            this.search = query;
-            this.$router.push({ path: 'all',query: {search: query}});
+            var spe=-1;
+            var typ='content';
+            for(var i=0;i<this.specialtyList.length;i++){
+                if(this.specialty==this.specialtyList[i].name){
+                    spe=this.specialtyList[i].id;
+                    break;
+                }
+            }
+            for(i=0;i<this.searchTypeList.length;i++){
+                if(this.searchType==this.searchTypeList[i].text){
+                    typ=this.searchTypeList[i].name;
+                    break;
+                }
+            }
+            
+            this.$router.push({ path: 'all',query: {specialty: spe,type: typ,search: query}});
         },
         ApiSearchLess(data, page){
             SearchLessons(data, page)
             .then(response => {
                 this.bookmarkList = response.data;
-                this.$emit('bookmarkList', this.bookmarkList);
-                // console.log(response.data);
-                // console.log(response.meta.last_page);
+                this.$emit('bookmarkList', this.bookmarkList,response.meta.last_page);
             })
             .catch(err => {
             console.log(err);
@@ -148,7 +129,7 @@ export default {
             ListLessons(id,page)
             .then(response => {
                     this.bookmarkList = response.data;
-                    this.$emit('bookmarkList', this.bookmarkList)
+                    this.$emit('bookmarkList', this.bookmarkList,response.meta.last_page)
                 })
                 .catch(err => {
                 console.log(err);
@@ -158,7 +139,7 @@ export default {
             ListLessonsOfCategory(id,page)
                 .then(response => {
                     this.bookmarkList = response.data;
-                    this.$emit('bookmarkList', this.bookmarkList)
+                    this.$emit('bookmarkList', this.bookmarkList,response.meta.last_page)
                 })
                 .catch(err => {
                 console.log(err);
@@ -173,12 +154,21 @@ export default {
                     for(var i=0;i<this.tabData.length;i++){
                         this.tabName.push(this.tabData[i].name);
                         if(cate==this.tabData[i].name){
-                            this.ApiGetListwithCate(this.tabData[i].id,1);
+                            this.ApiGetListwithCate(this.tabData[i].id,this.currentPage);
+                            this.cate=this.tabData[i].id;
                             cateStatus=true;
                         }
                     }
                     if(!cateStatus && cate != 'all')
                         this.$router.push({ path: this.tabData[0].name});
+                    else{
+                        if(this.$route.query.search){
+                            this.ApiSearch(this.$route.query);
+                        }
+                        else{
+                            this.ApiListAllLess(2,this.currentPage);
+                        }
+                    }
                 })
                 .catch(err => {
                 console.log(err);
