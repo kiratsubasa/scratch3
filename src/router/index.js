@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import SearchPage from '@/views/SearchPage.vue'
 import mainPage from '@/views/mainPage/mainPage.vue'
 import newsPage from '@/views/newsPage'
 import article from '@/components/article'
@@ -79,7 +80,7 @@ export default new Router({
           },
           {
             path: '/search',
-            component: article
+            component: SearchPage
           },
           {
             path: '/tag',
