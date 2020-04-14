@@ -1,9 +1,20 @@
 <template lang="pug">
 .textListContainer
     .textListTabContainer
-        .textListTab(v-for='types in typeList') {{types}}
-    .textListFlex
-        .textList(v-for='lists in textList')
+        .textListTab(@click='clickOne()') {{typeList.first}}
+        .textListTab(@click='clickTwo()') {{typeList.second}}
+        .textListTab(@click='clickThree()') {{typeList.third}}
+        .textListTab(@click='clickFour()') {{typeList.forth}}
+    .textListFlex#textListFlex1
+        .textList(v-for='lists in textList' :class="lists.style=='一'? 'textList1':'no'")
+            .textPic(:style="{'background-image': 'url(' + lists.Pic + ')'}")
+            .textText
+                .textTitle {{lists.title}}
+                .textDescription {{lists.Description.substring(0,65)}}
+                .textLearnMoreDot ...
+                .textLearnMore LEARN MORE
+    div#textListFlex2.textListFlex
+        .textList(v-for='lists in textList' :class="lists.style=='二'? 'textList2':'no'")
             .textPic(:style="{'background-image': 'url(' + lists.Pic + ')'}")
             .textText
                 .textTitle {{lists.title}}
@@ -18,7 +29,22 @@ export default {
     props: ['text-list'],
     data(){
         return{
-            typeList: ["第一種","第二種","第三種","第四種"]
+            typeList: {first: '第一種',second: '第二種', third: '第三種', forth: '第四種'}
+        }
+    },
+    methods: {
+        clickOne(){
+            var two = document.getElementById("textListFlex2");
+            two.style.width = "100px";  
+        },
+        clickTwo(){
+
+        },
+        clickThree(){
+
+        },
+        clickFour(){
+
         }
     }
 }
@@ -81,6 +107,8 @@ export default {
     cursor: pointer
     opacity: 0.75
 .textLearnMoreDot
+    display: none
+.no
     display: none
 @media only screen and (max-width: 480px)
     .textListTab
