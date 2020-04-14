@@ -6,7 +6,7 @@
         .webFlexContainer
             .webFlex(v-for='web in webList')
                 a.webLink#myhref(:href="web.url" target="_blank" )
-                    .webImg(:style="{'background-image': 'url(' + web.media + ')'}")
+                    .webImg(:style="{'background-image': 'url(' + web.media_url + ')'}")
                         .webTitle {{web.title}}
         
 </template>
@@ -29,8 +29,12 @@ export default {
             GetPage(project, id)
                 .then(response => {
                     this.data = response.data;
+                    //err path detect
+                    // if(this.data.type.template!='links')
+                        // this.$router.push({ path: '/error'});
                     this.pageTitle = this.data.title;
-                    this.webList = this.data.type.link;
+                    this.webList = this.data.type.link.links;
+                    console.log(this.webList)
                 })
                 .catch(err => {
                 console.log(err);

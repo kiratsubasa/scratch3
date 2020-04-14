@@ -9,7 +9,7 @@ div#menuWrapper
             .menuIconBar1
             .menuIconBar2
             .menuIconBar3
-        //- SearchBar.searchBar-Header(:searchPlaceholder='searchPlaceholder' :search-lists='searchLists')
+        SearchBar.searchBar-Header(:searchPlaceholder='searchPlaceholder' v-on:changePathByQuery='changePathByQuery')
     transition(name="page" mode="out-in")
         div#drawer(v-if="drawerStatus")
             div.drawerItem(v-for='(item,i) in menuList' @click='drawerStatus = !drawerStatus') 
@@ -43,6 +43,9 @@ export default {
         opentheDrawer: function(){
             this.drawerStatus = !this.drawerStatus;
             this.menuclassList.change = !this.menuclassList.change;
+        },
+        changePathByQuery: function(query){
+            this.$router.push({path:'/search',query: {search:query}});
         }
     }
 }       

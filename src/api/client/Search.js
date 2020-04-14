@@ -6,28 +6,28 @@ import request from '@/utils/request';
 
 export function SearchArticles(data, page) {
   return request({
-    url: '/api/search/articles',
+    url: '/api/search/articles?page='+page,
     method: 'post',
     data,
-    params: page,
+    // params: page,
   });
 }
 
 export function SearchPages(data, page) {
   return request({
-    url: '/api/search/pages',
+    url: '/api/search/pages?page='+page,
     method: 'post',
     data,
-    params: page,
+    // params: page,
   });
 }
 
 export function SearchHumanResources(data, page) {
   return request({
-    url: '/api/search/humanResources',
+    url: '/api/search/humanResources?page='+page,
     method: 'post',
     data,
-    params: page,
+    // params: page,
   });
 }
 

@@ -2,7 +2,6 @@
 #app
     .PathText 你的位置 : 首頁 > {{pageTitle}} 
     router-view(:page-title='pageTitle')
-    //- newsListinArticle(:article-list='articleList' :page-title='pageTitle')
 </template>
 
 <script>

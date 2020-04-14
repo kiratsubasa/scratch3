@@ -7,7 +7,7 @@ import { validAlias } from '@/utils/validate';
 
 export function ListHumanResourceCategories(project) {
   return request({
-    url: 'api/projects/' + validAlias(project) + '/humanResourceCategories',
+    url: '/api/projects/' + validAlias(project) + '/humanResourceCategories',
     method: 'get',
   });
 }
