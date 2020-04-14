@@ -3,7 +3,7 @@
     .PathText 你的位置 : 首頁 > {{pageTitle}}
     //- router-view(:page-title='pageTitle' :search-placeholder='searchPlaceholder'  :type-list='typeList')
     tabs(:tabs='tabs' :page-title='pageTitle')
-    ListView(:page-title='pageTitle' :search-placeholder='searchPlaceholder' :article-list='articleList')
+    ListView(:page-title='pageTitle' :search-placeholder='searchPlaceholder' :article-list='articleList' :totalPage='totalPage')
     //- newsList(:article-list='articleList' :page-title='pageTitle' :search-placeholder='searchPlaceholder' :type='type')
     //- newsListinArticle(v-if="this.$route.path!='/newsPage'" :article-list='articleList' :page-title='pageTitle')
 </template>
@@ -30,30 +30,19 @@ export default {
             searchStatus: false,
             searchQuery: '',
             pageData: '',
-            tabs: []
-
+            tabs: [],
+            totalPage: 1,
+            currentPage: 1
         }
     },
     watch: {
-
-        // searchQuery: function(query){
-        //     if(query==null)
-        //         return
-        //     this.theArticleList = Object.values(this.theArticleList).filter((item)=>{
-        //         if(item.title.includes(query)){
-        //             this.searchStatus = true;
-        //             return item.title.includes(query);
-        //         }
-        //     })
-        // },
-        '$route' (){
-            this.searchInit();
+        '$route.query': function(route){
+            this.currentPage=route.page;
+            this.ListArticleByCate(this.selectedQuery,this.currentPage);
         }
-        
     },
     created() {
         this.ApiGetPage(2,this.$route.params.pageid);
-        // this.searchInit();
     },
     beforeMount() {
 
@@ -63,6 +52,7 @@ export default {
             ListArticlesOfCategory(categoryID,page)
                 .then(response => {
                     this.articleList = response.data;
+                    this.totalPage = response.meta.last_page;
                 })
                 .catch(err => {
                 console.log(err);
@@ -78,7 +68,10 @@ export default {
                         this.tabs.push(this.pageData.type.section.tabs[i].name);
                         if(this.$route.params.categoryid==this.pageData.type.section.tabs[i].name){
                             this.selectedQuery =this.pageData.type.section.tabs[i].id;
-                            this.ListArticleByCate(this.selectedQuery,1);
+                            if(!this.currentPage)
+                                this.ListArticleByCate(this.selectedQuery,1);
+                            else
+                                this.ListArticleByCate(this.selectedQuery,this.currentPage);
                         }
                     }
                     //change path to th first path if the params right isn't in the cate
@@ -88,13 +81,6 @@ export default {
                 .catch(err => {
                 console.log(err);
             });
-        },
-        searchInit: function(){
-            console.log(this.$route.query.search)
-            if(this.$route.query.search)
-                this.searchQuery = this.$route.query.search;
-            else
-                this.theArticleList = this.articleList;
         }
     }
 }

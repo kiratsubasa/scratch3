@@ -1,36 +1,36 @@
 <template lang="pug">
 #app
     .PathText 你的位置 : 首頁 > {{pageTitle}} 
-    .BookMarkPageContainer
-        .BookMarkContainer
-            ListwithBookMark(:bookmark-list='bookmarkList' :search-placeholder='searchPlaceholder' :search-lists="bookmarkList[articleListIdx].articleList")
-        router-view(:bookmark-list='bookmarkList[articleListIdx]' :page-title='pageTitle' :search-placeholder='searchPlaceholder' )
+    router-view
 
 </template>
 
 <script>
-import ListwithBookMark from '@/components/ListwithBookMark'
+
 export default {
     components: {
-        ListwithBookMark
+        
     },
     data() {
         return {
-            articleListIdx: '',
-            pageTitle: "美感人才",
             searchPlaceholder: "關鍵字",
-            bookmarkList: []
+            pageTitle: '美感人才'
         }
     },
-    mounted:function(){
-        var path = this.$route.params.categoryid;
-        var pathIdx = this.bookmarkList.findIndex(function(item){
-            return item.link.includes(path);         
-            });
-        this.articleListIdx =pathIdx;
+    created() {
+        
+    },
+    watch:{
+        
+    },
+    methods:{
+        
     }
 }
 </script>
 
 <style lang="sass">
+.staffSel
+    max-width: 1350px
+    margin: auto
 </style>

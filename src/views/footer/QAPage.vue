@@ -4,8 +4,8 @@
         h1#listPageTitle {{pageTitle}}
         v-expansion-panels(v-for='(QAs,i) in qaArraqy' :key="i" :disabled='disabled' style="margin-bottom: 25px;")
             v-expansion-panel
-                v-expansion-panel-header {{QAs.question}}
-                v-expansion-panel-content(style="background: #ece8e3;color: #707070;padding-top: 10px;")  {{QAs.answer}}
+                v-expansion-panel-header {{QAs.title}}
+                v-expansion-panel-content(style="background: #ece8e3;color: #707070;padding-top: 10px;")  {{QAs.content}}
         
 </template>
 
@@ -31,7 +31,7 @@ export default {
                 .then(response => {
                     this.data = response.data;
                     this.pageTitle = this.data.title;
-                    this.qaArraqy = this.data.type.qaArray;
+                    this.qaArraqy = this.data.type.collapse;
                 })
                 .catch(err => {
                 console.log(err);

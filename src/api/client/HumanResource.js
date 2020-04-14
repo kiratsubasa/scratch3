@@ -7,7 +7,7 @@ import { validAlias } from '@/utils/validate';
 
 export function ListHumanResourcesOfSpecialty(id, page) {
   return request({
-    url: 'api/humanResourceSpecialties/' + id + '/humanResources',
+    url: '/api/humanResourceSpecialties/' + id + '/humanResources',
     method: 'get',
     params: page,
   });
@@ -15,9 +15,9 @@ export function ListHumanResourcesOfSpecialty(id, page) {
 
 export function ListHumanResourcesOfCategory(id, page) {
   return request({
-    url: 'api/humanResourceCategories/' + id + '/humanResources',
+    url: '/api/humanResourceCategories/' + id + '/humanResources?page='+page,
     method: 'get',
-    params: page,
+    // params: page,
   });
 }
 
@@ -43,7 +43,7 @@ export function ListHumanResources(project, page) {
 
 export function GetHumanResource(project, id) {
   return request({
-    url: 'api/projects/' + validAlias(project) + '/humanResources/' + id,
+    url: '/api/projects/' + validAlias(project) + '/humanResources/' + id,
     method: 'get',
   });
 }
