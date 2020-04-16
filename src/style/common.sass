@@ -16,7 +16,7 @@ $c-text: #707070
     color: $c-text
 #myhref
     text-decoration: none
-    color: #333
+    color: $c-text
 #sehref
     color: $textC-secondary
     text-decoration: none
@@ -61,6 +61,8 @@ $c-text: #707070
     .markBlock
         font-size: 16px
         padding: 15px 20px 15px 20px
+    #app
+        letter-spacing: 1px
 
 
 #listPageTitle
@@ -119,6 +121,11 @@ $c-text: #707070
     cursor: pointer
     padding: 17px 20px 20px 56px 
     margin-bottom: 17px
+.listViewMoreFlex
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
 .listTypeContainer
     display: flex
     flex-wrap: wrap
@@ -132,7 +139,16 @@ $c-text: #707070
     cursor: pointer
 .ListTypeBlock:hover
     opacity: 0.5
-
+.listViewMore
+    width: 193px
+    height: 48px
+    background-color: $c-primary
+    color: $c-secondary
+    padding: 12px
+    text-align: center
+    font-weight: 600
+.listViewMore:hover
+    opacity: 0.75
 .ListTitle
     font-size: 25px
     line-height: 1.5em
@@ -153,12 +169,12 @@ $c-text: #707070
     // margin-top: 30px
 #pageSel
     text-align: center
-    width: 50px
+    width: 10px
 
 @media only screen and (max-width: 480px)
     .ListTypeBlock
-        font-size: 10px
-        line-height: 12px
+        font-size: 14px
+        line-height: 15px
     .ListContainer
         width: 95%
         height: 381px
@@ -179,13 +195,17 @@ $c-text: #707070
         margin-bottom: 10px
     .ListContent
         display: none
+    .listViewMore
+        display: none
+    .pageBtn
+        font-size: 10px
+        margin: 5px
+        padding: 3px 5px 3px 5px
 //all kind of button
 .pageBtn
-    background-color: $c-primary
+    background-color: $c-secondary
     margin: 10px
-    padding: 3px
-    -webkit-box-shadow: 0px 0px 4px -1px rgba(0,0,0,0.3)
-    box-shadow: 0px 0px 4px -1px rgba(0,0,0,0.3)
+    padding: 3px 7px 3px 7px
 
 #downloadBtn
     color: $c-secondary
@@ -196,7 +216,6 @@ $c-text: #707070
     padding: 16px 40px 16px 40px
     &:hover
         background-color: $c-primary
-        width: 110px
         text-decoration: none
         cursor: pointer
         opacity: 0.75

@@ -10,7 +10,8 @@
                         .listTypeContainer
                             strong.tagStrong(v-for='typ in articleList[n+articleIndex].type') {{typ}}
                         .ListTitle {{articleList[n+articleIndex].title}}
-                        //- .ListContent {{articleList[n+articleIndex].content.text[0]}}
+                        .ListContent {{articleList[n+articleIndex].content.text[0]}}
+                        .listMore ...
         .listBtnBlock
             span.prevBut(@click='plusPage(-1)') < 上一頁
             span.nextBut(@click='plusPage(1)') 下一頁 >
@@ -61,6 +62,8 @@ export default {
 
 .listinArticle
     width: 300px
+.listMore
+    color: $c-primary
 .tagStrong
     margin-right: 10px
 .listBtnBlock

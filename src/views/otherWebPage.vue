@@ -61,14 +61,15 @@ export default {
     flex-direction: row
 
 .webFlex
-    width: 320px
-    height: 320px
-    margin: 8px
+    width: 23.7%
+    height: 280px
+    margin-left: 0.64%
+    margin-right: 0.64%
     margin-bottom: 70px
 
 .webImg
-    width: 320px
-    height: 320px
+    width: 100%
+    height: 100%
     background-size: cover
     position: relative
 
@@ -76,7 +77,7 @@ export default {
     padding-top: 25px
     padding-bottom: 25px
     height: 75px
-    width: 320px
+    width: 100%
     background-color: $c-secondary
     opacity: 0.75
     line-height: 30px
@@ -87,7 +88,19 @@ export default {
     bottom: 0px
     overflow: hidden
 .webTitle:hover
-    height: 320px
+    height: 100%
     background-color: $c-primary
     color: $c-secondary
+
+@media only screen and(max-width: 480px)
+    .webFlex
+        width: 46%
+        height: 175px
+        margin-left: 1.6%
+        margin-right: 1.6%
+        margin-bottom: 40px
+    .webTitle
+        height: 41px
+        font-size: 16px
+        padding: 8px
 </style>

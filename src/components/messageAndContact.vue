@@ -86,4 +86,8 @@ export default {
         width: 100%
     .titleAndInput
         margin-bottom: 40px
+    .sendButton
+        width: 90px
+        height: 40px
+        padding: 5px 10px 5px 10px
 </style>

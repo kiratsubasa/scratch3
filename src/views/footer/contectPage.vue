@@ -49,9 +49,19 @@ export default {
     padding-bottom: 135px
 .contactContent
     width: 49%
+    height: 650px
     padding: 37px 44px 37px 44px
     background-color: $c-secondary
 .HTMLContainer
     width: 49%
     text-align: left
+@media only screen and(max-width: 480px)
+    .contactFlexContainer
+        flex-direction: column
+    .HTMLContainer
+        width: 100%
+    .contactContent
+        width: 100%
+        height: 510px
+        padding: 15px 20px 15px 20px
 </style>

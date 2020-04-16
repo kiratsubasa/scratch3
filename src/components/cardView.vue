@@ -161,11 +161,11 @@ export default {
     .ListTextTitle
         font-size: 16px
         line-height: 20px
-        margin-bottom: 5px
+        margin-bottom: 8px
     .CardTextBlock 
         padding: 10px
     .ListTypeFlex
-        margin-bottom: 5px
+        margin-bottom: 8px
     #textBtn
         width: 116px
         height: 32px

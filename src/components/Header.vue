@@ -5,17 +5,19 @@ div#menuWrapper
         router-link#Lego(to='/' :style="{'background-image': 'url(' + iconSrc + ')'}")
         div.menuItem(v-for='item in menuList')
             router-link#menuItemLink(:to='item.url') {{item.name}}
-        div(@click='opentheDrawer()' :class="menuclassList")
-            .menuIconBar1
-            .menuIconBar2
-            .menuIconBar3
-        SearchBar.searchBar-Header(:searchPlaceholder='searchPlaceholder' v-on:changePathByQuery='changePathByQuery')
-    transition(name="page" mode="out-in")
-        div#drawer(v-if="drawerStatus")
-            div.drawerItem(v-for='(item,i) in menuList' @click='drawerStatus = !drawerStatus') 
-                #underline
-                a(:href='item.url' style="color: black; text-decoration: none;") {{item.name}}
-    
+        .menuFlex
+            SearchBar#searchBoxOut.searchBar-Header(:searchPlaceholder='searchPlaceholder' v-on:changePathByQuery='changePathByQuery')
+            
+            transition(name="page" mode="out-in")
+            div#drawer(v-if="drawerStatus")
+                SearchBar.searchBar-Header(:searchPlaceholder='searchPlaceholder' v-on:changePathByQuery='changePathByQuery')
+                div.drawerItem(v-for='(item,i) in menuList' @click='drawerStatus = !drawerStatus') 
+                    
+                    a(:href='item.url' style="color: black; text-decoration: none;") {{item.name}}
+            div(@click='opentheDrawer()' :class="menuclassList")
+                .menuIconBar1
+                .menuIconBar2
+                .menuIconBar3
 
 </template>
 
@@ -80,10 +82,22 @@ export default {
 @media all and (max-width: 1024px)
     .menuItem
         display: none
+    #searchBoxOut
+        opacity: 0
     .menuIconContainer
         display: block
+    .menuWrapper
+        height: 66px
     .drawerItem
         display: block
+    .menuFlex
+        display: flex
+        width: 100%
+        flex-direction: column
+        position: relative
+    .searchBar-Header
+        height: 50px
+        padding: 10px
 
 #Lego
     background-size: contain
@@ -125,6 +139,9 @@ export default {
 
 .menuIconContainer
     cursor: pointer
+    position: absolute
+    top: 10px
+    right: 10px
 
 @keyframes drawerOpen
     from

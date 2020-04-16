@@ -10,9 +10,10 @@
                             .dateNote 更新日期 {{articleList[idx-1].updated_at.split("T")[0]}}
                             .ListTitle {{articleList[idx-1].title}}
                             .ListContent {{stripHTML(articleList[idx-1].body)}}
-                            .listTypeContainer
-                                    router-link.ListTypeBlock(style="color: #707070; text-decoration: none;" v-for='(typ,t) in articleList[idx-1].categories' :key='t' :to="'/'+typ") {{typ.name}}
-                                    
+                            .listViewMoreFlex
+                                .listTypeContainer
+                                        router-link.ListTypeBlock(style="color: #707070; text-decoration: none;" v-for='(typ,t) in articleList[idx-1].categories' :key='t' :to="'/'+typ") {{typ.name}}
+                                .listViewMore LEARN MORE    
                         .Listhead
                             .ListImage(v-if="articleList[idx-1].media!=null" :style="{'background-image': 'url(' + articleList[idx-1].media.info.src + ')'}") 
                                 

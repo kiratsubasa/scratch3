@@ -1,9 +1,10 @@
 <template lang="pug">
-.webMapContainer
-    h1#listPageTitle 網站地圖
-    .webMapFlexContainer
-            router-link#webMapFlex(v-for='titles in mapTitleLists' :value='mapTitleLists' :key='url' :to='titles.url') {{titles.title}}
-                router-link#webMapSubtitle(v-for='contents in titles.content' :value='titles.content' :key='url' :to='contents.url') {{contents.title}}
+#app
+    .webMapContainer
+        h1#listPageTitle 網站地圖
+        .webMapFlexContainer
+                router-link#webMapFlex(v-for='titles in mapTitleLists' :value='mapTitleLists' :key='url' :to='titles.url') {{titles.title}}
+                    router-link#webMapSubtitle(v-for='contents in titles.content' :value='titles.content' :key='url' :to='contents.url') {{contents.title}}
 
 
 </template>

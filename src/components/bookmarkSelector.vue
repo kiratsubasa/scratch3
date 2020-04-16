@@ -205,6 +205,7 @@ export default {
     font-size: 25px
     margin-right: 8px
     padding: 0px
+    color: $c-text
 #mySelect
     width: 150px
     height: 50px

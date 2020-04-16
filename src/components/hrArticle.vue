@@ -57,6 +57,7 @@ export default {
     margin: 10px
     color: $c-primary
     text-align: center
+    padding: 0px
 
 .authorContainer
     background-color: $c-secondary
@@ -77,7 +78,7 @@ export default {
     text-align: center
     line-height: 20px
     color: $c-text
-    margin: 25px
+    margin: 10px
 #hashTag
     float: none
 .authorImg

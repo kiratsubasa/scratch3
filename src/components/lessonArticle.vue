@@ -145,6 +145,7 @@ p
     color: $c-text
 .articlePageTitle
     text-align: left
+    padding: 0px
     line-height: 1.8em
     margin-bottom: 40px
     color: $c-primary
