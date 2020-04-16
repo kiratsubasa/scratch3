@@ -35,8 +35,11 @@ export default {
             pageData: ''
         }
     },
-    computed: {
+    watch: {
+        '$route': function(route){
 
+            this.ApiSearchInit(2,route.query.search)
+        }
     },
     created(){
         this.ApiSearchInit(2,this.$route.query.search);
@@ -156,6 +159,8 @@ export default {
             };
             for(var i=0;i<this.searchData.length;i++){
                 this.searchData[i].cp = 1;
+                this.searchData[i].data = [{text:'查無結果'}];
+                this.searchData[i].mp = 1;
                 this.doSearch(this.searchData[i].type);
             }
         },
